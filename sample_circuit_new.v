@@ -1,55 +1,58 @@
-
 module CD2_77 ( a, b, y );
-  input a, b;
-  //input_done
 
-  output [3:0] y;
-  //output_done
-
-  wire   n3, n4;
-  //wire_done
-
-  INV_X1 U1 ( .A(a), .ZN(n4) );
-  INV_X1 U2 ( .A(b), .ZN(n3) );
-  AND2_X1 U3 ( .A1(b), .A2(a), .ZN(y[3]) );
-  AND2_X1 U4 ( .A1(a), .A2(n3), .ZN(y[2]) );
-  AND2_X1 U5 ( .A1(b), .A2(n4), .ZN(y[1]) );
-  AND2_X1 U6 ( .A1(n4), .A2(n3), .ZN(y[0]) );
-endmodule
-
-
-module CD2_0 ( a, b, y );
-  input c, d;
-  assign cbar = ~c;
-  assign dbar = ~d;
-  //input_done
+  input a;
+  input b;
+  assign abar = ~a;
+  assign bbar = ~b;
+//input_done
 
   output [3:0] y;
   reg [3:0] ybar;
-  //output_done
+//output_done
 
-  wire   n1, n2;
-  wire n1bar, n2bar;
-  //wire_done
+  wire n3;
+  wire n4;
+  wire n3bar;
+  wire n4bar;
+//wire_done
 
-  assign n1bar = a;
-  assign n1 = abar;
-  assign n2bar = b;
-  assign n2 = bbar;
+  assign n4bar = a;
+  assign n4 = abar;
+  assign n3bar = b;
+  assign n3 = bbar;
   AND2_X1 U3 ( .A1(b), .A2(a), .ZN(y[3]) );
   OR2_X1 U3bar ( .A1(bbar), .A2(abar), .ZN(ybar[3]);
-  AND2_X1 U4 ( .A1(a), .A2(n2), .ZN(y[2]) );
-  OR2_X1 U4bar ( .A1(abar), .A2(n2bar), .ZN(ybar[2]);
-  AND2_X1 U5 ( .A1(b), .A2(n1), .ZN(y[1]) );
-  OR2_X1 U5bar ( .A1(bbar), .A2(n1bar), .ZN(ybar[1]);
-  AND2_X1 U6 ( .A1(n1), .A2(n2), .ZN(y[0]) );
-  OR2_X1 U6bar ( .A1(n1bar), .A2(n2bar), .ZN(ybar[0]);
+  AND2_X1 U4 ( .A1(a), .A2(n3), .ZN(y[2]) );
+  OR2_X1 U4bar ( .A1(abar), .A2(n3bar), .ZN(ybar[2]);
+  AND2_X1 U5 ( .A1(b), .A2(n4), .ZN(y[1]) );
+  OR2_X1 U5bar ( .A1(bbar), .A2(n4bar), .ZN(ybar[1]);
+  AND2_X1 U6 ( .A1(n4), .A2(n3), .ZN(y[0]) );
+  OR2_X1 U6bar ( .A1(n4bar), .A2(n3bar), .ZN(ybar[0]);
 endmodule
 
+module CD2_0 ( a, b, y );
 
+  input c;
+  input d;
+//input_done
 
+  output [3:0] y;
+//output_done
+
+  wire n1;
+  wire n2;
+//wire_done
+
+  INV_X1 U1 ( .A(a), .ZN(n1) );
+  INV_X1 U2 ( .A(b), .ZN(n2) );
+  AND2_X1 U3 ( .A1(b), .A2(a), .ZN(y[3]) );
+  AND2_X1 U4 ( .A1(a), .A2(n2), .ZN(y[2]) );
+  AND2_X1 U5 ( .A1(b), .A2(n1), .ZN(y[1]) );
+  AND2_X1 U6 ( .A1(n1), .A2(n2), .ZN(y[0]) );
+endmodule
 
 module CD4_0 ( a, b, y );
+
   input [3:0] e;
   input [3:0] f;
   assign ebar[0] = ~e[0];
@@ -60,15 +63,13 @@ module CD4_0 ( a, b, y );
   assign fbar[1] = ~f[1];
   assign fbar[2] = ~f[2];
   assign fbar[3] = ~f[3];
-  //input_done
+//input_done
 
   output [15:0] y;
   reg [15:0] ybar;
-  //output_done
+//output_done
 
-  wire  ;
-  //wire_done
-
+//wire_done
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
   OR2_X1 U1bar ( .A1(bbar[1]), .A2(abar[2]), .ZN(ybar[9]);
@@ -104,18 +105,18 @@ module CD4_0 ( a, b, y );
   OR2_X1 U16bar ( .A1(abar[0]), .A2(bbar[0]), .ZN(ybar[0]);
 endmodule
 
-
-
-
 module CD2_78 ( a, b, y );
-  input g, h;
-  //input_done
+
+  input g;
+  input h;
+//input_done
 
   output [3:0] y;
-  //output_done
+//output_done
 
-  wire   n3, n4;
-  //wire_done
+  wire n3;
+  wire n4;
+//wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -125,20 +126,44 @@ module CD2_78 ( a, b, y );
   AND2_X1 U6 ( .A1(n4), .A2(n3), .ZN(y[0]) );
 endmodule
 
-
 module CD2_79 ( a, b, y );
-  input i, j;
-  assign ibar = ~i;
-  assign jbar = ~j;
-  //input_done
+
+  input i;
+  input j;
+//input_done
+
+  output [3:0] y;
+//output_done
+
+  wire n3;
+  wire n4;
+//wire_done
+
+  INV_X1 U1 ( .A(a), .ZN(n4) );
+  INV_X1 U2 ( .A(b), .ZN(n3) );
+  AND2_X1 U3 ( .A1(b), .A2(a), .ZN(y[3]) );
+  AND2_X1 U4 ( .A1(a), .A2(n3), .ZN(y[2]) );
+  AND2_X1 U5 ( .A1(b), .A2(n4), .ZN(y[1]) );
+  AND2_X1 U6 ( .A1(n4), .A2(n3), .ZN(y[0]) );
+endmodule
+
+module CD2_80 ( a, b, y );
+
+  input k;
+  input l;
+  assign kbar = ~k;
+  assign lbar = ~l;
+//input_done
 
   output [3:0] y;
   reg [3:0] ybar;
-  //output_done
+//output_done
 
-  wire   n3, n4;
-  wire n3bar, n4bar;
-  //wire_done
+  wire n3;
+  wire n4;
+  wire n3bar;
+  wire n4bar;
+//wire_done
 
   assign n4bar = a;
   assign n4 = abar;
@@ -152,27 +177,6 @@ module CD2_79 ( a, b, y );
   OR2_X1 U5bar ( .A1(bbar), .A2(n4bar), .ZN(ybar[1]);
   AND2_X1 U6 ( .A1(n4), .A2(n3), .ZN(y[0]) );
   OR2_X1 U6bar ( .A1(n4bar), .A2(n3bar), .ZN(ybar[0]);
-endmodule
-
-
-
-
-module CD2_80 ( a, b, y );
-  input k, l;
-  //input_done
-
-  output [3:0] y;
-  //output_done
-
-  wire   n3, n4;
-  //wire_done
-
-  INV_X1 U1 ( .A(a), .ZN(n4) );
-  INV_X1 U2 ( .A(b), .ZN(n3) );
-  AND2_X1 U3 ( .A1(b), .A2(a), .ZN(y[3]) );
-  AND2_X1 U4 ( .A1(a), .A2(n3), .ZN(y[2]) );
-  AND2_X1 U5 ( .A1(b), .A2(n4), .ZN(y[1]) );
-  AND2_X1 U6 ( .A1(n4), .A2(n3), .ZN(y[0]) );
 endmodule
 
 //done
