@@ -2,8 +2,12 @@
 module mux128_0 ( a, b, sel, y );
   input [127:0] a;
   input [127:0] b;
-  output [127:0] y;
   input sel;
+  //input_done
+
+  output [127:0] y;
+  //output_done
+
   wire   n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16,
          n17, n18, n19, n20, n21, n22, n23, n24, n25, n26, n27, n28, n29, n30,
          n31, n32, n33, n34, n35, n36, n37, n38, n39, n40, n41, n42, n43, n44,
@@ -26,6 +30,7 @@ module mux128_0 ( a, b, sel, y );
          n233, n234, n235, n236, n237, n238, n239, n240, n241, n242, n243,
          n244, n245, n246, n247, n248, n249, n250, n251, n252, n253, n254,
          n255, n256, n257, n1, n258, n259, n260;
+  //wire_done
 
   OR2_X1 U2 ( .A1(n2), .A2(n3), .ZN(y[9]) );
   AND2_X1 U3 ( .A1(sel), .A2(b[9]), .ZN(n3) );
@@ -420,7 +425,12 @@ endmodule
 
 module shiftRows ( in, out );
   input [127:0] in;
+  //input_done
+
   output [127:0] out;
+  //output_done
+
+  //wire_done
 
   assign out[127] = in[127];
   assign out[126] = in[126];
@@ -555,9 +565,14 @@ endmodule
 
 
 module CD2_0 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+
   wire   n1, n2;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n1) );
   INV_X1 U2 ( .A(b), .ZN(n2) );
@@ -571,7 +586,12 @@ endmodule
 module CD4_0 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -596,7 +616,12 @@ endmodule
 module CD16_0 ( a, b, y );
   input [15:0] a;
   input [15:0] b;
+  //input_done
+
   output [255:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[9]), .A2(a[0]), .ZN(y[9]) );
@@ -859,9 +884,14 @@ endmodule
 
 
 module CD2_77 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -873,9 +903,14 @@ endmodule
 
 
 module CD2_78 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -887,9 +922,14 @@ endmodule
 
 
 module CD2_79 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -903,7 +943,12 @@ endmodule
 module CD4_39 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -927,10 +972,14 @@ endmodule
 
 module decode_0 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [255:0] out;
+  //output_done
 
   wire   [15:0] level1;
   wire   [31:0] level2;
+  //wire_done
 
   CD2_0 cd_l1_1 ( .a(in[1]), .b(in[0]), .y(level1[3:0]) );
   CD2_79 cd_l1_2 ( .a(in[3]), .b(in[2]), .y(level1[7:4]) );
@@ -944,7 +993,11 @@ endmodule
 
 module encode_0 ( in, out );
   input [255:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_81, in_80, in_79, in_78, in_77, in_76, in_75, in_74, in_73, in_72,
          in_71, in_70, in_69, in_68, in_67, in_66, in_65, in_64, in_63, in_62,
          in_61, in_60, in_59, in_58, in_57, in_56, in_55, in_54, in_53, in_52,
@@ -996,6 +1049,8 @@ module encode_0 ( in, out );
          n463, n464, n465, n466, n467, n468, n469, n470, n471, n472, n473,
          n474, n475, n476, n477, n478, n479, n480, n481, n482, n483, n484,
          n485, n486;
+  //wire_done
+
   assign in_81 = in[81];
   assign in_80 = in[80];
   assign in_79 = in[79];
@@ -1578,9 +1633,13 @@ endmodule
 
 module sBox_0 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
 
   wire   [255:0] decodeOut;
+  //wire_done
 
   decode_0 dec ( .in(in), .out(decodeOut) );
   encode_0 enc ( .in(decodeOut), .out(out) );
@@ -1589,9 +1648,15 @@ endmodule
 
 module scale2_0 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_0, \in[6] , \in[5] , \in[4] , \in[1] , \in[7] , n1, n2, n3, n4, n5,
          n6, n7, n8, n9, n10;
+  //wire_done
+
   assign in_0 = in[0];
   assign out[7] = \in[6] ;
   assign \in[6]  = in[6];
@@ -1604,29 +1669,34 @@ module scale2_0 ( in, out );
   assign out[0] = \in[7] ;
   assign \in[7]  = in[7];
 
-  INV_X1 U1 ( .A(\in[7] ), .ZN(n1) );
+  INV_X1 U1 ( .A(\in[7]), .ZN(n1) );
   INV_X1 U2 ( .A(in[3]), .ZN(n2) );
   INV_X1 U3 ( .A(in[2]), .ZN(n3) );
   INV_X1 U4 ( .A(in_0), .ZN(n4) );
   OR2_X1 U5 ( .A1(n5), .A2(n6), .ZN(out[4]) );
   AND2_X1 U6 ( .A1(in[3]), .A2(n1), .ZN(n6) );
-  AND2_X1 U7 ( .A1(\in[7] ), .A2(n2), .ZN(n5) );
+  AND2_X1 U7 ( .A1(\in[7]), .A2(n2), .ZN(n5) );
   OR2_X1 U8 ( .A1(n7), .A2(n8), .ZN(out[3]) );
   AND2_X1 U9 ( .A1(in[2]), .A2(n1), .ZN(n8) );
-  AND2_X1 U10 ( .A1(\in[7] ), .A2(n3), .ZN(n7) );
+  AND2_X1 U10 ( .A1(\in[7]), .A2(n3), .ZN(n7) );
   OR2_X1 U11 ( .A1(n9), .A2(n10), .ZN(out[1]) );
   AND2_X1 U12 ( .A1(in_0), .A2(n1), .ZN(n10) );
-  AND2_X1 U13 ( .A1(\in[7] ), .A2(n4), .ZN(n9) );
+  AND2_X1 U13 ( .A1(\in[7]), .A2(n4), .ZN(n9) );
 endmodule
 
 
 module byteXor_0 ( a, b, y );
   input [7:0] a;
   input [7:0] b;
+  //input_done
+
   output [7:0] y;
+  //output_done
+
   wire   n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16,
          n17, n18, n19, n20, n21, n22, n23, n24, n25, n26, n27, n28, n29, n30,
          n31, n32;
+  //wire_done
 
   INV_X1 U1 ( .A(n18), .ZN(n1) );
   INV_X1 U2 ( .A(a[7]), .ZN(n2) );
@@ -1676,7 +1746,11 @@ module byteXor4_0 ( a, b, c, d, y );
   input [7:0] b;
   input [7:0] c;
   input [7:0] d;
+  //input_done
+
   output [7:0] y;
+  //output_done
+
   wire   n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16,
          n17, n18, n19, n20, n21, n22, n23, n24, n25, n26, n27, n28, n29, n30,
          n31, n32, n33, n34, n35, n36, n37, n38, n39, n40, n41, n42, n43, n44,
@@ -1686,6 +1760,7 @@ module byteXor4_0 ( a, b, c, d, y );
          n87, n88, n89, n90, n91, n92, n93, n94, n95, n96, n97, n98, n99, n100,
          n101, n102, n103, n104, n105, n106, n107, n108, n109, n110, n111,
          n112;
+  //wire_done
 
   INV_X1 U1 ( .A(n50), .ZN(n1) );
   INV_X1 U2 ( .A(a[7]), .ZN(n2) );
@@ -1812,9 +1887,15 @@ endmodule
 
 module scale2_13 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_0, \in[6] , \in[5] , \in[4] , \in[1] , \in[7] , n11, n12, n13, n14,
          n15, n16, n17, n18, n19, n20;
+  //wire_done
+
   assign in_0 = in[0];
   assign out[7] = \in[6] ;
   assign \in[6]  = in[6];
@@ -1827,27 +1908,33 @@ module scale2_13 ( in, out );
   assign out[0] = \in[7] ;
   assign \in[7]  = in[7];
 
-  INV_X1 U1 ( .A(\in[7] ), .ZN(n20) );
+  INV_X1 U1 ( .A(\in[7]), .ZN(n20) );
   INV_X1 U2 ( .A(in[3]), .ZN(n19) );
   INV_X1 U3 ( .A(in[2]), .ZN(n18) );
   INV_X1 U4 ( .A(in_0), .ZN(n17) );
   OR2_X1 U5 ( .A1(n16), .A2(n15), .ZN(out[4]) );
   AND2_X1 U6 ( .A1(in[3]), .A2(n20), .ZN(n15) );
-  AND2_X1 U7 ( .A1(\in[7] ), .A2(n19), .ZN(n16) );
+  AND2_X1 U7 ( .A1(\in[7]), .A2(n19), .ZN(n16) );
   OR2_X1 U8 ( .A1(n14), .A2(n13), .ZN(out[3]) );
   AND2_X1 U9 ( .A1(in[2]), .A2(n20), .ZN(n13) );
-  AND2_X1 U10 ( .A1(\in[7] ), .A2(n18), .ZN(n14) );
+  AND2_X1 U10 ( .A1(\in[7]), .A2(n18), .ZN(n14) );
   OR2_X1 U11 ( .A1(n12), .A2(n11), .ZN(out[1]) );
   AND2_X1 U12 ( .A1(in_0), .A2(n20), .ZN(n11) );
-  AND2_X1 U13 ( .A1(\in[7] ), .A2(n17), .ZN(n12) );
+  AND2_X1 U13 ( .A1(\in[7]), .A2(n17), .ZN(n12) );
 endmodule
 
 
 module scale2_14 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_0, \in[6] , \in[5] , \in[4] , \in[1] , \in[7] , n11, n12, n13, n14,
          n15, n16, n17, n18, n19, n20;
+  //wire_done
+
   assign in_0 = in[0];
   assign out[7] = \in[6] ;
   assign \in[6]  = in[6];
@@ -1860,27 +1947,33 @@ module scale2_14 ( in, out );
   assign out[0] = \in[7] ;
   assign \in[7]  = in[7];
 
-  INV_X1 U1 ( .A(\in[7] ), .ZN(n20) );
+  INV_X1 U1 ( .A(\in[7]), .ZN(n20) );
   INV_X1 U2 ( .A(in[3]), .ZN(n19) );
   INV_X1 U3 ( .A(in[2]), .ZN(n18) );
   INV_X1 U4 ( .A(in_0), .ZN(n17) );
   OR2_X1 U5 ( .A1(n16), .A2(n15), .ZN(out[4]) );
   AND2_X1 U6 ( .A1(in[3]), .A2(n20), .ZN(n15) );
-  AND2_X1 U7 ( .A1(\in[7] ), .A2(n19), .ZN(n16) );
+  AND2_X1 U7 ( .A1(\in[7]), .A2(n19), .ZN(n16) );
   OR2_X1 U8 ( .A1(n14), .A2(n13), .ZN(out[3]) );
   AND2_X1 U9 ( .A1(in[2]), .A2(n20), .ZN(n13) );
-  AND2_X1 U10 ( .A1(\in[7] ), .A2(n18), .ZN(n14) );
+  AND2_X1 U10 ( .A1(\in[7]), .A2(n18), .ZN(n14) );
   OR2_X1 U11 ( .A1(n12), .A2(n11), .ZN(out[1]) );
   AND2_X1 U12 ( .A1(in_0), .A2(n20), .ZN(n11) );
-  AND2_X1 U13 ( .A1(\in[7] ), .A2(n17), .ZN(n12) );
+  AND2_X1 U13 ( .A1(\in[7]), .A2(n17), .ZN(n12) );
 endmodule
 
 
 module scale2_15 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_0, \in[6] , \in[5] , \in[4] , \in[1] , \in[7] , n11, n12, n13, n14,
          n15, n16, n17, n18, n19, n20;
+  //wire_done
+         
   assign in_0 = in[0];
   assign out[7] = \in[6] ;
   assign \in[6]  = in[6];
@@ -1893,29 +1986,34 @@ module scale2_15 ( in, out );
   assign out[0] = \in[7] ;
   assign \in[7]  = in[7];
 
-  INV_X1 U1 ( .A(\in[7] ), .ZN(n20) );
+  INV_X1 U1 ( .A(\in[7]), .ZN(n20) );
   INV_X1 U2 ( .A(in[3]), .ZN(n19) );
   INV_X1 U3 ( .A(in[2]), .ZN(n18) );
   INV_X1 U4 ( .A(in_0), .ZN(n17) );
   OR2_X1 U5 ( .A1(n16), .A2(n15), .ZN(out[4]) );
   AND2_X1 U6 ( .A1(in[3]), .A2(n20), .ZN(n15) );
-  AND2_X1 U7 ( .A1(\in[7] ), .A2(n19), .ZN(n16) );
+  AND2_X1 U7 ( .A1(\in[7]), .A2(n19), .ZN(n16) );
   OR2_X1 U8 ( .A1(n14), .A2(n13), .ZN(out[3]) );
   AND2_X1 U9 ( .A1(in[2]), .A2(n20), .ZN(n13) );
-  AND2_X1 U10 ( .A1(\in[7] ), .A2(n18), .ZN(n14) );
+  AND2_X1 U10 ( .A1(\in[7]), .A2(n18), .ZN(n14) );
   OR2_X1 U11 ( .A1(n12), .A2(n11), .ZN(out[1]) );
   AND2_X1 U12 ( .A1(in_0), .A2(n20), .ZN(n11) );
-  AND2_X1 U13 ( .A1(\in[7] ), .A2(n17), .ZN(n12) );
+  AND2_X1 U13 ( .A1(\in[7]), .A2(n17), .ZN(n12) );
 endmodule
 
 
 module byteXor_14 ( a, b, y );
   input [7:0] a;
   input [7:0] b;
+  //input_done
+
   output [7:0] y;
+  //output_done
+
   wire   n33, n34, n35, n36, n37, n38, n39, n40, n41, n42, n43, n44, n45, n46,
          n47, n48, n49, n50, n51, n52, n53, n54, n55, n56, n57, n58, n59, n60,
          n61, n62, n63, n64;
+  //wire_done
 
   INV_X1 U1 ( .A(n47), .ZN(n64) );
   INV_X1 U2 ( .A(a[7]), .ZN(n63) );
@@ -1963,10 +2061,15 @@ endmodule
 module byteXor_15 ( a, b, y );
   input [7:0] a;
   input [7:0] b;
+  //input_done
+
   output [7:0] y;
+  //output_done
+
   wire   n33, n34, n35, n36, n37, n38, n39, n40, n41, n42, n43, n44, n45, n46,
          n47, n48, n49, n50, n51, n52, n53, n54, n55, n56, n57, n58, n59, n60,
          n61, n62, n63, n64;
+  //wire_done
 
   INV_X1 U1 ( .A(n47), .ZN(n64) );
   INV_X1 U2 ( .A(a[7]), .ZN(n63) );
@@ -2014,10 +2117,15 @@ endmodule
 module byteXor_16 ( a, b, y );
   input [7:0] a;
   input [7:0] b;
+  //input_done
+
   output [7:0] y;
+  //output_done
+
   wire   n33, n34, n35, n36, n37, n38, n39, n40, n41, n42, n43, n44, n45, n46,
          n47, n48, n49, n50, n51, n52, n53, n54, n55, n56, n57, n58, n59, n60,
          n61, n62, n63, n64;
+  //wire_done
 
   INV_X1 U1 ( .A(n47), .ZN(n64) );
   INV_X1 U2 ( .A(a[7]), .ZN(n63) );
@@ -2067,7 +2175,11 @@ module byteXor4_13 ( a, b, c, d, y );
   input [7:0] b;
   input [7:0] c;
   input [7:0] d;
+  //input_done
+
   output [7:0] y;
+  //output_done
+
   wire   n113, n114, n115, n116, n117, n118, n119, n120, n121, n122, n123,
          n124, n125, n126, n127, n128, n129, n130, n131, n132, n133, n134,
          n135, n136, n137, n138, n139, n140, n141, n142, n143, n144, n145,
@@ -2079,6 +2191,7 @@ module byteXor4_13 ( a, b, c, d, y );
          n201, n202, n203, n204, n205, n206, n207, n208, n209, n210, n211,
          n212, n213, n214, n215, n216, n217, n218, n219, n220, n221, n222,
          n223, n224;
+  //wire_done
 
   INV_X1 U1 ( .A(n175), .ZN(n224) );
   INV_X1 U2 ( .A(a[7]), .ZN(n223) );
@@ -2208,7 +2321,11 @@ module byteXor4_14 ( a, b, c, d, y );
   input [7:0] b;
   input [7:0] c;
   input [7:0] d;
+  //input_done
+
   output [7:0] y;
+  //output_done
+
   wire   n113, n114, n115, n116, n117, n118, n119, n120, n121, n122, n123,
          n124, n125, n126, n127, n128, n129, n130, n131, n132, n133, n134,
          n135, n136, n137, n138, n139, n140, n141, n142, n143, n144, n145,
@@ -2220,6 +2337,7 @@ module byteXor4_14 ( a, b, c, d, y );
          n201, n202, n203, n204, n205, n206, n207, n208, n209, n210, n211,
          n212, n213, n214, n215, n216, n217, n218, n219, n220, n221, n222,
          n223, n224;
+  //wire_done
 
   INV_X1 U1 ( .A(n175), .ZN(n224) );
   INV_X1 U2 ( .A(a[7]), .ZN(n223) );
@@ -2349,7 +2467,11 @@ module byteXor4_15 ( a, b, c, d, y );
   input [7:0] b;
   input [7:0] c;
   input [7:0] d;
+  //input_done
+
   output [7:0] y;
+  //output_done
+
   wire   n113, n114, n115, n116, n117, n118, n119, n120, n121, n122, n123,
          n124, n125, n126, n127, n128, n129, n130, n131, n132, n133, n134,
          n135, n136, n137, n138, n139, n140, n141, n142, n143, n144, n145,
@@ -2361,6 +2483,7 @@ module byteXor4_15 ( a, b, c, d, y );
          n201, n202, n203, n204, n205, n206, n207, n208, n209, n210, n211,
          n212, n213, n214, n215, n216, n217, n218, n219, n220, n221, n222,
          n223, n224;
+  //wire_done
 
   INV_X1 U1 ( .A(n175), .ZN(n224) );
   INV_X1 U2 ( .A(a[7]), .ZN(n223) );
@@ -2487,7 +2610,10 @@ endmodule
 
 module mixCol_0 ( in, out );
   input [31:0] in;
+  //input_done
+
   output [31:0] out;
+  //output_done
 
   wire   [7:0] b0_s2;
   wire   [7:0] b1_s2;
@@ -2497,6 +2623,7 @@ module mixCol_0 ( in, out );
   wire   [7:0] b1_s3;
   wire   [7:0] b2_s3;
   wire   [7:0] b3_s3;
+  //wire_done
 
   scale2_0 b0_scale2 ( .in(in[31:24]), .out(b0_s2) );
   scale2_15 b1_scale2 ( .in(in[23:16]), .out(b1_s2) );
@@ -2518,9 +2645,14 @@ endmodule
 
 
 module CD2_1 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -2532,9 +2664,14 @@ endmodule
 
 
 module CD2_2 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -2546,9 +2683,14 @@ endmodule
 
 
 module CD2_3 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -2560,9 +2702,14 @@ endmodule
 
 
 module CD2_4 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -2576,7 +2723,10 @@ endmodule
 module CD4_1 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -2601,7 +2751,12 @@ endmodule
 module CD4_2 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -2626,7 +2781,12 @@ endmodule
 module CD16_1 ( a, b, y );
   input [15:0] a;
   input [15:0] b;
+  //input_done
+
   output [255:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[9]), .A2(a[0]), .ZN(y[9]) );
@@ -2890,10 +3050,14 @@ endmodule
 
 module decode_1 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [255:0] out;
+  //output_done
 
   wire   [15:0] level1;
   wire   [31:0] level2;
+  //wire_done
 
   CD2_4 cd_l1_1 ( .a(in[1]), .b(in[0]), .y(level1[3:0]) );
   CD2_3 cd_l1_2 ( .a(in[3]), .b(in[2]), .y(level1[7:4]) );
@@ -2907,7 +3071,11 @@ endmodule
 
 module encode_1 ( in, out );
   input [255:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_81, in_80, in_79, in_78, in_77, in_76, in_75, in_74, in_73, in_72,
          in_71, in_70, in_69, in_68, in_67, in_66, in_65, in_64, in_63, in_62,
          in_61, in_60, in_59, in_58, in_57, in_56, in_55, in_54, in_53, in_52,
@@ -2961,6 +3129,8 @@ module encode_1 ( in, out );
          n948, n949, n950, n951, n952, n953, n954, n955, n956, n957, n958,
          n959, n960, n961, n962, n963, n964, n965, n966, n967, n968, n969,
          n970, n971, n972;
+  //wire_done
+
   assign in_81 = in[81];
   assign in_80 = in[80];
   assign in_79 = in[79];
@@ -3543,9 +3713,13 @@ endmodule
 
 module sBox_1 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
 
   wire   [255:0] decodeOut;
+  //wire_done
 
   decode_1 dec ( .in(in), .out(decodeOut) );
   encode_1 enc ( .in(decodeOut), .out(out) );
@@ -3553,9 +3727,14 @@ endmodule
 
 
 module CD2_5 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //ooutput_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -3567,9 +3746,14 @@ endmodule
 
 
 module CD2_6 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -3581,9 +3765,14 @@ endmodule
 
 
 module CD2_7 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -3595,9 +3784,14 @@ endmodule
 
 
 module CD2_8 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -3611,7 +3805,12 @@ endmodule
 module CD4_3 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -3636,7 +3835,12 @@ endmodule
 module CD4_4 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -3661,7 +3865,12 @@ endmodule
 module CD16_2 ( a, b, y );
   input [15:0] a;
   input [15:0] b;
+  //input_done
+
   output [255:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[9]), .A2(a[0]), .ZN(y[9]) );
@@ -3925,10 +4134,14 @@ endmodule
 
 module decode_2 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [255:0] out;
+  //output_done
 
   wire   [15:0] level1;
   wire   [31:0] level2;
+  //wire_done
 
   CD2_8 cd_l1_1 ( .a(in[1]), .b(in[0]), .y(level1[3:0]) );
   CD2_7 cd_l1_2 ( .a(in[3]), .b(in[2]), .y(level1[7:4]) );
@@ -3942,7 +4155,11 @@ endmodule
 
 module encode_2 ( in, out );
   input [255:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_81, in_80, in_79, in_78, in_77, in_76, in_75, in_74, in_73, in_72,
          in_71, in_70, in_69, in_68, in_67, in_66, in_65, in_64, in_63, in_62,
          in_61, in_60, in_59, in_58, in_57, in_56, in_55, in_54, in_53, in_52,
@@ -3996,6 +4213,8 @@ module encode_2 ( in, out );
          n948, n949, n950, n951, n952, n953, n954, n955, n956, n957, n958,
          n959, n960, n961, n962, n963, n964, n965, n966, n967, n968, n969,
          n970, n971, n972;
+  //wire_done
+
   assign in_81 = in[81];
   assign in_80 = in[80];
   assign in_79 = in[79];
@@ -4578,9 +4797,13 @@ endmodule
 
 module sBox_2 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
 
   wire   [255:0] decodeOut;
+  //wire_done
 
   decode_2 dec ( .in(in), .out(decodeOut) );
   encode_2 enc ( .in(decodeOut), .out(out) );
@@ -4588,9 +4811,14 @@ endmodule
 
 
 module CD2_9 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -4602,9 +4830,14 @@ endmodule
 
 
 module CD2_10 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -4616,9 +4849,14 @@ endmodule
 
 
 module CD2_11 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -4630,9 +4868,14 @@ endmodule
 
 
 module CD2_12 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -4646,7 +4889,12 @@ endmodule
 module CD4_5 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -4671,7 +4919,12 @@ endmodule
 module CD4_6 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -4696,7 +4949,12 @@ endmodule
 module CD16_3 ( a, b, y );
   input [15:0] a;
   input [15:0] b;
+  //input_done
+
   output [255:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[9]), .A2(a[0]), .ZN(y[9]) );
@@ -4960,10 +5218,14 @@ endmodule
 
 module decode_3 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [255:0] out;
+  //output_done
 
   wire   [15:0] level1;
   wire   [31:0] level2;
+  //wire_done
 
   CD2_12 cd_l1_1 ( .a(in[1]), .b(in[0]), .y(level1[3:0]) );
   CD2_11 cd_l1_2 ( .a(in[3]), .b(in[2]), .y(level1[7:4]) );
@@ -4977,7 +5239,11 @@ endmodule
 
 module encode_3 ( in, out );
   input [255:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_81, in_80, in_79, in_78, in_77, in_76, in_75, in_74, in_73, in_72,
          in_71, in_70, in_69, in_68, in_67, in_66, in_65, in_64, in_63, in_62,
          in_61, in_60, in_59, in_58, in_57, in_56, in_55, in_54, in_53, in_52,
@@ -5031,6 +5297,8 @@ module encode_3 ( in, out );
          n948, n949, n950, n951, n952, n953, n954, n955, n956, n957, n958,
          n959, n960, n961, n962, n963, n964, n965, n966, n967, n968, n969,
          n970, n971, n972;
+  //wire_done
+
   assign in_81 = in[81];
   assign in_80 = in[80];
   assign in_79 = in[79];
@@ -5613,9 +5881,13 @@ endmodule
 
 module sBox_3 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
 
   wire   [255:0] decodeOut;
+  //wire_done
 
   decode_3 dec ( .in(in), .out(decodeOut) );
   encode_3 enc ( .in(decodeOut), .out(out) );
@@ -5623,9 +5895,14 @@ endmodule
 
 
 module CD2_13 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -5637,9 +5914,14 @@ endmodule
 
 
 module CD2_14 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -5651,9 +5933,14 @@ endmodule
 
 
 module CD2_15 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -5665,9 +5952,14 @@ endmodule
 
 
 module CD2_16 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -5681,7 +5973,12 @@ endmodule
 module CD4_7 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -5706,7 +6003,12 @@ endmodule
 module CD4_8 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -5731,7 +6033,12 @@ endmodule
 module CD16_4 ( a, b, y );
   input [15:0] a;
   input [15:0] b;
+  //input_done
+
   output [255:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[9]), .A2(a[0]), .ZN(y[9]) );
@@ -5995,10 +6302,14 @@ endmodule
 
 module decode_4 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [255:0] out;
+  //output_done
 
   wire   [15:0] level1;
   wire   [31:0] level2;
+  //wire_done
 
   CD2_16 cd_l1_1 ( .a(in[1]), .b(in[0]), .y(level1[3:0]) );
   CD2_15 cd_l1_2 ( .a(in[3]), .b(in[2]), .y(level1[7:4]) );
@@ -6012,7 +6323,11 @@ endmodule
 
 module encode_4 ( in, out );
   input [255:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_81, in_80, in_79, in_78, in_77, in_76, in_75, in_74, in_73, in_72,
          in_71, in_70, in_69, in_68, in_67, in_66, in_65, in_64, in_63, in_62,
          in_61, in_60, in_59, in_58, in_57, in_56, in_55, in_54, in_53, in_52,
@@ -6066,6 +6381,8 @@ module encode_4 ( in, out );
          n948, n949, n950, n951, n952, n953, n954, n955, n956, n957, n958,
          n959, n960, n961, n962, n963, n964, n965, n966, n967, n968, n969,
          n970, n971, n972;
+  //wire_done
+
   assign in_81 = in[81];
   assign in_80 = in[80];
   assign in_79 = in[79];
@@ -6648,9 +6965,13 @@ endmodule
 
 module sBox_4 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
 
   wire   [255:0] decodeOut;
+  //wire_done
 
   decode_4 dec ( .in(in), .out(decodeOut) );
   encode_4 enc ( .in(decodeOut), .out(out) );
@@ -6660,10 +6981,15 @@ endmodule
 module byteXor_1 ( a, b, y );
   input [7:0] a;
   input [7:0] b;
+  //input_done
+
   output [7:0] y;
+  //output_done
+  
   wire   n33, n34, n35, n36, n37, n38, n39, n40, n41, n42, n43, n44, n45, n46,
          n47, n48, n49, n50, n51, n52, n53, n54, n55, n56, n57, n58, n59, n60,
          n61, n62, n63, n64;
+  //wire_done
 
   INV_X1 U1 ( .A(n47), .ZN(n64) );
   INV_X1 U2 ( .A(a[7]), .ZN(n63) );
@@ -6711,9 +7037,13 @@ endmodule
 module gFunction ( in, rc, out );
   input [31:0] in;
   input [7:0] rc;
+  //input_done
+
   output [31:0] out;
+  //output_done
 
   wire   [7:0] temp;
+  //wire_done
 
   sBox_4 s0 ( .in(in[23:16]), .out(temp) );
   sBox_3 s1 ( .in(in[15:8]), .out(out[23:16]) );
@@ -6726,7 +7056,11 @@ endmodule
 module wordXor_0 ( a, b, y );
   input [31:0] a;
   input [31:0] b;
+  //input_done
+
   output [31:0] y;
+  //output_done
+
   wire   n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16,
          n17, n18, n19, n20, n21, n22, n23, n24, n25, n26, n27, n28, n29, n30,
          n31, n32, n33, n34, n35, n36, n37, n38, n39, n40, n41, n42, n43, n44,
@@ -6737,6 +7071,7 @@ module wordXor_0 ( a, b, y );
          n101, n102, n103, n104, n105, n106, n107, n108, n109, n110, n111,
          n112, n113, n114, n115, n116, n117, n118, n119, n120, n121, n122,
          n123, n124, n125, n126, n127, n128;
+  //wire_done
 
   INV_X1 U1 ( .A(n80), .ZN(n1) );
   INV_X1 U2 ( .A(a[31]), .ZN(n2) );
@@ -6904,8 +7239,12 @@ endmodule
 module mux128_1 ( a, b, sel, y );
   input [127:0] a;
   input [127:0] b;
-  output [127:0] y;
   input sel;
+  //input_done
+
+  output [127:0] y;
+  //output_done
+  
   wire   n1, n258, n259, n260, n261, n262, n263, n264, n265, n266, n267, n268,
          n269, n270, n271, n272, n273, n274, n275, n276, n277, n278, n279,
          n280, n281, n282, n283, n284, n285, n286, n287, n288, n289, n290,
@@ -6930,6 +7269,7 @@ module mux128_1 ( a, b, sel, y );
          n489, n490, n491, n492, n493, n494, n495, n496, n497, n498, n499,
          n500, n501, n502, n503, n504, n505, n506, n507, n508, n509, n510,
          n511, n512, n513, n514, n515, n516;
+  //wire_done
 
   OR2_X1 U2 ( .A1(n516), .A2(n515), .ZN(y[9]) );
   AND2_X1 U3 ( .A1(sel), .A2(b[9]), .ZN(n515) );
@@ -7325,7 +7665,11 @@ endmodule
 module wordXor_1 ( a, b, y );
   input [31:0] a;
   input [31:0] b;
+  //input_done
+
   output [31:0] y;
+  //output_done
+
   wire   n129, n130, n131, n132, n133, n134, n135, n136, n137, n138, n139,
          n140, n141, n142, n143, n144, n145, n146, n147, n148, n149, n150,
          n151, n152, n153, n154, n155, n156, n157, n158, n159, n160, n161,
@@ -7338,6 +7682,7 @@ module wordXor_1 ( a, b, y );
          n228, n229, n230, n231, n232, n233, n234, n235, n236, n237, n238,
          n239, n240, n241, n242, n243, n244, n245, n246, n247, n248, n249,
          n250, n251, n252, n253, n254, n255, n256;
+  //wire_done
 
   INV_X1 U1 ( .A(n177), .ZN(n256) );
   INV_X1 U2 ( .A(a[31]), .ZN(n255) );
@@ -7505,7 +7850,11 @@ endmodule
 module wordXor_2 ( a, b, y );
   input [31:0] a;
   input [31:0] b;
+  //input_done
+
   output [31:0] y;
+  //output_done
+
   wire   n129, n130, n131, n132, n133, n134, n135, n136, n137, n138, n139,
          n140, n141, n142, n143, n144, n145, n146, n147, n148, n149, n150,
          n151, n152, n153, n154, n155, n156, n157, n158, n159, n160, n161,
@@ -7518,6 +7867,7 @@ module wordXor_2 ( a, b, y );
          n228, n229, n230, n231, n232, n233, n234, n235, n236, n237, n238,
          n239, n240, n241, n242, n243, n244, n245, n246, n247, n248, n249,
          n250, n251, n252, n253, n254, n255, n256;
+  //wire_done
 
   INV_X1 U1 ( .A(n177), .ZN(n256) );
   INV_X1 U2 ( .A(a[31]), .ZN(n255) );
@@ -7685,7 +8035,11 @@ endmodule
 module wordXor_3 ( a, b, y );
   input [31:0] a;
   input [31:0] b;
+  //input_done
+
   output [31:0] y;
+  //output_done
+
   wire   n129, n130, n131, n132, n133, n134, n135, n136, n137, n138, n139,
          n140, n141, n142, n143, n144, n145, n146, n147, n148, n149, n150,
          n151, n152, n153, n154, n155, n156, n157, n158, n159, n160, n161,
@@ -7698,6 +8052,7 @@ module wordXor_3 ( a, b, y );
          n228, n229, n230, n231, n232, n233, n234, n235, n236, n237, n238,
          n239, n240, n241, n242, n243, n244, n245, n246, n247, n248, n249,
          n250, n251, n252, n253, n254, n255, n256;
+  //wire_done
 
   INV_X1 U1 ( .A(n177), .ZN(n256) );
   INV_X1 U2 ( .A(a[31]), .ZN(n255) );
@@ -7865,12 +8220,17 @@ endmodule
 module keyExpansion ( key_in, clk, firstRound, round_const, key_out );
   input [127:0] key_in;
   input [7:0] round_const;
-  output [127:0] key_out;
   input clk, firstRound;
+  //input_done
+
+  output [127:0] key_out;
+  //output_done
+  
 
   wire   [127:0] key_reg;
   wire   [127:0] key;
   wire   [31:0] w3_g;
+  //wire_done
 
   mux128_1 keyMux ( .a(key_reg), .b(key_in), .sel(firstRound), .y(key) );
   gFunction gw3 ( .in(key[31:0]), .rc(round_const), .out(w3_g) );
@@ -8012,7 +8372,11 @@ endmodule
 module addKey ( data, key, out );
   input [127:0] data;
   input [127:0] key;
+  //input_done
+
   output [127:0] out;
+  //output_done
+
   wire   n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16,
          n17, n18, n19, n20, n21, n22, n23, n24, n25, n26, n27, n28, n29, n30,
          n31, n32, n33, n34, n35, n36, n37, n38, n39, n40, n41, n42, n43, n44,
@@ -8058,6 +8422,7 @@ module addKey ( data, key, out );
          n486, n487, n488, n489, n490, n491, n492, n493, n494, n495, n496,
          n497, n498, n499, n500, n501, n502, n503, n504, n505, n506, n507,
          n508, n509, n510, n511, n512;
+  //wire_done
 
   INV_X1 U1 ( .A(n452), .ZN(n1) );
   INV_X1 U2 ( .A(data[127]), .ZN(n2) );
@@ -8703,9 +9068,14 @@ endmodule
 
 
 module CD2_17 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -8717,9 +9087,14 @@ endmodule
 
 
 module CD2_18 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -8731,9 +9106,15 @@ endmodule
 
 
 module CD2_19 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -8745,9 +9126,14 @@ endmodule
 
 
 module CD2_20 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -8761,7 +9147,12 @@ endmodule
 module CD4_9 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -8786,7 +9177,12 @@ endmodule
 module CD4_10 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -8811,7 +9207,12 @@ endmodule
 module CD16_5 ( a, b, y );
   input [15:0] a;
   input [15:0] b;
+  //input_done
+
   output [255:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[9]), .A2(a[0]), .ZN(y[9]) );
@@ -9075,10 +9476,14 @@ endmodule
 
 module decode_5 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [255:0] out;
+  //output_done
 
   wire   [15:0] level1;
   wire   [31:0] level2;
+  //wire_done
 
   CD2_20 cd_l1_1 ( .a(in[1]), .b(in[0]), .y(level1[3:0]) );
   CD2_19 cd_l1_2 ( .a(in[3]), .b(in[2]), .y(level1[7:4]) );
@@ -9092,7 +9497,11 @@ endmodule
 
 module encode_5 ( in, out );
   input [255:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_81, in_80, in_79, in_78, in_77, in_76, in_75, in_74, in_73, in_72,
          in_71, in_70, in_69, in_68, in_67, in_66, in_65, in_64, in_63, in_62,
          in_61, in_60, in_59, in_58, in_57, in_56, in_55, in_54, in_53, in_52,
@@ -9146,6 +9555,8 @@ module encode_5 ( in, out );
          n948, n949, n950, n951, n952, n953, n954, n955, n956, n957, n958,
          n959, n960, n961, n962, n963, n964, n965, n966, n967, n968, n969,
          n970, n971, n972;
+  //wire_done
+
   assign in_81 = in[81];
   assign in_80 = in[80];
   assign in_79 = in[79];
@@ -9728,9 +10139,13 @@ endmodule
 
 module sBox_5 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
 
   wire   [255:0] decodeOut;
+  //wire_done
 
   decode_5 dec ( .in(in), .out(decodeOut) );
   encode_5 enc ( .in(decodeOut), .out(out) );
@@ -9738,9 +10153,14 @@ endmodule
 
 
 module CD2_21 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -9752,9 +10172,14 @@ endmodule
 
 
 module CD2_22 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+ 
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -9766,9 +10191,14 @@ endmodule
 
 
 module CD2_23 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -9780,9 +10210,14 @@ endmodule
 
 
 module CD2_24 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -9796,7 +10231,12 @@ endmodule
 module CD4_11 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -9821,7 +10261,12 @@ endmodule
 module CD4_12 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -9846,7 +10291,12 @@ endmodule
 module CD16_6 ( a, b, y );
   input [15:0] a;
   input [15:0] b;
+  //input_done
+
   output [255:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[9]), .A2(a[0]), .ZN(y[9]) );
@@ -10110,10 +10560,14 @@ endmodule
 
 module decode_6 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [255:0] out;
+  //output_done
 
   wire   [15:0] level1;
   wire   [31:0] level2;
+  //wire_done
 
   CD2_24 cd_l1_1 ( .a(in[1]), .b(in[0]), .y(level1[3:0]) );
   CD2_23 cd_l1_2 ( .a(in[3]), .b(in[2]), .y(level1[7:4]) );
@@ -10127,7 +10581,11 @@ endmodule
 
 module encode_6 ( in, out );
   input [255:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_81, in_80, in_79, in_78, in_77, in_76, in_75, in_74, in_73, in_72,
          in_71, in_70, in_69, in_68, in_67, in_66, in_65, in_64, in_63, in_62,
          in_61, in_60, in_59, in_58, in_57, in_56, in_55, in_54, in_53, in_52,
@@ -10181,6 +10639,8 @@ module encode_6 ( in, out );
          n948, n949, n950, n951, n952, n953, n954, n955, n956, n957, n958,
          n959, n960, n961, n962, n963, n964, n965, n966, n967, n968, n969,
          n970, n971, n972;
+  //wire_done
+
   assign in_81 = in[81];
   assign in_80 = in[80];
   assign in_79 = in[79];
@@ -10763,9 +11223,13 @@ endmodule
 
 module sBox_6 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
 
   wire   [255:0] decodeOut;
+  //wire_done
 
   decode_6 dec ( .in(in), .out(decodeOut) );
   encode_6 enc ( .in(decodeOut), .out(out) );
@@ -10773,9 +11237,14 @@ endmodule
 
 
 module CD2_25 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -10787,9 +11256,14 @@ endmodule
 
 
 module CD2_26 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -10801,9 +11275,14 @@ endmodule
 
 
 module CD2_27 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -10815,9 +11294,14 @@ endmodule
 
 
 module CD2_28 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -10831,7 +11315,12 @@ endmodule
 module CD4_13 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -10856,7 +11345,12 @@ endmodule
 module CD4_14 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -10881,7 +11375,12 @@ endmodule
 module CD16_7 ( a, b, y );
   input [15:0] a;
   input [15:0] b;
+  //input_done
+
   output [255:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[9]), .A2(a[0]), .ZN(y[9]) );
@@ -11145,10 +11644,14 @@ endmodule
 
 module decode_7 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [255:0] out;
+  //output_done
 
   wire   [15:0] level1;
   wire   [31:0] level2;
+  //wire_done
 
   CD2_28 cd_l1_1 ( .a(in[1]), .b(in[0]), .y(level1[3:0]) );
   CD2_27 cd_l1_2 ( .a(in[3]), .b(in[2]), .y(level1[7:4]) );
@@ -11162,7 +11665,11 @@ endmodule
 
 module encode_7 ( in, out );
   input [255:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_81, in_80, in_79, in_78, in_77, in_76, in_75, in_74, in_73, in_72,
          in_71, in_70, in_69, in_68, in_67, in_66, in_65, in_64, in_63, in_62,
          in_61, in_60, in_59, in_58, in_57, in_56, in_55, in_54, in_53, in_52,
@@ -11216,6 +11723,8 @@ module encode_7 ( in, out );
          n948, n949, n950, n951, n952, n953, n954, n955, n956, n957, n958,
          n959, n960, n961, n962, n963, n964, n965, n966, n967, n968, n969,
          n970, n971, n972;
+  //wire_done
+
   assign in_81 = in[81];
   assign in_80 = in[80];
   assign in_79 = in[79];
@@ -11798,9 +12307,13 @@ endmodule
 
 module sBox_7 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
 
   wire   [255:0] decodeOut;
+  //wire_done
 
   decode_7 dec ( .in(in), .out(decodeOut) );
   encode_7 enc ( .in(decodeOut), .out(out) );
@@ -11808,9 +12321,14 @@ endmodule
 
 
 module CD2_29 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -11822,9 +12340,14 @@ endmodule
 
 
 module CD2_30 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -11836,9 +12359,14 @@ endmodule
 
 
 module CD2_31 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -11850,9 +12378,14 @@ endmodule
 
 
 module CD2_32 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -11866,7 +12399,12 @@ endmodule
 module CD4_15 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -11891,7 +12429,12 @@ endmodule
 module CD4_16 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -11916,7 +12459,12 @@ endmodule
 module CD16_8 ( a, b, y );
   input [15:0] a;
   input [15:0] b;
+  //input_done
+
   output [255:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[9]), .A2(a[0]), .ZN(y[9]) );
@@ -12180,10 +12728,14 @@ endmodule
 
 module decode_8 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [255:0] out;
+  //output_done
 
   wire   [15:0] level1;
   wire   [31:0] level2;
+  //wire_done
 
   CD2_32 cd_l1_1 ( .a(in[1]), .b(in[0]), .y(level1[3:0]) );
   CD2_31 cd_l1_2 ( .a(in[3]), .b(in[2]), .y(level1[7:4]) );
@@ -12197,7 +12749,11 @@ endmodule
 
 module encode_8 ( in, out );
   input [255:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_81, in_80, in_79, in_78, in_77, in_76, in_75, in_74, in_73, in_72,
          in_71, in_70, in_69, in_68, in_67, in_66, in_65, in_64, in_63, in_62,
          in_61, in_60, in_59, in_58, in_57, in_56, in_55, in_54, in_53, in_52,
@@ -12251,6 +12807,8 @@ module encode_8 ( in, out );
          n948, n949, n950, n951, n952, n953, n954, n955, n956, n957, n958,
          n959, n960, n961, n962, n963, n964, n965, n966, n967, n968, n969,
          n970, n971, n972;
+  //wire_done
+
   assign in_81 = in[81];
   assign in_80 = in[80];
   assign in_79 = in[79];
@@ -12833,9 +13391,13 @@ endmodule
 
 module sBox_8 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
 
   wire   [255:0] decodeOut;
+  //wire_done
 
   decode_8 dec ( .in(in), .out(decodeOut) );
   encode_8 enc ( .in(decodeOut), .out(out) );
@@ -12843,9 +13405,14 @@ endmodule
 
 
 module CD2_33 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -12857,9 +13424,14 @@ endmodule
 
 
 module CD2_34 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -12871,9 +13443,14 @@ endmodule
 
 
 module CD2_35 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+ 
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -12885,9 +13462,14 @@ endmodule
 
 
 module CD2_36 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -12901,7 +13483,12 @@ endmodule
 module CD4_17 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -12926,7 +13513,12 @@ endmodule
 module CD4_18 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -12951,7 +13543,12 @@ endmodule
 module CD16_9 ( a, b, y );
   input [15:0] a;
   input [15:0] b;
+  //input_done
+
   output [255:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[9]), .A2(a[0]), .ZN(y[9]) );
@@ -13215,10 +13812,14 @@ endmodule
 
 module decode_9 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [255:0] out;
+  //output_done
 
   wire   [15:0] level1;
   wire   [31:0] level2;
+  //wire_done
 
   CD2_36 cd_l1_1 ( .a(in[1]), .b(in[0]), .y(level1[3:0]) );
   CD2_35 cd_l1_2 ( .a(in[3]), .b(in[2]), .y(level1[7:4]) );
@@ -13232,7 +13833,11 @@ endmodule
 
 module encode_9 ( in, out );
   input [255:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_81, in_80, in_79, in_78, in_77, in_76, in_75, in_74, in_73, in_72,
          in_71, in_70, in_69, in_68, in_67, in_66, in_65, in_64, in_63, in_62,
          in_61, in_60, in_59, in_58, in_57, in_56, in_55, in_54, in_53, in_52,
@@ -13286,6 +13891,8 @@ module encode_9 ( in, out );
          n948, n949, n950, n951, n952, n953, n954, n955, n956, n957, n958,
          n959, n960, n961, n962, n963, n964, n965, n966, n967, n968, n969,
          n970, n971, n972;
+  //wire_done
+
   assign in_81 = in[81];
   assign in_80 = in[80];
   assign in_79 = in[79];
@@ -13868,9 +14475,13 @@ endmodule
 
 module sBox_9 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
 
   wire   [255:0] decodeOut;
+  //wire_done
 
   decode_9 dec ( .in(in), .out(decodeOut) );
   encode_9 enc ( .in(decodeOut), .out(out) );
@@ -13878,9 +14489,14 @@ endmodule
 
 
 module CD2_37 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -13892,9 +14508,14 @@ endmodule
 
 
 module CD2_38 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -13906,9 +14527,14 @@ endmodule
 
 
 module CD2_39 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -13920,9 +14546,14 @@ endmodule
 
 
 module CD2_40 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -13936,7 +14567,12 @@ endmodule
 module CD4_19 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -13961,7 +14597,12 @@ endmodule
 module CD4_20 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -13986,7 +14627,12 @@ endmodule
 module CD16_10 ( a, b, y );
   input [15:0] a;
   input [15:0] b;
+  //input_done
+
   output [255:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[9]), .A2(a[0]), .ZN(y[9]) );
@@ -14250,10 +14896,14 @@ endmodule
 
 module decode_10 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [255:0] out;
+  //output_done
 
   wire   [15:0] level1;
   wire   [31:0] level2;
+  //wire_done
 
   CD2_40 cd_l1_1 ( .a(in[1]), .b(in[0]), .y(level1[3:0]) );
   CD2_39 cd_l1_2 ( .a(in[3]), .b(in[2]), .y(level1[7:4]) );
@@ -14267,7 +14917,11 @@ endmodule
 
 module encode_10 ( in, out );
   input [255:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_81, in_80, in_79, in_78, in_77, in_76, in_75, in_74, in_73, in_72,
          in_71, in_70, in_69, in_68, in_67, in_66, in_65, in_64, in_63, in_62,
          in_61, in_60, in_59, in_58, in_57, in_56, in_55, in_54, in_53, in_52,
@@ -14321,6 +14975,8 @@ module encode_10 ( in, out );
          n948, n949, n950, n951, n952, n953, n954, n955, n956, n957, n958,
          n959, n960, n961, n962, n963, n964, n965, n966, n967, n968, n969,
          n970, n971, n972;
+  //wire_done
+  
   assign in_81 = in[81];
   assign in_80 = in[80];
   assign in_79 = in[79];
@@ -14903,9 +15559,13 @@ endmodule
 
 module sBox_10 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
 
   wire   [255:0] decodeOut;
+  //wire_done
 
   decode_10 dec ( .in(in), .out(decodeOut) );
   encode_10 enc ( .in(decodeOut), .out(out) );
@@ -14913,9 +15573,14 @@ endmodule
 
 
 module CD2_41 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -14927,9 +15592,14 @@ endmodule
 
 
 module CD2_42 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -14941,9 +15611,14 @@ endmodule
 
 
 module CD2_43 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -14955,9 +15630,14 @@ endmodule
 
 
 module CD2_44 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -14971,7 +15651,12 @@ endmodule
 module CD4_21 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -14996,7 +15681,12 @@ endmodule
 module CD4_22 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -15021,7 +15711,12 @@ endmodule
 module CD16_11 ( a, b, y );
   input [15:0] a;
   input [15:0] b;
+  //input_done
+
   output [255:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[9]), .A2(a[0]), .ZN(y[9]) );
@@ -15285,10 +15980,14 @@ endmodule
 
 module decode_11 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [255:0] out;
+  //output_done
 
   wire   [15:0] level1;
   wire   [31:0] level2;
+  //wire_done
 
   CD2_44 cd_l1_1 ( .a(in[1]), .b(in[0]), .y(level1[3:0]) );
   CD2_43 cd_l1_2 ( .a(in[3]), .b(in[2]), .y(level1[7:4]) );
@@ -15302,7 +16001,11 @@ endmodule
 
 module encode_11 ( in, out );
   input [255:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_81, in_80, in_79, in_78, in_77, in_76, in_75, in_74, in_73, in_72,
          in_71, in_70, in_69, in_68, in_67, in_66, in_65, in_64, in_63, in_62,
          in_61, in_60, in_59, in_58, in_57, in_56, in_55, in_54, in_53, in_52,
@@ -15356,6 +16059,8 @@ module encode_11 ( in, out );
          n948, n949, n950, n951, n952, n953, n954, n955, n956, n957, n958,
          n959, n960, n961, n962, n963, n964, n965, n966, n967, n968, n969,
          n970, n971, n972;
+  //wire_done
+
   assign in_81 = in[81];
   assign in_80 = in[80];
   assign in_79 = in[79];
@@ -15938,9 +16643,13 @@ endmodule
 
 module sBox_11 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
 
   wire   [255:0] decodeOut;
+  //wire_done
 
   decode_11 dec ( .in(in), .out(decodeOut) );
   encode_11 enc ( .in(decodeOut), .out(out) );
@@ -15948,9 +16657,14 @@ endmodule
 
 
 module CD2_45 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -15962,9 +16676,14 @@ endmodule
 
 
 module CD2_46 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -15976,9 +16695,14 @@ endmodule
 
 
 module CD2_47 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -15990,9 +16714,14 @@ endmodule
 
 
 module CD2_48 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -16006,7 +16735,12 @@ endmodule
 module CD4_23 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -16031,7 +16765,12 @@ endmodule
 module CD4_24 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -16056,7 +16795,12 @@ endmodule
 module CD16_12 ( a, b, y );
   input [15:0] a;
   input [15:0] b;
+  //input_done
+
   output [255:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[9]), .A2(a[0]), .ZN(y[9]) );
@@ -16320,10 +17064,14 @@ endmodule
 
 module decode_12 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [255:0] out;
+  //output_done
 
   wire   [15:0] level1;
   wire   [31:0] level2;
+  //wire_done
 
   CD2_48 cd_l1_1 ( .a(in[1]), .b(in[0]), .y(level1[3:0]) );
   CD2_47 cd_l1_2 ( .a(in[3]), .b(in[2]), .y(level1[7:4]) );
@@ -16337,7 +17085,11 @@ endmodule
 
 module encode_12 ( in, out );
   input [255:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_81, in_80, in_79, in_78, in_77, in_76, in_75, in_74, in_73, in_72,
          in_71, in_70, in_69, in_68, in_67, in_66, in_65, in_64, in_63, in_62,
          in_61, in_60, in_59, in_58, in_57, in_56, in_55, in_54, in_53, in_52,
@@ -16391,6 +17143,8 @@ module encode_12 ( in, out );
          n948, n949, n950, n951, n952, n953, n954, n955, n956, n957, n958,
          n959, n960, n961, n962, n963, n964, n965, n966, n967, n968, n969,
          n970, n971, n972;
+  //wire_done
+
   assign in_81 = in[81];
   assign in_80 = in[80];
   assign in_79 = in[79];
@@ -16973,9 +17727,13 @@ endmodule
 
 module sBox_12 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
 
   wire   [255:0] decodeOut;
+  //wire_done
 
   decode_12 dec ( .in(in), .out(decodeOut) );
   encode_12 enc ( .in(decodeOut), .out(out) );
@@ -16983,9 +17741,14 @@ endmodule
 
 
 module CD2_49 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -16997,9 +17760,14 @@ endmodule
 
 
 module CD2_50 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -17011,9 +17779,14 @@ endmodule
 
 
 module CD2_51 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -17025,9 +17798,14 @@ endmodule
 
 
 module CD2_52 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -17041,7 +17819,12 @@ endmodule
 module CD4_25 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -17066,7 +17849,12 @@ endmodule
 module CD4_26 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -17091,7 +17879,12 @@ endmodule
 module CD16_13 ( a, b, y );
   input [15:0] a;
   input [15:0] b;
+  //input_done
+
   output [255:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[9]), .A2(a[0]), .ZN(y[9]) );
@@ -17355,10 +18148,14 @@ endmodule
 
 module decode_13 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [255:0] out;
+  //output_done
 
   wire   [15:0] level1;
   wire   [31:0] level2;
+  //wire_done
 
   CD2_52 cd_l1_1 ( .a(in[1]), .b(in[0]), .y(level1[3:0]) );
   CD2_51 cd_l1_2 ( .a(in[3]), .b(in[2]), .y(level1[7:4]) );
@@ -17372,7 +18169,11 @@ endmodule
 
 module encode_13 ( in, out );
   input [255:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_81, in_80, in_79, in_78, in_77, in_76, in_75, in_74, in_73, in_72,
          in_71, in_70, in_69, in_68, in_67, in_66, in_65, in_64, in_63, in_62,
          in_61, in_60, in_59, in_58, in_57, in_56, in_55, in_54, in_53, in_52,
@@ -17426,6 +18227,8 @@ module encode_13 ( in, out );
          n948, n949, n950, n951, n952, n953, n954, n955, n956, n957, n958,
          n959, n960, n961, n962, n963, n964, n965, n966, n967, n968, n969,
          n970, n971, n972;
+  //wire_done
+
   assign in_81 = in[81];
   assign in_80 = in[80];
   assign in_79 = in[79];
@@ -18008,9 +18811,13 @@ endmodule
 
 module sBox_13 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
 
   wire   [255:0] decodeOut;
+  //wire_done
 
   decode_13 dec ( .in(in), .out(decodeOut) );
   encode_13 enc ( .in(decodeOut), .out(out) );
@@ -18018,9 +18825,14 @@ endmodule
 
 
 module CD2_53 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -18032,9 +18844,14 @@ endmodule
 
 
 module CD2_54 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -18046,9 +18863,14 @@ endmodule
 
 
 module CD2_55 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -18060,9 +18882,14 @@ endmodule
 
 
 module CD2_56 ( a, b, y );
+ input a, b;
+  //input_done
+
   output [3:0] y;
-  input a, b;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -18076,7 +18903,12 @@ endmodule
 module CD4_27 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -18101,7 +18933,12 @@ endmodule
 module CD4_28 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -18126,7 +18963,12 @@ endmodule
 module CD16_14 ( a, b, y );
   input [15:0] a;
   input [15:0] b;
+  //input_done
+
   output [255:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[9]), .A2(a[0]), .ZN(y[9]) );
@@ -18390,10 +19232,14 @@ endmodule
 
 module decode_14 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [255:0] out;
+  //output_done
 
   wire   [15:0] level1;
   wire   [31:0] level2;
+  //wire_done
 
   CD2_56 cd_l1_1 ( .a(in[1]), .b(in[0]), .y(level1[3:0]) );
   CD2_55 cd_l1_2 ( .a(in[3]), .b(in[2]), .y(level1[7:4]) );
@@ -18407,7 +19253,11 @@ endmodule
 
 module encode_14 ( in, out );
   input [255:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_81, in_80, in_79, in_78, in_77, in_76, in_75, in_74, in_73, in_72,
          in_71, in_70, in_69, in_68, in_67, in_66, in_65, in_64, in_63, in_62,
          in_61, in_60, in_59, in_58, in_57, in_56, in_55, in_54, in_53, in_52,
@@ -18461,6 +19311,8 @@ module encode_14 ( in, out );
          n948, n949, n950, n951, n952, n953, n954, n955, n956, n957, n958,
          n959, n960, n961, n962, n963, n964, n965, n966, n967, n968, n969,
          n970, n971, n972;
+  //wire_done
+
   assign in_81 = in[81];
   assign in_80 = in[80];
   assign in_79 = in[79];
@@ -19043,9 +19895,13 @@ endmodule
 
 module sBox_14 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
 
   wire   [255:0] decodeOut;
+  //wire_done
 
   decode_14 dec ( .in(in), .out(decodeOut) );
   encode_14 enc ( .in(decodeOut), .out(out) );
@@ -19053,9 +19909,14 @@ endmodule
 
 
 module CD2_57 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -19067,9 +19928,14 @@ endmodule
 
 
 module CD2_58 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -19081,9 +19947,14 @@ endmodule
 
 
 module CD2_59 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -19095,9 +19966,14 @@ endmodule
 
 
 module CD2_60 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -19111,7 +19987,12 @@ endmodule
 module CD4_29 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -19136,7 +20017,12 @@ endmodule
 module CD4_30 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -19161,7 +20047,12 @@ endmodule
 module CD16_15 ( a, b, y );
   input [15:0] a;
   input [15:0] b;
+  //input_done
+
   output [255:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[9]), .A2(a[0]), .ZN(y[9]) );
@@ -19425,10 +20316,14 @@ endmodule
 
 module decode_15 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [255:0] out;
+  //output_done
 
   wire   [15:0] level1;
   wire   [31:0] level2;
+  //wire_done
 
   CD2_60 cd_l1_1 ( .a(in[1]), .b(in[0]), .y(level1[3:0]) );
   CD2_59 cd_l1_2 ( .a(in[3]), .b(in[2]), .y(level1[7:4]) );
@@ -19442,7 +20337,11 @@ endmodule
 
 module encode_15 ( in, out );
   input [255:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_81, in_80, in_79, in_78, in_77, in_76, in_75, in_74, in_73, in_72,
          in_71, in_70, in_69, in_68, in_67, in_66, in_65, in_64, in_63, in_62,
          in_61, in_60, in_59, in_58, in_57, in_56, in_55, in_54, in_53, in_52,
@@ -19496,6 +20395,8 @@ module encode_15 ( in, out );
          n948, n949, n950, n951, n952, n953, n954, n955, n956, n957, n958,
          n959, n960, n961, n962, n963, n964, n965, n966, n967, n968, n969,
          n970, n971, n972;
+  //wire_done
+
   assign in_81 = in[81];
   assign in_80 = in[80];
   assign in_79 = in[79];
@@ -20078,9 +20979,13 @@ endmodule
 
 module sBox_15 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
 
   wire   [255:0] decodeOut;
+  //wire_done
 
   decode_15 dec ( .in(in), .out(decodeOut) );
   encode_15 enc ( .in(decodeOut), .out(out) );
@@ -20088,9 +20993,14 @@ endmodule
 
 
 module CD2_61 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -20102,9 +21012,14 @@ endmodule
 
 
 module CD2_62 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -20116,9 +21031,14 @@ endmodule
 
 
 module CD2_63 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -20130,9 +21050,14 @@ endmodule
 
 
 module CD2_64 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -20146,7 +21071,12 @@ endmodule
 module CD4_31 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -20171,7 +21101,12 @@ endmodule
 module CD4_32 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -20196,7 +21131,12 @@ endmodule
 module CD16_16 ( a, b, y );
   input [15:0] a;
   input [15:0] b;
-  output [255:0] y;
+  //input_done
+
+  output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[9]), .A2(a[0]), .ZN(y[9]) );
@@ -20460,10 +21400,14 @@ endmodule
 
 module decode_16 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [255:0] out;
+  //output_done
 
   wire   [15:0] level1;
   wire   [31:0] level2;
+  //wire_done
 
   CD2_64 cd_l1_1 ( .a(in[1]), .b(in[0]), .y(level1[3:0]) );
   CD2_63 cd_l1_2 ( .a(in[3]), .b(in[2]), .y(level1[7:4]) );
@@ -20477,7 +21421,11 @@ endmodule
 
 module encode_16 ( in, out );
   input [255:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_81, in_80, in_79, in_78, in_77, in_76, in_75, in_74, in_73, in_72,
          in_71, in_70, in_69, in_68, in_67, in_66, in_65, in_64, in_63, in_62,
          in_61, in_60, in_59, in_58, in_57, in_56, in_55, in_54, in_53, in_52,
@@ -20531,6 +21479,8 @@ module encode_16 ( in, out );
          n948, n949, n950, n951, n952, n953, n954, n955, n956, n957, n958,
          n959, n960, n961, n962, n963, n964, n965, n966, n967, n968, n969,
          n970, n971, n972;
+  //wire_done
+
   assign in_81 = in[81];
   assign in_80 = in[80];
   assign in_79 = in[79];
@@ -21113,9 +22063,13 @@ endmodule
 
 module sBox_16 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
 
   wire   [255:0] decodeOut;
+  //wire_done
 
   decode_16 dec ( .in(in), .out(decodeOut) );
   encode_16 enc ( .in(decodeOut), .out(out) );
@@ -21123,9 +22077,14 @@ endmodule
 
 
 module CD2_65 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -21137,9 +22096,14 @@ endmodule
 
 
 module CD2_66 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -21151,9 +22115,14 @@ endmodule
 
 
 module CD2_67 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -21165,9 +22134,14 @@ endmodule
 
 
 module CD2_68 ( a, b, y );
+ input a, b;
+  //input_done
+
   output [3:0] y;
-  input a, b;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -21181,7 +22155,12 @@ endmodule
 module CD4_33 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -21206,7 +22185,12 @@ endmodule
 module CD4_34 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -21231,7 +22215,12 @@ endmodule
 module CD16_17 ( a, b, y );
   input [15:0] a;
   input [15:0] b;
-  output [255:0] y;
+  //input_done
+
+  output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[9]), .A2(a[0]), .ZN(y[9]) );
@@ -21495,10 +22484,14 @@ endmodule
 
 module decode_17 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [255:0] out;
+  //output_done
 
   wire   [15:0] level1;
   wire   [31:0] level2;
+  //wire_done
 
   CD2_68 cd_l1_1 ( .a(in[1]), .b(in[0]), .y(level1[3:0]) );
   CD2_67 cd_l1_2 ( .a(in[3]), .b(in[2]), .y(level1[7:4]) );
@@ -21512,7 +22505,11 @@ endmodule
 
 module encode_17 ( in, out );
   input [255:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_81, in_80, in_79, in_78, in_77, in_76, in_75, in_74, in_73, in_72,
          in_71, in_70, in_69, in_68, in_67, in_66, in_65, in_64, in_63, in_62,
          in_61, in_60, in_59, in_58, in_57, in_56, in_55, in_54, in_53, in_52,
@@ -21566,6 +22563,8 @@ module encode_17 ( in, out );
          n948, n949, n950, n951, n952, n953, n954, n955, n956, n957, n958,
          n959, n960, n961, n962, n963, n964, n965, n966, n967, n968, n969,
          n970, n971, n972;
+  //wire_done
+
   assign in_81 = in[81];
   assign in_80 = in[80];
   assign in_79 = in[79];
@@ -22148,9 +23147,13 @@ endmodule
 
 module sBox_17 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
 
   wire   [255:0] decodeOut;
+  //wire_done
 
   decode_17 dec ( .in(in), .out(decodeOut) );
   encode_17 enc ( .in(decodeOut), .out(out) );
@@ -22158,9 +23161,14 @@ endmodule
 
 
 module CD2_69 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -22172,9 +23180,14 @@ endmodule
 
 
 module CD2_70 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -22186,9 +23199,14 @@ endmodule
 
 
 module CD2_71 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -22200,9 +23218,14 @@ endmodule
 
 
 module CD2_72 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -22216,7 +23239,12 @@ endmodule
 module CD4_35 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -22241,7 +23269,12 @@ endmodule
 module CD4_36 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -22266,7 +23299,12 @@ endmodule
 module CD16_18 ( a, b, y );
   input [15:0] a;
   input [15:0] b;
-  output [255:0] y;
+  //input_done
+
+  output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[9]), .A2(a[0]), .ZN(y[9]) );
@@ -22530,10 +23568,14 @@ endmodule
 
 module decode_18 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [255:0] out;
+  //output_done
 
   wire   [15:0] level1;
   wire   [31:0] level2;
+  //wire_done
 
   CD2_72 cd_l1_1 ( .a(in[1]), .b(in[0]), .y(level1[3:0]) );
   CD2_71 cd_l1_2 ( .a(in[3]), .b(in[2]), .y(level1[7:4]) );
@@ -22547,7 +23589,11 @@ endmodule
 
 module encode_18 ( in, out );
   input [255:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_81, in_80, in_79, in_78, in_77, in_76, in_75, in_74, in_73, in_72,
          in_71, in_70, in_69, in_68, in_67, in_66, in_65, in_64, in_63, in_62,
          in_61, in_60, in_59, in_58, in_57, in_56, in_55, in_54, in_53, in_52,
@@ -22601,6 +23647,8 @@ module encode_18 ( in, out );
          n948, n949, n950, n951, n952, n953, n954, n955, n956, n957, n958,
          n959, n960, n961, n962, n963, n964, n965, n966, n967, n968, n969,
          n970, n971, n972;
+  //wire_done
+
   assign in_81 = in[81];
   assign in_80 = in[80];
   assign in_79 = in[79];
@@ -23183,9 +24231,13 @@ endmodule
 
 module sBox_18 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
 
   wire   [255:0] decodeOut;
+  //wire_done
 
   decode_18 dec ( .in(in), .out(decodeOut) );
   encode_18 enc ( .in(decodeOut), .out(out) );
@@ -23193,9 +24245,14 @@ endmodule
 
 
 module CD2_73 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -23207,9 +24264,14 @@ endmodule
 
 
 module CD2_74 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -23221,9 +24283,14 @@ endmodule
 
 
 module CD2_75 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -23235,9 +24302,14 @@ endmodule
 
 
 module CD2_76 ( a, b, y );
-  output [3:0] y;
   input a, b;
+  //input_done
+
+  output [3:0] y;
+  //output_done
+  
   wire   n3, n4;
+  //wire_done
 
   INV_X1 U1 ( .A(a), .ZN(n4) );
   INV_X1 U2 ( .A(b), .ZN(n3) );
@@ -23251,7 +24323,12 @@ endmodule
 module CD4_37 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -23276,7 +24353,12 @@ endmodule
 module CD4_38 ( a, b, y );
   input [3:0] a;
   input [3:0] b;
+  //input_done
+
   output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[1]), .A2(a[2]), .ZN(y[9]) );
@@ -23301,7 +24383,12 @@ endmodule
 module CD16_19 ( a, b, y );
   input [15:0] a;
   input [15:0] b;
-  output [255:0] y;
+  //input_done
+
+  output [15:0] y;
+  //output_done
+
+  //wire_done
 
 
   AND2_X1 U1 ( .A1(b[9]), .A2(a[0]), .ZN(y[9]) );
@@ -23565,10 +24652,14 @@ endmodule
 
 module decode_19 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [255:0] out;
+  //output_done
 
   wire   [15:0] level1;
   wire   [31:0] level2;
+  //wire_done
 
   CD2_76 cd_l1_1 ( .a(in[1]), .b(in[0]), .y(level1[3:0]) );
   CD2_75 cd_l1_2 ( .a(in[3]), .b(in[2]), .y(level1[7:4]) );
@@ -23582,7 +24673,11 @@ endmodule
 
 module encode_19 ( in, out );
   input [255:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_81, in_80, in_79, in_78, in_77, in_76, in_75, in_74, in_73, in_72,
          in_71, in_70, in_69, in_68, in_67, in_66, in_65, in_64, in_63, in_62,
          in_61, in_60, in_59, in_58, in_57, in_56, in_55, in_54, in_53, in_52,
@@ -23636,6 +24731,8 @@ module encode_19 ( in, out );
          n948, n949, n950, n951, n952, n953, n954, n955, n956, n957, n958,
          n959, n960, n961, n962, n963, n964, n965, n966, n967, n968, n969,
          n970, n971, n972;
+  //wire_done
+
   assign in_81 = in[81];
   assign in_80 = in[80];
   assign in_79 = in[79];
@@ -24218,9 +25315,13 @@ endmodule
 
 module sBox_19 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
 
   wire   [255:0] decodeOut;
+  //wire_done
 
   decode_19 dec ( .in(in), .out(decodeOut) );
   encode_19 enc ( .in(decodeOut), .out(out) );
@@ -24229,9 +25330,15 @@ endmodule
 
 module scale2_1 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_0, \in[6] , \in[5] , \in[4] , \in[1] , \in[7] , n11, n12, n13, n14,
          n15, n16, n17, n18, n19, n20;
+  //wire_done
+
   assign in_0 = in[0];
   assign out[7] = \in[6] ;
   assign \in[6]  = in[6];
@@ -24244,27 +25351,33 @@ module scale2_1 ( in, out );
   assign out[0] = \in[7] ;
   assign \in[7]  = in[7];
 
-  INV_X1 U1 ( .A(\in[7] ), .ZN(n20) );
+  INV_X1 U1 ( .A(\in[7]), .ZN(n20) );
   INV_X1 U2 ( .A(in[3]), .ZN(n19) );
   INV_X1 U3 ( .A(in[2]), .ZN(n18) );
   INV_X1 U4 ( .A(in_0), .ZN(n17) );
   OR2_X1 U5 ( .A1(n16), .A2(n15), .ZN(out[4]) );
   AND2_X1 U6 ( .A1(in[3]), .A2(n20), .ZN(n15) );
-  AND2_X1 U7 ( .A1(\in[7] ), .A2(n19), .ZN(n16) );
+  AND2_X1 U7 ( .A1(\in[7]), .A2(n19), .ZN(n16) );
   OR2_X1 U8 ( .A1(n14), .A2(n13), .ZN(out[3]) );
   AND2_X1 U9 ( .A1(in[2]), .A2(n20), .ZN(n13) );
-  AND2_X1 U10 ( .A1(\in[7] ), .A2(n18), .ZN(n14) );
+  AND2_X1 U10 ( .A1(\in[7]), .A2(n18), .ZN(n14) );
   OR2_X1 U11 ( .A1(n12), .A2(n11), .ZN(out[1]) );
   AND2_X1 U12 ( .A1(in_0), .A2(n20), .ZN(n11) );
-  AND2_X1 U13 ( .A1(\in[7] ), .A2(n17), .ZN(n12) );
+  AND2_X1 U13 ( .A1(\in[7]), .A2(n17), .ZN(n12) );
 endmodule
 
 
 module scale2_2 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_0, \in[6] , \in[5] , \in[4] , \in[1] , \in[7] , n11, n12, n13, n14,
          n15, n16, n17, n18, n19, n20;
+  //wire_done
+
   assign in_0 = in[0];
   assign out[7] = \in[6] ;
   assign \in[6]  = in[6];
@@ -24277,27 +25390,32 @@ module scale2_2 ( in, out );
   assign out[0] = \in[7] ;
   assign \in[7]  = in[7];
 
-  INV_X1 U1 ( .A(\in[7] ), .ZN(n20) );
+  INV_X1 U1 ( .A(\in[7]), .ZN(n20) );
   INV_X1 U2 ( .A(in[3]), .ZN(n19) );
   INV_X1 U3 ( .A(in[2]), .ZN(n18) );
   INV_X1 U4 ( .A(in_0), .ZN(n17) );
   OR2_X1 U5 ( .A1(n16), .A2(n15), .ZN(out[4]) );
   AND2_X1 U6 ( .A1(in[3]), .A2(n20), .ZN(n15) );
-  AND2_X1 U7 ( .A1(\in[7] ), .A2(n19), .ZN(n16) );
+  AND2_X1 U7 ( .A1(\in[7]), .A2(n19), .ZN(n16) );
   OR2_X1 U8 ( .A1(n14), .A2(n13), .ZN(out[3]) );
   AND2_X1 U9 ( .A1(in[2]), .A2(n20), .ZN(n13) );
-  AND2_X1 U10 ( .A1(\in[7] ), .A2(n18), .ZN(n14) );
+  AND2_X1 U10 ( .A1(\in[7]), .A2(n18), .ZN(n14) );
   OR2_X1 U11 ( .A1(n12), .A2(n11), .ZN(out[1]) );
   AND2_X1 U12 ( .A1(in_0), .A2(n20), .ZN(n11) );
-  AND2_X1 U13 ( .A1(\in[7] ), .A2(n17), .ZN(n12) );
+  AND2_X1 U13 ( .A1(\in[7]), .A2(n17), .ZN(n12) );
 endmodule
 
 
 module scale2_3 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_0, \in[6] , \in[5] , \in[4] , \in[1] , \in[7] , n11, n12, n13, n14,
          n15, n16, n17, n18, n19, n20;
+  //wire_done
   assign in_0 = in[0];
   assign out[7] = \in[6] ;
   assign \in[6]  = in[6];
@@ -24310,27 +25428,32 @@ module scale2_3 ( in, out );
   assign out[0] = \in[7] ;
   assign \in[7]  = in[7];
 
-  INV_X1 U1 ( .A(\in[7] ), .ZN(n20) );
+  INV_X1 U1 ( .A(\in[7]), .ZN(n20) );
   INV_X1 U2 ( .A(in[3]), .ZN(n19) );
   INV_X1 U3 ( .A(in[2]), .ZN(n18) );
   INV_X1 U4 ( .A(in_0), .ZN(n17) );
   OR2_X1 U5 ( .A1(n16), .A2(n15), .ZN(out[4]) );
   AND2_X1 U6 ( .A1(in[3]), .A2(n20), .ZN(n15) );
-  AND2_X1 U7 ( .A1(\in[7] ), .A2(n19), .ZN(n16) );
+  AND2_X1 U7 ( .A1(\in[7]), .A2(n19), .ZN(n16) );
   OR2_X1 U8 ( .A1(n14), .A2(n13), .ZN(out[3]) );
   AND2_X1 U9 ( .A1(in[2]), .A2(n20), .ZN(n13) );
-  AND2_X1 U10 ( .A1(\in[7] ), .A2(n18), .ZN(n14) );
+  AND2_X1 U10 ( .A1(\in[7]), .A2(n18), .ZN(n14) );
   OR2_X1 U11 ( .A1(n12), .A2(n11), .ZN(out[1]) );
   AND2_X1 U12 ( .A1(in_0), .A2(n20), .ZN(n11) );
-  AND2_X1 U13 ( .A1(\in[7] ), .A2(n17), .ZN(n12) );
+  AND2_X1 U13 ( .A1(\in[7]), .A2(n17), .ZN(n12) );
 endmodule
 
 
 module scale2_4 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_0, \in[6] , \in[5] , \in[4] , \in[1] , \in[7] , n11, n12, n13, n14,
          n15, n16, n17, n18, n19, n20;
+  //wire_done
   assign in_0 = in[0];
   assign out[7] = \in[6] ;
   assign \in[6]  = in[6];
@@ -24343,29 +25466,34 @@ module scale2_4 ( in, out );
   assign out[0] = \in[7] ;
   assign \in[7]  = in[7];
 
-  INV_X1 U1 ( .A(\in[7] ), .ZN(n20) );
+  INV_X1 U1 ( .A(\in[7]), .ZN(n20) );
   INV_X1 U2 ( .A(in[3]), .ZN(n19) );
   INV_X1 U3 ( .A(in[2]), .ZN(n18) );
   INV_X1 U4 ( .A(in_0), .ZN(n17) );
   OR2_X1 U5 ( .A1(n16), .A2(n15), .ZN(out[4]) );
   AND2_X1 U6 ( .A1(in[3]), .A2(n20), .ZN(n15) );
-  AND2_X1 U7 ( .A1(\in[7] ), .A2(n19), .ZN(n16) );
+  AND2_X1 U7 ( .A1(\in[7]), .A2(n19), .ZN(n16) );
   OR2_X1 U8 ( .A1(n14), .A2(n13), .ZN(out[3]) );
   AND2_X1 U9 ( .A1(in[2]), .A2(n20), .ZN(n13) );
-  AND2_X1 U10 ( .A1(\in[7] ), .A2(n18), .ZN(n14) );
+  AND2_X1 U10 ( .A1(\in[7]), .A2(n18), .ZN(n14) );
   OR2_X1 U11 ( .A1(n12), .A2(n11), .ZN(out[1]) );
   AND2_X1 U12 ( .A1(in_0), .A2(n20), .ZN(n11) );
-  AND2_X1 U13 ( .A1(\in[7] ), .A2(n17), .ZN(n12) );
+  AND2_X1 U13 ( .A1(\in[7]), .A2(n17), .ZN(n12) );
 endmodule
 
 
 module byteXor_2 ( a, b, y );
   input [7:0] a;
   input [7:0] b;
+  //input_done
+
   output [7:0] y;
+  //output_done
+
   wire   n33, n34, n35, n36, n37, n38, n39, n40, n41, n42, n43, n44, n45, n46,
          n47, n48, n49, n50, n51, n52, n53, n54, n55, n56, n57, n58, n59, n60,
          n61, n62, n63, n64;
+  //wire_done
 
   INV_X1 U1 ( .A(n47), .ZN(n64) );
   INV_X1 U2 ( .A(a[7]), .ZN(n63) );
@@ -24413,10 +25541,15 @@ endmodule
 module byteXor_3 ( a, b, y );
   input [7:0] a;
   input [7:0] b;
+  //input_done
+
   output [7:0] y;
+  //output_done
+
   wire   n33, n34, n35, n36, n37, n38, n39, n40, n41, n42, n43, n44, n45, n46,
          n47, n48, n49, n50, n51, n52, n53, n54, n55, n56, n57, n58, n59, n60,
          n61, n62, n63, n64;
+  //wire_done
 
   INV_X1 U1 ( .A(n47), .ZN(n64) );
   INV_X1 U2 ( .A(a[7]), .ZN(n63) );
@@ -24464,10 +25597,15 @@ endmodule
 module byteXor_4 ( a, b, y );
   input [7:0] a;
   input [7:0] b;
+  //input_done
+
   output [7:0] y;
+  //output_done
+
   wire   n33, n34, n35, n36, n37, n38, n39, n40, n41, n42, n43, n44, n45, n46,
          n47, n48, n49, n50, n51, n52, n53, n54, n55, n56, n57, n58, n59, n60,
          n61, n62, n63, n64;
+  //wire_done
 
   INV_X1 U1 ( .A(n47), .ZN(n64) );
   INV_X1 U2 ( .A(a[7]), .ZN(n63) );
@@ -24515,10 +25653,15 @@ endmodule
 module byteXor_5 ( a, b, y );
   input [7:0] a;
   input [7:0] b;
+  //input_done
+
   output [7:0] y;
+  //output_done
+
   wire   n33, n34, n35, n36, n37, n38, n39, n40, n41, n42, n43, n44, n45, n46,
          n47, n48, n49, n50, n51, n52, n53, n54, n55, n56, n57, n58, n59, n60,
          n61, n62, n63, n64;
+  //wire_done
 
   INV_X1 U1 ( .A(n47), .ZN(n64) );
   INV_X1 U2 ( .A(a[7]), .ZN(n63) );
@@ -24568,7 +25711,11 @@ module byteXor4_1 ( a, b, c, d, y );
   input [7:0] b;
   input [7:0] c;
   input [7:0] d;
+  //input_done
+
   output [7:0] y;
+  //output_done
+
   wire   n113, n114, n115, n116, n117, n118, n119, n120, n121, n122, n123,
          n124, n125, n126, n127, n128, n129, n130, n131, n132, n133, n134,
          n135, n136, n137, n138, n139, n140, n141, n142, n143, n144, n145,
@@ -24580,6 +25727,7 @@ module byteXor4_1 ( a, b, c, d, y );
          n201, n202, n203, n204, n205, n206, n207, n208, n209, n210, n211,
          n212, n213, n214, n215, n216, n217, n218, n219, n220, n221, n222,
          n223, n224;
+  //wire_done
 
   INV_X1 U1 ( .A(n175), .ZN(n224) );
   INV_X1 U2 ( .A(a[7]), .ZN(n223) );
@@ -24709,7 +25857,11 @@ module byteXor4_2 ( a, b, c, d, y );
   input [7:0] b;
   input [7:0] c;
   input [7:0] d;
+  //input_done
+
   output [7:0] y;
+  //output_done
+
   wire   n113, n114, n115, n116, n117, n118, n119, n120, n121, n122, n123,
          n124, n125, n126, n127, n128, n129, n130, n131, n132, n133, n134,
          n135, n136, n137, n138, n139, n140, n141, n142, n143, n144, n145,
@@ -24721,6 +25873,7 @@ module byteXor4_2 ( a, b, c, d, y );
          n201, n202, n203, n204, n205, n206, n207, n208, n209, n210, n211,
          n212, n213, n214, n215, n216, n217, n218, n219, n220, n221, n222,
          n223, n224;
+  //wire_done
 
   INV_X1 U1 ( .A(n175), .ZN(n224) );
   INV_X1 U2 ( .A(a[7]), .ZN(n223) );
@@ -24850,7 +26003,11 @@ module byteXor4_3 ( a, b, c, d, y );
   input [7:0] b;
   input [7:0] c;
   input [7:0] d;
+  //input_done
+
   output [7:0] y;
+  //output_done
+
   wire   n113, n114, n115, n116, n117, n118, n119, n120, n121, n122, n123,
          n124, n125, n126, n127, n128, n129, n130, n131, n132, n133, n134,
          n135, n136, n137, n138, n139, n140, n141, n142, n143, n144, n145,
@@ -24862,6 +26019,7 @@ module byteXor4_3 ( a, b, c, d, y );
          n201, n202, n203, n204, n205, n206, n207, n208, n209, n210, n211,
          n212, n213, n214, n215, n216, n217, n218, n219, n220, n221, n222,
          n223, n224;
+  //wire_done
 
   INV_X1 U1 ( .A(n175), .ZN(n224) );
   INV_X1 U2 ( .A(a[7]), .ZN(n223) );
@@ -24991,7 +26149,11 @@ module byteXor4_4 ( a, b, c, d, y );
   input [7:0] b;
   input [7:0] c;
   input [7:0] d;
+  //input_done
+
   output [7:0] y;
+  //output_done
+
   wire   n113, n114, n115, n116, n117, n118, n119, n120, n121, n122, n123,
          n124, n125, n126, n127, n128, n129, n130, n131, n132, n133, n134,
          n135, n136, n137, n138, n139, n140, n141, n142, n143, n144, n145,
@@ -25003,6 +26165,7 @@ module byteXor4_4 ( a, b, c, d, y );
          n201, n202, n203, n204, n205, n206, n207, n208, n209, n210, n211,
          n212, n213, n214, n215, n216, n217, n218, n219, n220, n221, n222,
          n223, n224;
+  //wire_done
 
   INV_X1 U1 ( .A(n175), .ZN(n224) );
   INV_X1 U2 ( .A(a[7]), .ZN(n223) );
@@ -25129,7 +26292,10 @@ endmodule
 
 module mixCol_1 ( in, out );
   input [31:0] in;
+  //input_done
+
   output [31:0] out;
+  //output_done
 
   wire   [7:0] b0_s2;
   wire   [7:0] b1_s2;
@@ -25139,6 +26305,7 @@ module mixCol_1 ( in, out );
   wire   [7:0] b1_s3;
   wire   [7:0] b2_s3;
   wire   [7:0] b3_s3;
+  //wire_done
 
   scale2_4 b0_scale2 ( .in(in[31:24]), .out(b0_s2) );
   scale2_3 b1_scale2 ( .in(in[23:16]), .out(b1_s2) );
@@ -25161,9 +26328,15 @@ endmodule
 
 module scale2_5 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_0, \in[6] , \in[5] , \in[4] , \in[1] , \in[7] , n11, n12, n13, n14,
          n15, n16, n17, n18, n19, n20;
+  //wire_done
+
   assign in_0 = in[0];
   assign out[7] = \in[6] ;
   assign \in[6]  = in[6];
@@ -25176,27 +26349,33 @@ module scale2_5 ( in, out );
   assign out[0] = \in[7] ;
   assign \in[7]  = in[7];
 
-  INV_X1 U1 ( .A(\in[7] ), .ZN(n20) );
+  INV_X1 U1 ( .A(\in[7]), .ZN(n20) );
   INV_X1 U2 ( .A(in[3]), .ZN(n19) );
   INV_X1 U3 ( .A(in[2]), .ZN(n18) );
   INV_X1 U4 ( .A(in_0), .ZN(n17) );
   OR2_X1 U5 ( .A1(n16), .A2(n15), .ZN(out[4]) );
   AND2_X1 U6 ( .A1(in[3]), .A2(n20), .ZN(n15) );
-  AND2_X1 U7 ( .A1(\in[7] ), .A2(n19), .ZN(n16) );
+  AND2_X1 U7 ( .A1(\in[7]), .A2(n19), .ZN(n16) );
   OR2_X1 U8 ( .A1(n14), .A2(n13), .ZN(out[3]) );
   AND2_X1 U9 ( .A1(in[2]), .A2(n20), .ZN(n13) );
-  AND2_X1 U10 ( .A1(\in[7] ), .A2(n18), .ZN(n14) );
+  AND2_X1 U10 ( .A1(\in[7]), .A2(n18), .ZN(n14) );
   OR2_X1 U11 ( .A1(n12), .A2(n11), .ZN(out[1]) );
   AND2_X1 U12 ( .A1(in_0), .A2(n20), .ZN(n11) );
-  AND2_X1 U13 ( .A1(\in[7] ), .A2(n17), .ZN(n12) );
+  AND2_X1 U13 ( .A1(\in[7]), .A2(n17), .ZN(n12) );
 endmodule
 
 
 module scale2_6 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_0, \in[6] , \in[5] , \in[4] , \in[1] , \in[7] , n11, n12, n13, n14,
          n15, n16, n17, n18, n19, n20;
+  //wire_done
+
   assign in_0 = in[0];
   assign out[7] = \in[6] ;
   assign \in[6]  = in[6];
@@ -25209,27 +26388,33 @@ module scale2_6 ( in, out );
   assign out[0] = \in[7] ;
   assign \in[7]  = in[7];
 
-  INV_X1 U1 ( .A(\in[7] ), .ZN(n20) );
+  INV_X1 U1 ( .A(\in[7]), .ZN(n20) );
   INV_X1 U2 ( .A(in[3]), .ZN(n19) );
   INV_X1 U3 ( .A(in[2]), .ZN(n18) );
   INV_X1 U4 ( .A(in_0), .ZN(n17) );
   OR2_X1 U5 ( .A1(n16), .A2(n15), .ZN(out[4]) );
   AND2_X1 U6 ( .A1(in[3]), .A2(n20), .ZN(n15) );
-  AND2_X1 U7 ( .A1(\in[7] ), .A2(n19), .ZN(n16) );
+  AND2_X1 U7 ( .A1(\in[7]), .A2(n19), .ZN(n16) );
   OR2_X1 U8 ( .A1(n14), .A2(n13), .ZN(out[3]) );
   AND2_X1 U9 ( .A1(in[2]), .A2(n20), .ZN(n13) );
-  AND2_X1 U10 ( .A1(\in[7] ), .A2(n18), .ZN(n14) );
+  AND2_X1 U10 ( .A1(\in[7]), .A2(n18), .ZN(n14) );
   OR2_X1 U11 ( .A1(n12), .A2(n11), .ZN(out[1]) );
   AND2_X1 U12 ( .A1(in_0), .A2(n20), .ZN(n11) );
-  AND2_X1 U13 ( .A1(\in[7] ), .A2(n17), .ZN(n12) );
+  AND2_X1 U13 ( .A1(\in[7]), .A2(n17), .ZN(n12) );
 endmodule
 
 
 module scale2_7 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_0, \in[6] , \in[5] , \in[4] , \in[1] , \in[7] , n11, n12, n13, n14,
          n15, n16, n17, n18, n19, n20;
+  //wire_done
+
   assign in_0 = in[0];
   assign out[7] = \in[6] ;
   assign \in[6]  = in[6];
@@ -25242,27 +26427,33 @@ module scale2_7 ( in, out );
   assign out[0] = \in[7] ;
   assign \in[7]  = in[7];
 
-  INV_X1 U1 ( .A(\in[7] ), .ZN(n20) );
+  INV_X1 U1 ( .A(\in[7]), .ZN(n20) );
   INV_X1 U2 ( .A(in[3]), .ZN(n19) );
   INV_X1 U3 ( .A(in[2]), .ZN(n18) );
   INV_X1 U4 ( .A(in_0), .ZN(n17) );
   OR2_X1 U5 ( .A1(n16), .A2(n15), .ZN(out[4]) );
   AND2_X1 U6 ( .A1(in[3]), .A2(n20), .ZN(n15) );
-  AND2_X1 U7 ( .A1(\in[7] ), .A2(n19), .ZN(n16) );
+  AND2_X1 U7 ( .A1(\in[7]), .A2(n19), .ZN(n16) );
   OR2_X1 U8 ( .A1(n14), .A2(n13), .ZN(out[3]) );
   AND2_X1 U9 ( .A1(in[2]), .A2(n20), .ZN(n13) );
-  AND2_X1 U10 ( .A1(\in[7] ), .A2(n18), .ZN(n14) );
+  AND2_X1 U10 ( .A1(\in[7]), .A2(n18), .ZN(n14) );
   OR2_X1 U11 ( .A1(n12), .A2(n11), .ZN(out[1]) );
   AND2_X1 U12 ( .A1(in_0), .A2(n20), .ZN(n11) );
-  AND2_X1 U13 ( .A1(\in[7] ), .A2(n17), .ZN(n12) );
+  AND2_X1 U13 ( .A1(\in[7]), .A2(n17), .ZN(n12) );
 endmodule
 
 
 module scale2_8 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_0, \in[6] , \in[5] , \in[4] , \in[1] , \in[7] , n11, n12, n13, n14,
          n15, n16, n17, n18, n19, n20;
+  //wire_done
+
   assign in_0 = in[0];
   assign out[7] = \in[6] ;
   assign \in[6]  = in[6];
@@ -25275,29 +26466,34 @@ module scale2_8 ( in, out );
   assign out[0] = \in[7] ;
   assign \in[7]  = in[7];
 
-  INV_X1 U1 ( .A(\in[7] ), .ZN(n20) );
+  INV_X1 U1 ( .A(\in[7]), .ZN(n20) );
   INV_X1 U2 ( .A(in[3]), .ZN(n19) );
   INV_X1 U3 ( .A(in[2]), .ZN(n18) );
   INV_X1 U4 ( .A(in_0), .ZN(n17) );
   OR2_X1 U5 ( .A1(n16), .A2(n15), .ZN(out[4]) );
   AND2_X1 U6 ( .A1(in[3]), .A2(n20), .ZN(n15) );
-  AND2_X1 U7 ( .A1(\in[7] ), .A2(n19), .ZN(n16) );
+  AND2_X1 U7 ( .A1(\in[7]), .A2(n19), .ZN(n16) );
   OR2_X1 U8 ( .A1(n14), .A2(n13), .ZN(out[3]) );
   AND2_X1 U9 ( .A1(in[2]), .A2(n20), .ZN(n13) );
-  AND2_X1 U10 ( .A1(\in[7] ), .A2(n18), .ZN(n14) );
+  AND2_X1 U10 ( .A1(\in[7]), .A2(n18), .ZN(n14) );
   OR2_X1 U11 ( .A1(n12), .A2(n11), .ZN(out[1]) );
   AND2_X1 U12 ( .A1(in_0), .A2(n20), .ZN(n11) );
-  AND2_X1 U13 ( .A1(\in[7] ), .A2(n17), .ZN(n12) );
+  AND2_X1 U13 ( .A1(\in[7]), .A2(n17), .ZN(n12) );
 endmodule
 
 
 module byteXor_6 ( a, b, y );
   input [7:0] a;
   input [7:0] b;
+  //input_done
+
   output [7:0] y;
+  //output_done
+
   wire   n33, n34, n35, n36, n37, n38, n39, n40, n41, n42, n43, n44, n45, n46,
          n47, n48, n49, n50, n51, n52, n53, n54, n55, n56, n57, n58, n59, n60,
          n61, n62, n63, n64;
+  //wire_done
 
   INV_X1 U1 ( .A(n47), .ZN(n64) );
   INV_X1 U2 ( .A(a[7]), .ZN(n63) );
@@ -25345,10 +26541,15 @@ endmodule
 module byteXor_7 ( a, b, y );
   input [7:0] a;
   input [7:0] b;
+  //input_done
+
   output [7:0] y;
+  //output_done
+
   wire   n33, n34, n35, n36, n37, n38, n39, n40, n41, n42, n43, n44, n45, n46,
          n47, n48, n49, n50, n51, n52, n53, n54, n55, n56, n57, n58, n59, n60,
          n61, n62, n63, n64;
+  //wire_done
 
   INV_X1 U1 ( .A(n47), .ZN(n64) );
   INV_X1 U2 ( .A(a[7]), .ZN(n63) );
@@ -25396,10 +26597,15 @@ endmodule
 module byteXor_8 ( a, b, y );
   input [7:0] a;
   input [7:0] b;
+  //input_done
+
   output [7:0] y;
+  //output_done
+
   wire   n33, n34, n35, n36, n37, n38, n39, n40, n41, n42, n43, n44, n45, n46,
          n47, n48, n49, n50, n51, n52, n53, n54, n55, n56, n57, n58, n59, n60,
          n61, n62, n63, n64;
+  //wire_done
 
   INV_X1 U1 ( .A(n47), .ZN(n64) );
   INV_X1 U2 ( .A(a[7]), .ZN(n63) );
@@ -25447,10 +26653,15 @@ endmodule
 module byteXor_9 ( a, b, y );
   input [7:0] a;
   input [7:0] b;
+  //input_done
+
   output [7:0] y;
+  //output_done
+
   wire   n33, n34, n35, n36, n37, n38, n39, n40, n41, n42, n43, n44, n45, n46,
          n47, n48, n49, n50, n51, n52, n53, n54, n55, n56, n57, n58, n59, n60,
          n61, n62, n63, n64;
+  //wire_done
 
   INV_X1 U1 ( .A(n47), .ZN(n64) );
   INV_X1 U2 ( .A(a[7]), .ZN(n63) );
@@ -25500,7 +26711,11 @@ module byteXor4_5 ( a, b, c, d, y );
   input [7:0] b;
   input [7:0] c;
   input [7:0] d;
+  //input_done
+
   output [7:0] y;
+  //output_done
+
   wire   n113, n114, n115, n116, n117, n118, n119, n120, n121, n122, n123,
          n124, n125, n126, n127, n128, n129, n130, n131, n132, n133, n134,
          n135, n136, n137, n138, n139, n140, n141, n142, n143, n144, n145,
@@ -25512,6 +26727,7 @@ module byteXor4_5 ( a, b, c, d, y );
          n201, n202, n203, n204, n205, n206, n207, n208, n209, n210, n211,
          n212, n213, n214, n215, n216, n217, n218, n219, n220, n221, n222,
          n223, n224;
+  //wire_done
 
   INV_X1 U1 ( .A(n175), .ZN(n224) );
   INV_X1 U2 ( .A(a[7]), .ZN(n223) );
@@ -25641,7 +26857,11 @@ module byteXor4_6 ( a, b, c, d, y );
   input [7:0] b;
   input [7:0] c;
   input [7:0] d;
+  //input_done
+
   output [7:0] y;
+  //output_done
+
   wire   n113, n114, n115, n116, n117, n118, n119, n120, n121, n122, n123,
          n124, n125, n126, n127, n128, n129, n130, n131, n132, n133, n134,
          n135, n136, n137, n138, n139, n140, n141, n142, n143, n144, n145,
@@ -25653,6 +26873,7 @@ module byteXor4_6 ( a, b, c, d, y );
          n201, n202, n203, n204, n205, n206, n207, n208, n209, n210, n211,
          n212, n213, n214, n215, n216, n217, n218, n219, n220, n221, n222,
          n223, n224;
+  //wire_done
 
   INV_X1 U1 ( .A(n175), .ZN(n224) );
   INV_X1 U2 ( .A(a[7]), .ZN(n223) );
@@ -25782,7 +27003,11 @@ module byteXor4_7 ( a, b, c, d, y );
   input [7:0] b;
   input [7:0] c;
   input [7:0] d;
+  //input_done
+
   output [7:0] y;
+  //output_done
+
   wire   n113, n114, n115, n116, n117, n118, n119, n120, n121, n122, n123,
          n124, n125, n126, n127, n128, n129, n130, n131, n132, n133, n134,
          n135, n136, n137, n138, n139, n140, n141, n142, n143, n144, n145,
@@ -25794,6 +27019,7 @@ module byteXor4_7 ( a, b, c, d, y );
          n201, n202, n203, n204, n205, n206, n207, n208, n209, n210, n211,
          n212, n213, n214, n215, n216, n217, n218, n219, n220, n221, n222,
          n223, n224;
+  //wire_done
 
   INV_X1 U1 ( .A(n175), .ZN(n224) );
   INV_X1 U2 ( .A(a[7]), .ZN(n223) );
@@ -25923,7 +27149,11 @@ module byteXor4_8 ( a, b, c, d, y );
   input [7:0] b;
   input [7:0] c;
   input [7:0] d;
+  //input_done
+
   output [7:0] y;
+  //output_done
+
   wire   n113, n114, n115, n116, n117, n118, n119, n120, n121, n122, n123,
          n124, n125, n126, n127, n128, n129, n130, n131, n132, n133, n134,
          n135, n136, n137, n138, n139, n140, n141, n142, n143, n144, n145,
@@ -25935,6 +27165,7 @@ module byteXor4_8 ( a, b, c, d, y );
          n201, n202, n203, n204, n205, n206, n207, n208, n209, n210, n211,
          n212, n213, n214, n215, n216, n217, n218, n219, n220, n221, n222,
          n223, n224;
+  //wire_done
 
   INV_X1 U1 ( .A(n175), .ZN(n224) );
   INV_X1 U2 ( .A(a[7]), .ZN(n223) );
@@ -26061,7 +27292,10 @@ endmodule
 
 module mixCol_2 ( in, out );
   input [31:0] in;
+  //input_done
+
   output [31:0] out;
+  //output_done
 
   wire   [7:0] b0_s2;
   wire   [7:0] b1_s2;
@@ -26071,6 +27305,7 @@ module mixCol_2 ( in, out );
   wire   [7:0] b1_s3;
   wire   [7:0] b2_s3;
   wire   [7:0] b3_s3;
+  //wire_done
 
   scale2_8 b0_scale2 ( .in(in[31:24]), .out(b0_s2) );
   scale2_7 b1_scale2 ( .in(in[23:16]), .out(b1_s2) );
@@ -26093,9 +27328,15 @@ endmodule
 
 module scale2_9 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_0, \in[6] , \in[5] , \in[4] , \in[1] , \in[7] , n11, n12, n13, n14,
          n15, n16, n17, n18, n19, n20;
+  //wire_done
+
   assign in_0 = in[0];
   assign out[7] = \in[6] ;
   assign \in[6]  = in[6];
@@ -26108,27 +27349,33 @@ module scale2_9 ( in, out );
   assign out[0] = \in[7] ;
   assign \in[7]  = in[7];
 
-  INV_X1 U1 ( .A(\in[7] ), .ZN(n20) );
+  INV_X1 U1 ( .A(\in[7]), .ZN(n20) );
   INV_X1 U2 ( .A(in[3]), .ZN(n19) );
   INV_X1 U3 ( .A(in[2]), .ZN(n18) );
   INV_X1 U4 ( .A(in_0), .ZN(n17) );
   OR2_X1 U5 ( .A1(n16), .A2(n15), .ZN(out[4]) );
   AND2_X1 U6 ( .A1(in[3]), .A2(n20), .ZN(n15) );
-  AND2_X1 U7 ( .A1(\in[7] ), .A2(n19), .ZN(n16) );
+  AND2_X1 U7 ( .A1(\in[7]), .A2(n19), .ZN(n16) );
   OR2_X1 U8 ( .A1(n14), .A2(n13), .ZN(out[3]) );
   AND2_X1 U9 ( .A1(in[2]), .A2(n20), .ZN(n13) );
-  AND2_X1 U10 ( .A1(\in[7] ), .A2(n18), .ZN(n14) );
+  AND2_X1 U10 ( .A1(\in[7]), .A2(n18), .ZN(n14) );
   OR2_X1 U11 ( .A1(n12), .A2(n11), .ZN(out[1]) );
   AND2_X1 U12 ( .A1(in_0), .A2(n20), .ZN(n11) );
-  AND2_X1 U13 ( .A1(\in[7] ), .A2(n17), .ZN(n12) );
+  AND2_X1 U13 ( .A1(\in[7]), .A2(n17), .ZN(n12) );
 endmodule
 
 
 module scale2_10 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_0, \in[6] , \in[5] , \in[4] , \in[1] , \in[7] , n11, n12, n13, n14,
          n15, n16, n17, n18, n19, n20;
+  //wire_done
+
   assign in_0 = in[0];
   assign out[7] = \in[6] ;
   assign \in[6]  = in[6];
@@ -26141,27 +27388,33 @@ module scale2_10 ( in, out );
   assign out[0] = \in[7] ;
   assign \in[7]  = in[7];
 
-  INV_X1 U1 ( .A(\in[7] ), .ZN(n20) );
+  INV_X1 U1 ( .A(\in[7]), .ZN(n20) );
   INV_X1 U2 ( .A(in[3]), .ZN(n19) );
   INV_X1 U3 ( .A(in[2]), .ZN(n18) );
   INV_X1 U4 ( .A(in_0), .ZN(n17) );
   OR2_X1 U5 ( .A1(n16), .A2(n15), .ZN(out[4]) );
   AND2_X1 U6 ( .A1(in[3]), .A2(n20), .ZN(n15) );
-  AND2_X1 U7 ( .A1(\in[7] ), .A2(n19), .ZN(n16) );
+  AND2_X1 U7 ( .A1(\in[7]), .A2(n19), .ZN(n16) );
   OR2_X1 U8 ( .A1(n14), .A2(n13), .ZN(out[3]) );
   AND2_X1 U9 ( .A1(in[2]), .A2(n20), .ZN(n13) );
-  AND2_X1 U10 ( .A1(\in[7] ), .A2(n18), .ZN(n14) );
+  AND2_X1 U10 ( .A1(\in[7]), .A2(n18), .ZN(n14) );
   OR2_X1 U11 ( .A1(n12), .A2(n11), .ZN(out[1]) );
   AND2_X1 U12 ( .A1(in_0), .A2(n20), .ZN(n11) );
-  AND2_X1 U13 ( .A1(\in[7] ), .A2(n17), .ZN(n12) );
+  AND2_X1 U13 ( .A1(\in[7]), .A2(n17), .ZN(n12) );
 endmodule
 
 
 module scale2_11 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_0, \in[6] , \in[5] , \in[4] , \in[1] , \in[7] , n11, n12, n13, n14,
          n15, n16, n17, n18, n19, n20;
+  //wire_done
+
   assign in_0 = in[0];
   assign out[7] = \in[6] ;
   assign \in[6]  = in[6];
@@ -26174,27 +27427,33 @@ module scale2_11 ( in, out );
   assign out[0] = \in[7] ;
   assign \in[7]  = in[7];
 
-  INV_X1 U1 ( .A(\in[7] ), .ZN(n20) );
+  INV_X1 U1 ( .A(\in[7]), .ZN(n20) );
   INV_X1 U2 ( .A(in[3]), .ZN(n19) );
   INV_X1 U3 ( .A(in[2]), .ZN(n18) );
   INV_X1 U4 ( .A(in_0), .ZN(n17) );
   OR2_X1 U5 ( .A1(n16), .A2(n15), .ZN(out[4]) );
   AND2_X1 U6 ( .A1(in[3]), .A2(n20), .ZN(n15) );
-  AND2_X1 U7 ( .A1(\in[7] ), .A2(n19), .ZN(n16) );
+  AND2_X1 U7 ( .A1(\in[7]), .A2(n19), .ZN(n16) );
   OR2_X1 U8 ( .A1(n14), .A2(n13), .ZN(out[3]) );
   AND2_X1 U9 ( .A1(in[2]), .A2(n20), .ZN(n13) );
-  AND2_X1 U10 ( .A1(\in[7] ), .A2(n18), .ZN(n14) );
+  AND2_X1 U10 ( .A1(\in[7]), .A2(n18), .ZN(n14) );
   OR2_X1 U11 ( .A1(n12), .A2(n11), .ZN(out[1]) );
   AND2_X1 U12 ( .A1(in_0), .A2(n20), .ZN(n11) );
-  AND2_X1 U13 ( .A1(\in[7] ), .A2(n17), .ZN(n12) );
+  AND2_X1 U13 ( .A1(\in[7]), .A2(n17), .ZN(n12) );
 endmodule
 
 
 module scale2_12 ( in, out );
   input [7:0] in;
+  //input_done
+
   output [7:0] out;
+  //output_done
+
   wire   in_0, \in[6] , \in[5] , \in[4] , \in[1] , \in[7] , n11, n12, n13, n14,
          n15, n16, n17, n18, n19, n20;
+  //wire_done
+
   assign in_0 = in[0];
   assign out[7] = \in[6] ;
   assign \in[6]  = in[6];
@@ -26207,29 +27466,34 @@ module scale2_12 ( in, out );
   assign out[0] = \in[7] ;
   assign \in[7]  = in[7];
 
-  INV_X1 U1 ( .A(\in[7] ), .ZN(n20) );
+  INV_X1 U1 ( .A(\in[7]), .ZN(n20) );
   INV_X1 U2 ( .A(in[3]), .ZN(n19) );
   INV_X1 U3 ( .A(in[2]), .ZN(n18) );
   INV_X1 U4 ( .A(in_0), .ZN(n17) );
   OR2_X1 U5 ( .A1(n16), .A2(n15), .ZN(out[4]) );
   AND2_X1 U6 ( .A1(in[3]), .A2(n20), .ZN(n15) );
-  AND2_X1 U7 ( .A1(\in[7] ), .A2(n19), .ZN(n16) );
+  AND2_X1 U7 ( .A1(\in[7]), .A2(n19), .ZN(n16) );
   OR2_X1 U8 ( .A1(n14), .A2(n13), .ZN(out[3]) );
   AND2_X1 U9 ( .A1(in[2]), .A2(n20), .ZN(n13) );
-  AND2_X1 U10 ( .A1(\in[7] ), .A2(n18), .ZN(n14) );
+  AND2_X1 U10 ( .A1(\in[7]), .A2(n18), .ZN(n14) );
   OR2_X1 U11 ( .A1(n12), .A2(n11), .ZN(out[1]) );
   AND2_X1 U12 ( .A1(in_0), .A2(n20), .ZN(n11) );
-  AND2_X1 U13 ( .A1(\in[7] ), .A2(n17), .ZN(n12) );
+  AND2_X1 U13 ( .A1(\in[7]), .A2(n17), .ZN(n12) );
 endmodule
 
 
 module byteXor_10 ( a, b, y );
   input [7:0] a;
   input [7:0] b;
+  //input_done
+
   output [7:0] y;
+  //output_done
+
   wire   n33, n34, n35, n36, n37, n38, n39, n40, n41, n42, n43, n44, n45, n46,
          n47, n48, n49, n50, n51, n52, n53, n54, n55, n56, n57, n58, n59, n60,
          n61, n62, n63, n64;
+  //wire_done
 
   INV_X1 U1 ( .A(n47), .ZN(n64) );
   INV_X1 U2 ( .A(a[7]), .ZN(n63) );
@@ -26277,10 +27541,15 @@ endmodule
 module byteXor_11 ( a, b, y );
   input [7:0] a;
   input [7:0] b;
+  //input_done
+
   output [7:0] y;
+  //output_done
+
   wire   n33, n34, n35, n36, n37, n38, n39, n40, n41, n42, n43, n44, n45, n46,
          n47, n48, n49, n50, n51, n52, n53, n54, n55, n56, n57, n58, n59, n60,
          n61, n62, n63, n64;
+  //wire_done
 
   INV_X1 U1 ( .A(n47), .ZN(n64) );
   INV_X1 U2 ( .A(a[7]), .ZN(n63) );
@@ -26328,10 +27597,15 @@ endmodule
 module byteXor_12 ( a, b, y );
   input [7:0] a;
   input [7:0] b;
+  //input_done
+
   output [7:0] y;
+  //output_done
+
   wire   n33, n34, n35, n36, n37, n38, n39, n40, n41, n42, n43, n44, n45, n46,
          n47, n48, n49, n50, n51, n52, n53, n54, n55, n56, n57, n58, n59, n60,
          n61, n62, n63, n64;
+  //wire_done
 
   INV_X1 U1 ( .A(n47), .ZN(n64) );
   INV_X1 U2 ( .A(a[7]), .ZN(n63) );
@@ -26379,10 +27653,15 @@ endmodule
 module byteXor_13 ( a, b, y );
   input [7:0] a;
   input [7:0] b;
+  //input_done
+
   output [7:0] y;
+  //output_done
+
   wire   n33, n34, n35, n36, n37, n38, n39, n40, n41, n42, n43, n44, n45, n46,
          n47, n48, n49, n50, n51, n52, n53, n54, n55, n56, n57, n58, n59, n60,
          n61, n62, n63, n64;
+  //wire_done
 
   INV_X1 U1 ( .A(n47), .ZN(n64) );
   INV_X1 U2 ( .A(a[7]), .ZN(n63) );
@@ -26432,7 +27711,11 @@ module byteXor4_9 ( a, b, c, d, y );
   input [7:0] b;
   input [7:0] c;
   input [7:0] d;
+  //input_done
+
   output [7:0] y;
+  //output_done
+
   wire   n113, n114, n115, n116, n117, n118, n119, n120, n121, n122, n123,
          n124, n125, n126, n127, n128, n129, n130, n131, n132, n133, n134,
          n135, n136, n137, n138, n139, n140, n141, n142, n143, n144, n145,
@@ -26444,6 +27727,7 @@ module byteXor4_9 ( a, b, c, d, y );
          n201, n202, n203, n204, n205, n206, n207, n208, n209, n210, n211,
          n212, n213, n214, n215, n216, n217, n218, n219, n220, n221, n222,
          n223, n224;
+  //wire_done
 
   INV_X1 U1 ( .A(n175), .ZN(n224) );
   INV_X1 U2 ( .A(a[7]), .ZN(n223) );
@@ -26573,7 +27857,11 @@ module byteXor4_10 ( a, b, c, d, y );
   input [7:0] b;
   input [7:0] c;
   input [7:0] d;
+  //input_done
+
   output [7:0] y;
+  //output_done
+
   wire   n113, n114, n115, n116, n117, n118, n119, n120, n121, n122, n123,
          n124, n125, n126, n127, n128, n129, n130, n131, n132, n133, n134,
          n135, n136, n137, n138, n139, n140, n141, n142, n143, n144, n145,
@@ -26585,6 +27873,7 @@ module byteXor4_10 ( a, b, c, d, y );
          n201, n202, n203, n204, n205, n206, n207, n208, n209, n210, n211,
          n212, n213, n214, n215, n216, n217, n218, n219, n220, n221, n222,
          n223, n224;
+  //wire_done
 
   INV_X1 U1 ( .A(n175), .ZN(n224) );
   INV_X1 U2 ( .A(a[7]), .ZN(n223) );
@@ -26714,7 +28003,11 @@ module byteXor4_11 ( a, b, c, d, y );
   input [7:0] b;
   input [7:0] c;
   input [7:0] d;
+  //input_done
+
   output [7:0] y;
+  //output_done
+
   wire   n113, n114, n115, n116, n117, n118, n119, n120, n121, n122, n123,
          n124, n125, n126, n127, n128, n129, n130, n131, n132, n133, n134,
          n135, n136, n137, n138, n139, n140, n141, n142, n143, n144, n145,
@@ -26726,6 +28019,7 @@ module byteXor4_11 ( a, b, c, d, y );
          n201, n202, n203, n204, n205, n206, n207, n208, n209, n210, n211,
          n212, n213, n214, n215, n216, n217, n218, n219, n220, n221, n222,
          n223, n224;
+  //wire_done
 
   INV_X1 U1 ( .A(n175), .ZN(n224) );
   INV_X1 U2 ( .A(a[7]), .ZN(n223) );
@@ -26855,7 +28149,11 @@ module byteXor4_12 ( a, b, c, d, y );
   input [7:0] b;
   input [7:0] c;
   input [7:0] d;
+  //input_done
+
   output [7:0] y;
+  //output_done
+
   wire   n113, n114, n115, n116, n117, n118, n119, n120, n121, n122, n123,
          n124, n125, n126, n127, n128, n129, n130, n131, n132, n133, n134,
          n135, n136, n137, n138, n139, n140, n141, n142, n143, n144, n145,
@@ -26867,6 +28165,7 @@ module byteXor4_12 ( a, b, c, d, y );
          n201, n202, n203, n204, n205, n206, n207, n208, n209, n210, n211,
          n212, n213, n214, n215, n216, n217, n218, n219, n220, n221, n222,
          n223, n224;
+  //wire_done
 
   INV_X1 U1 ( .A(n175), .ZN(n224) );
   INV_X1 U2 ( .A(a[7]), .ZN(n223) );
@@ -26993,7 +28292,10 @@ endmodule
 
 module mixCol_3 ( in, out );
   input [31:0] in;
+  //input_done
+
   output [31:0] out;
+  //output_done
 
   wire   [7:0] b0_s2;
   wire   [7:0] b1_s2;
@@ -27003,6 +28305,7 @@ module mixCol_3 ( in, out );
   wire   [7:0] b1_s3;
   wire   [7:0] b2_s3;
   wire   [7:0] b3_s3;
+  //wire_done
 
   scale2_12 b0_scale2 ( .in(in[31:24]), .out(b0_s2) );
   scale2_11 b1_scale2 ( .in(in[23:16]), .out(b1_s2) );
@@ -27027,8 +28330,12 @@ module aes_128 ( clk, data, key, firstRound, final_round, round_const, out );
   input [127:0] data;
   input [127:0] key;
   input [7:0] round_const;
-  output [127:0] out;
   input clk, firstRound, final_round;
+  //input_done
+
+  output [127:0] out;
+  //output_done
+  
   wire   n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16,
          n17, n18, n19, n20, n21, n22, n23, n24, n25, n26, n27, n28, n29, n30,
          n31, n32, n33, n34, n35, n36, n37, n38, n39, n40, n41, n42, n43, n44,
@@ -27106,6 +28413,7 @@ module aes_128 ( clk, data, key, firstRound, final_round, round_const, out );
   wire   [127:0] mixCol_out_temp;
   wire   [127:0] mixCol_out;
   wire   [127:0] key_out;
+  //wire_done
 
   mux128_0 dataMux ( .a(out), .b(state), .sel(firstRound), .y(data_in) );
   shiftRows sr ( .in(data_in), .out(sr_out) );
@@ -28289,4 +29597,6 @@ module aes_128 ( clk, data, key, firstRound, final_round, round_const, out );
   INV_X1 U1030 ( .A(final_round), .ZN(n772) );
   INV_X1 U1031 ( .A(final_round), .ZN(n773) );
 endmodule
+
+//done
 
