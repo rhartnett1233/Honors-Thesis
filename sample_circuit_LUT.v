@@ -1,56 +1,75 @@
-module sample_circuit ( a, b, c, d, out );
-  input [3:0] a;
+module sample_circuit ( a, b, c, y );
 
-  //input_done
+  input a;
+  input b;
+  input c;
+  assign abar = ~a;
+  assign bbar = ~b;
+  assign cbar = ~c;
+//input_done
 
-  output [2:0] outa;
-  //output_done
+  output y;
+  reg ybar;
+//output_done
 
-  //wire_done
+  wire n1;
+  wire n2;
+  wire n3;
+  wire n1bar;
+  wire n2bar;
+  wire n3bar;
+//wire_done
 
-  //AND U0
-  LUT2 U0(
-    .INIT(4'h8)
-  ) LUT2_inst (
-    .O(n0)
-    .I0(a[0])
-    .I1(a[1])
-  );
-  //OR U1
+  //AND U1
   LUT2 U1(
-    .INIT(4'he)
+    .INIT(4'h8)
   ) LUT2_inst (
     .O(n1)
-    .I0(a[0])
-    .I1(n0)
+    .I0(b)
+    .I1(a)
   );
-  //AND U2
-  LUT2 U2(
-    .INIT(4'h8)
-  ) LUT2_inst (
-    .O(n2)
-    .I0(n0)
-    .I1(a[2])
-  );
-  //OR U3
-  LUT2 U3(
+  //OR U1bar
+  LUT2 U1bar(
     .INIT(4'he)
   ) LUT2_inst (
-    .O(n3)
-    .I0(n1)
-    .I1(n2)
+    .O(n1bar)
+    .I0(bbar)
+    .I1(abar)
   );
   //OR U4
   LUT2 U4(
     .INIT(4'he)
   ) LUT2_inst (
-    .O(n4)
-    .I0(n3)
-    .I1(a[3])
+    .O(n2)
+    .I0(c)
+    .I1(n1)
   );
-  INV_X1 U5 ( .A(n4), .ZN(out) );
-
-
+  //AND U4bar
+  LUT2 U4bar(
+    .INIT(4'h8)
+  ) LUT2_inst (
+    .O(n2bar)
+    .I0(cbar)
+    .I1(n1bar)
+  );
+  assign n3bar = a;
+  assign n3 = abar;
+  //AND U4
+  LUT2 U4(
+    .INIT(4'h8)
+  ) LUT2_inst (
+    .O(y)
+    .I0(n2)
+    .I1(n3)
+  );
+  //OR U4bar
+  LUT2 U4bar(
+    .INIT(4'he)
+  ) LUT2_inst (
+    .O(ybar)
+    .I0(n2bar)
+    .I1(n3bar)
+  );
 endmodule
 
 //done

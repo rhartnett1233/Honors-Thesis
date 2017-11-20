@@ -1,5 +1,5 @@
 
-module sample_circuit ( a, b, y );
+module sample_circuit ( a, b, c, y );
   input a, b, c;
   //input_done
 
@@ -14,3 +14,4 @@ module sample_circuit ( a, b, y );
   INV_X1 U3 ( .A(a), .ZN(n3) );
   AND2_X1 U4 ( .A1(n2), .A2(n3), .ZN(y) );
 endmodule
+//done

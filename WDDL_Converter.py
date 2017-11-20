@@ -3,11 +3,11 @@ import Parser
 import Module
 
 
-#file_old = open( "/Users/Richie/Desktop/Honors-Thesis/sample_circuit.v", "r" )
-file_old = open( "/Users/Richie/Desktop/Honors-Thesis/cw305_verilog/cryptosrc/aes_128.v", "r" )
+file_old = open( "/Users/Richie/Desktop/Honors-Thesis/sample_circuit.v", "r" )
+#file_old = open( "/Users/Richie/Desktop/Honors-Thesis/cw305_verilog/cryptosrc/aes_128.v", "r" )
 
 module_list = [ " " ]
-modify_module_list = ["CD2_0","CD4_0","CD16_0","CD2_77","CD2_78","CD2_79","CD4_39","encode_0",
+'''modify_module_list = ["CD2_0","CD4_0","CD16_0","CD2_77","CD2_78","CD2_79","CD4_39","encode_0",
 						"CD2_1","CD2_2","CD2_3","CD2_4","CD4_1","CD4_2","CD16_1","encode_1",
 						"CD2_5","CD2_6","CD2_7","CD2_8","CD4_3","CD4_4","CD16_2","encode_2",
 						"CD2_9","CD2_10","CD2_11","CD2_12","CD4_5","CD4_6","CD16_3","encode_3",
@@ -26,7 +26,9 @@ modify_module_list = ["CD2_0","CD4_0","CD16_0","CD2_77","CD2_78","CD2_79","CD4_3
 						"CD2_61","CD2_62","CD2_63","CD2_64","CD4_31","CD4_32","CD16_16","encode_16",
 						"CD2_65","CD2_66","CD2_67","CD2_68","CD4_33","CD4_34","CD16_17","encode_17",
 						"CD2_69","CD2_70","CD2_71","CD2_72","CD4_35","CD4_36","CD16_18","encode_18",
-						"CD2_73","CD2_74","CD2_75","CD2_76","CD4_37","CD4_38","CD16_19","encode_19"]
+						"CD2_73","CD2_74","CD2_75","CD2_76","CD4_37","CD4_38","CD16_19","encode_19"]'''
+
+modify_module_list = [ "sample_circuit" ]
 
 while( True ):
 	module_line = " "
@@ -214,8 +216,8 @@ while( True ):
 
 
 
-#file_new = open( "/Users/Richie/Desktop/Honors-Thesis/sample_circuit_new.v", "wb" )
-file_new = open( "/Users/Richie/Desktop/Honors-Thesis/Converted_Sections/sBox_modules_modified.v", "wb" )
+file_new = open( "/Users/Richie/Desktop/Honors-Thesis/sample_circuit_new.v", "wb" )
+#file_new = open( "/Users/Richie/Desktop/Honors-Thesis/Converted_Sections/sBox_modules_modified.v", "wb" )
 
 module_cnt = 0
 modify_module_cnt = 0
