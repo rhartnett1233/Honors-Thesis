@@ -4,7 +4,7 @@ import Module
 
 
 #file_old = open( "/Users/Richie/Desktop/Honors-Thesis/sample_circuit.v", "r" )
-file_old = open( "/Users/Richie/Desktop/Honors-Thesis/aes_128.v", "r" )
+file_old = open( "/Users/Richie/Desktop/Honors-Thesis/cw305_verilog/cryptosrc/aes_128.v", "r" )
 
 module_list = [ " " ]
 modify_module_list = ["CD2_0","CD4_0","CD16_0","CD2_77","CD2_78","CD2_79","CD4_39","encode_0",

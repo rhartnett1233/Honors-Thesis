@@ -1,6 +1,6 @@
 import Parser
 
-file_new = open( "/Users/Richie/Desktop/Honors-Thesis/Converted_Sections/converted_aes_final.v", "wb" )
+file_new = open( "/Users/Richie/Desktop/Honors-Thesis/cw305_verilog/cryptosrc/converted_aes_final.v", "wb" )
 #file_new = open( "/Users/Richie/Desktop/Honors-Thesis/Converted_Sections/sBox_modules_modified.v", "wb" )
 
 file_old = open( "/Users/Richie/Desktop/Honors-Thesis/Converted_Sections/sBox_modules_modified.v", "r" )

@@ -1,4 +1,43 @@
 
+module AND_X1( A1, A2, ZN );
+  input A1;
+  input A2;
+  //input_done
+
+  output ZN;
+  //output_done
+
+  //wire_done
+
+  assign ZN = A1 & A2;
+endmodule
+
+module OR_X1( A1, A2, ZN );
+  input A1;
+  input A2;
+  //input_done
+
+  output ZN;
+  //output_done
+
+  //wire_done
+
+  assign ZN = A1 & A2;
+endmodule
+
+module INV_X1( A, ZN );
+  input A;
+  //input_done
+
+  output ZN;
+  //output_done
+
+  //wire_done
+
+  assign ZN = ~A;
+endmodule
+
+
 module mux128_0 ( a, b, sel, y );
   input [127:0] a;
   input [127:0] b;
