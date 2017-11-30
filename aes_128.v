@@ -1,5 +1,23 @@
 
-module AND_X1( A1, A2, ZN );
+module DFF_X1( D, CK, Q );
+  input D;
+  input CK;
+  //input_done
+
+  output Q;
+  //output_done
+
+  //wire_done
+  reg Q;
+
+  always @ ( posedge CK )
+  begin
+    Q <= D;
+  end
+endmodule
+
+
+module AND2_X1( A1, A2, ZN );
   input A1;
   input A2;
   //input_done
@@ -12,7 +30,8 @@ module AND_X1( A1, A2, ZN );
   assign ZN = A1 & A2;
 endmodule
 
-module OR_X1( A1, A2, ZN );
+
+module OR2_X1( A1, A2, ZN );
   input A1;
   input A2;
   //input_done
@@ -22,7 +41,7 @@ module OR_X1( A1, A2, ZN );
 
   //wire_done
 
-  assign ZN = A1 & A2;
+  assign ZN = A1 | A2;
 endmodule
 
 module INV_X1( A, ZN );
@@ -33,7 +52,7 @@ module INV_X1( A, ZN );
   //output_done
 
   //wire_done
-
+  
   assign ZN = ~A;
 endmodule
 
@@ -1692,35 +1711,35 @@ module scale2_0 ( in, out );
   output [7:0] out;
   //output_done
 
-  wire   in_0, \in[6] , \in[5] , \in[4] , \in[1] , \in[7] , n1, n2, n3, n4, n5,
+  wire   in_0, in_6 , in_5 , in_4 , in_1 , in_7 , n1, n2, n3, n4, n5,
          n6, n7, n8, n9, n10;
   //wire_done
 
   assign in_0 = in[0];
-  assign out[7] = \in[6] ;
-  assign \in[6]  = in[6];
-  assign out[6] = \in[5] ;
-  assign \in[5]  = in[5];
-  assign out[5] = \in[4] ;
-  assign \in[4]  = in[4];
-  assign out[2] = \in[1] ;
-  assign \in[1]  = in[1];
-  assign out[0] = \in[7] ;
-  assign \in[7]  = in[7];
+  assign out[7] = in_6 ;
+  assign in_6  = in[6];
+  assign out[6] = in_5 ;
+  assign in_5  = in[5];
+  assign out[5] = in_4 ;
+  assign in_4  = in[4];
+  assign out[2] = in_1 ;
+  assign in_1  = in[1];
+  assign out[0] = in_7 ;
+  assign in_7  = in[7];
 
-  INV_X1 U1 ( .A(\in[7]), .ZN(n1) );
+  INV_X1 U1 ( .A(in_7), .ZN(n1) );
   INV_X1 U2 ( .A(in[3]), .ZN(n2) );
   INV_X1 U3 ( .A(in[2]), .ZN(n3) );
   INV_X1 U4 ( .A(in_0), .ZN(n4) );
   OR2_X1 U5 ( .A1(n5), .A2(n6), .ZN(out[4]) );
   AND2_X1 U6 ( .A1(in[3]), .A2(n1), .ZN(n6) );
-  AND2_X1 U7 ( .A1(\in[7]), .A2(n2), .ZN(n5) );
+  AND2_X1 U7 ( .A1(in_7), .A2(n2), .ZN(n5) );
   OR2_X1 U8 ( .A1(n7), .A2(n8), .ZN(out[3]) );
   AND2_X1 U9 ( .A1(in[2]), .A2(n1), .ZN(n8) );
-  AND2_X1 U10 ( .A1(\in[7]), .A2(n3), .ZN(n7) );
+  AND2_X1 U10 ( .A1(in_7), .A2(n3), .ZN(n7) );
   OR2_X1 U11 ( .A1(n9), .A2(n10), .ZN(out[1]) );
   AND2_X1 U12 ( .A1(in_0), .A2(n1), .ZN(n10) );
-  AND2_X1 U13 ( .A1(\in[7]), .A2(n4), .ZN(n9) );
+  AND2_X1 U13 ( .A1(in_7), .A2(n4), .ZN(n9) );
 endmodule
 
 
@@ -1931,35 +1950,35 @@ module scale2_13 ( in, out );
   output [7:0] out;
   //output_done
 
-  wire   in_0, \in[6] , \in[5] , \in[4] , \in[1] , \in[7] , n11, n12, n13, n14,
+  wire   in_0, in_6 , in_5 , in_4 , in_1 , in_7 , n11, n12, n13, n14,
          n15, n16, n17, n18, n19, n20;
   //wire_done
 
   assign in_0 = in[0];
-  assign out[7] = \in[6] ;
-  assign \in[6]  = in[6];
-  assign out[6] = \in[5] ;
-  assign \in[5]  = in[5];
-  assign out[5] = \in[4] ;
-  assign \in[4]  = in[4];
-  assign out[2] = \in[1] ;
-  assign \in[1]  = in[1];
-  assign out[0] = \in[7] ;
-  assign \in[7]  = in[7];
+  assign out[7] = in_6 ;
+  assign in_6  = in[6];
+  assign out[6] = in_5 ;
+  assign in_5  = in[5];
+  assign out[5] = in_4 ;
+  assign in_4  = in[4];
+  assign out[2] = in_1 ;
+  assign in_1  = in[1];
+  assign out[0] = in_7 ;
+  assign in_7  = in[7];
 
-  INV_X1 U1 ( .A(\in[7]), .ZN(n20) );
+  INV_X1 U1 ( .A(in_7), .ZN(n20) );
   INV_X1 U2 ( .A(in[3]), .ZN(n19) );
   INV_X1 U3 ( .A(in[2]), .ZN(n18) );
   INV_X1 U4 ( .A(in_0), .ZN(n17) );
   OR2_X1 U5 ( .A1(n16), .A2(n15), .ZN(out[4]) );
   AND2_X1 U6 ( .A1(in[3]), .A2(n20), .ZN(n15) );
-  AND2_X1 U7 ( .A1(\in[7]), .A2(n19), .ZN(n16) );
+  AND2_X1 U7 ( .A1(in_7), .A2(n19), .ZN(n16) );
   OR2_X1 U8 ( .A1(n14), .A2(n13), .ZN(out[3]) );
   AND2_X1 U9 ( .A1(in[2]), .A2(n20), .ZN(n13) );
-  AND2_X1 U10 ( .A1(\in[7]), .A2(n18), .ZN(n14) );
+  AND2_X1 U10 ( .A1(in_7), .A2(n18), .ZN(n14) );
   OR2_X1 U11 ( .A1(n12), .A2(n11), .ZN(out[1]) );
   AND2_X1 U12 ( .A1(in_0), .A2(n20), .ZN(n11) );
-  AND2_X1 U13 ( .A1(\in[7]), .A2(n17), .ZN(n12) );
+  AND2_X1 U13 ( .A1(in_7), .A2(n17), .ZN(n12) );
 endmodule
 
 
@@ -1970,35 +1989,35 @@ module scale2_14 ( in, out );
   output [7:0] out;
   //output_done
 
-  wire   in_0, \in[6] , \in[5] , \in[4] , \in[1] , \in[7] , n11, n12, n13, n14,
+  wire   in_0, in_6 , in_5 , in_4 , in_1 , in_7 , n11, n12, n13, n14,
          n15, n16, n17, n18, n19, n20;
   //wire_done
 
   assign in_0 = in[0];
-  assign out[7] = \in[6] ;
-  assign \in[6]  = in[6];
-  assign out[6] = \in[5] ;
-  assign \in[5]  = in[5];
-  assign out[5] = \in[4] ;
-  assign \in[4]  = in[4];
-  assign out[2] = \in[1] ;
-  assign \in[1]  = in[1];
-  assign out[0] = \in[7] ;
-  assign \in[7]  = in[7];
+  assign out[7] = in_6 ;
+  assign in_6  = in[6];
+  assign out[6] = in_5 ;
+  assign in_5  = in[5];
+  assign out[5] = in_4 ;
+  assign in_4  = in[4];
+  assign out[2] = in_1 ;
+  assign in_1  = in[1];
+  assign out[0] = in_7 ;
+  assign in_7  = in[7];
 
-  INV_X1 U1 ( .A(\in[7]), .ZN(n20) );
+  INV_X1 U1 ( .A(in_7), .ZN(n20) );
   INV_X1 U2 ( .A(in[3]), .ZN(n19) );
   INV_X1 U3 ( .A(in[2]), .ZN(n18) );
   INV_X1 U4 ( .A(in_0), .ZN(n17) );
   OR2_X1 U5 ( .A1(n16), .A2(n15), .ZN(out[4]) );
   AND2_X1 U6 ( .A1(in[3]), .A2(n20), .ZN(n15) );
-  AND2_X1 U7 ( .A1(\in[7]), .A2(n19), .ZN(n16) );
+  AND2_X1 U7 ( .A1(in_7), .A2(n19), .ZN(n16) );
   OR2_X1 U8 ( .A1(n14), .A2(n13), .ZN(out[3]) );
   AND2_X1 U9 ( .A1(in[2]), .A2(n20), .ZN(n13) );
-  AND2_X1 U10 ( .A1(\in[7]), .A2(n18), .ZN(n14) );
+  AND2_X1 U10 ( .A1(in_7), .A2(n18), .ZN(n14) );
   OR2_X1 U11 ( .A1(n12), .A2(n11), .ZN(out[1]) );
   AND2_X1 U12 ( .A1(in_0), .A2(n20), .ZN(n11) );
-  AND2_X1 U13 ( .A1(\in[7]), .A2(n17), .ZN(n12) );
+  AND2_X1 U13 ( .A1(in_7), .A2(n17), .ZN(n12) );
 endmodule
 
 
@@ -2009,35 +2028,35 @@ module scale2_15 ( in, out );
   output [7:0] out;
   //output_done
 
-  wire   in_0, \in[6] , \in[5] , \in[4] , \in[1] , \in[7] , n11, n12, n13, n14,
+  wire   in_0, in_6 , in_5 , in_4 , in_1 , in_7 , n11, n12, n13, n14,
          n15, n16, n17, n18, n19, n20;
   //wire_done
          
   assign in_0 = in[0];
-  assign out[7] = \in[6] ;
-  assign \in[6]  = in[6];
-  assign out[6] = \in[5] ;
-  assign \in[5]  = in[5];
-  assign out[5] = \in[4] ;
-  assign \in[4]  = in[4];
-  assign out[2] = \in[1] ;
-  assign \in[1]  = in[1];
-  assign out[0] = \in[7] ;
-  assign \in[7]  = in[7];
+  assign out[7] = in_6 ;
+  assign in_6  = in[6];
+  assign out[6] = in_5 ;
+  assign in_5  = in[5];
+  assign out[5] = in_4 ;
+  assign in_4  = in[4];
+  assign out[2] = in_1 ;
+  assign in_1  = in[1];
+  assign out[0] = in_7 ;
+  assign in_7  = in[7];
 
-  INV_X1 U1 ( .A(\in[7]), .ZN(n20) );
+  INV_X1 U1 ( .A(in_7), .ZN(n20) );
   INV_X1 U2 ( .A(in[3]), .ZN(n19) );
   INV_X1 U3 ( .A(in[2]), .ZN(n18) );
   INV_X1 U4 ( .A(in_0), .ZN(n17) );
   OR2_X1 U5 ( .A1(n16), .A2(n15), .ZN(out[4]) );
   AND2_X1 U6 ( .A1(in[3]), .A2(n20), .ZN(n15) );
-  AND2_X1 U7 ( .A1(\in[7]), .A2(n19), .ZN(n16) );
+  AND2_X1 U7 ( .A1(in_7), .A2(n19), .ZN(n16) );
   OR2_X1 U8 ( .A1(n14), .A2(n13), .ZN(out[3]) );
   AND2_X1 U9 ( .A1(in[2]), .A2(n20), .ZN(n13) );
-  AND2_X1 U10 ( .A1(\in[7]), .A2(n18), .ZN(n14) );
+  AND2_X1 U10 ( .A1(in_7), .A2(n18), .ZN(n14) );
   OR2_X1 U11 ( .A1(n12), .A2(n11), .ZN(out[1]) );
   AND2_X1 U12 ( .A1(in_0), .A2(n20), .ZN(n11) );
-  AND2_X1 U13 ( .A1(\in[7]), .A2(n17), .ZN(n12) );
+  AND2_X1 U13 ( .A1(in_7), .A2(n17), .ZN(n12) );
 endmodule
 
 
@@ -8277,134 +8296,134 @@ module keyExpansion ( key_in, clk, firstRound, round_const, key_out );
   wordXor_3 x1 ( .a(key[95:64]), .b(key_out[127:96]), .y(key_out[95:64]) );
   wordXor_2 x2 ( .a(key[63:32]), .b(key_out[95:64]), .y(key_out[63:32]) );
   wordXor_1 x3 ( .a(key[31:0]), .b(key_out[63:32]), .y(key_out[31:0]) );
-  DFF_X1 \key_reg_reg[0]  ( .D(key_out[0]), .CK(clk), .Q(key_reg[0]) );
-  DFF_X1 \key_reg_reg[96]  ( .D(key_out[96]), .CK(clk), .Q(key_reg[96]) );
-  DFF_X1 \key_reg_reg[97]  ( .D(key_out[97]), .CK(clk), .Q(key_reg[97]) );
-  DFF_X1 \key_reg_reg[98]  ( .D(key_out[98]), .CK(clk), .Q(key_reg[98]) );
-  DFF_X1 \key_reg_reg[99]  ( .D(key_out[99]), .CK(clk), .Q(key_reg[99]) );
-  DFF_X1 \key_reg_reg[100]  ( .D(key_out[100]), .CK(clk), .Q(key_reg[100]) );
-  DFF_X1 \key_reg_reg[101]  ( .D(key_out[101]), .CK(clk), .Q(key_reg[101]) );
-  DFF_X1 \key_reg_reg[102]  ( .D(key_out[102]), .CK(clk), .Q(key_reg[102]) );
-  DFF_X1 \key_reg_reg[103]  ( .D(key_out[103]), .CK(clk), .Q(key_reg[103]) );
-  DFF_X1 \key_reg_reg[104]  ( .D(key_out[104]), .CK(clk), .Q(key_reg[104]) );
-  DFF_X1 \key_reg_reg[105]  ( .D(key_out[105]), .CK(clk), .Q(key_reg[105]) );
-  DFF_X1 \key_reg_reg[106]  ( .D(key_out[106]), .CK(clk), .Q(key_reg[106]) );
-  DFF_X1 \key_reg_reg[107]  ( .D(key_out[107]), .CK(clk), .Q(key_reg[107]) );
-  DFF_X1 \key_reg_reg[108]  ( .D(key_out[108]), .CK(clk), .Q(key_reg[108]) );
-  DFF_X1 \key_reg_reg[109]  ( .D(key_out[109]), .CK(clk), .Q(key_reg[109]) );
-  DFF_X1 \key_reg_reg[110]  ( .D(key_out[110]), .CK(clk), .Q(key_reg[110]) );
-  DFF_X1 \key_reg_reg[111]  ( .D(key_out[111]), .CK(clk), .Q(key_reg[111]) );
-  DFF_X1 \key_reg_reg[112]  ( .D(key_out[112]), .CK(clk), .Q(key_reg[112]) );
-  DFF_X1 \key_reg_reg[113]  ( .D(key_out[113]), .CK(clk), .Q(key_reg[113]) );
-  DFF_X1 \key_reg_reg[114]  ( .D(key_out[114]), .CK(clk), .Q(key_reg[114]) );
-  DFF_X1 \key_reg_reg[115]  ( .D(key_out[115]), .CK(clk), .Q(key_reg[115]) );
-  DFF_X1 \key_reg_reg[116]  ( .D(key_out[116]), .CK(clk), .Q(key_reg[116]) );
-  DFF_X1 \key_reg_reg[117]  ( .D(key_out[117]), .CK(clk), .Q(key_reg[117]) );
-  DFF_X1 \key_reg_reg[118]  ( .D(key_out[118]), .CK(clk), .Q(key_reg[118]) );
-  DFF_X1 \key_reg_reg[119]  ( .D(key_out[119]), .CK(clk), .Q(key_reg[119]) );
-  DFF_X1 \key_reg_reg[120]  ( .D(key_out[120]), .CK(clk), .Q(key_reg[120]) );
-  DFF_X1 \key_reg_reg[121]  ( .D(key_out[121]), .CK(clk), .Q(key_reg[121]) );
-  DFF_X1 \key_reg_reg[122]  ( .D(key_out[122]), .CK(clk), .Q(key_reg[122]) );
-  DFF_X1 \key_reg_reg[123]  ( .D(key_out[123]), .CK(clk), .Q(key_reg[123]) );
-  DFF_X1 \key_reg_reg[124]  ( .D(key_out[124]), .CK(clk), .Q(key_reg[124]) );
-  DFF_X1 \key_reg_reg[125]  ( .D(key_out[125]), .CK(clk), .Q(key_reg[125]) );
-  DFF_X1 \key_reg_reg[126]  ( .D(key_out[126]), .CK(clk), .Q(key_reg[126]) );
-  DFF_X1 \key_reg_reg[127]  ( .D(key_out[127]), .CK(clk), .Q(key_reg[127]) );
-  DFF_X1 \key_reg_reg[64]  ( .D(key_out[64]), .CK(clk), .Q(key_reg[64]) );
-  DFF_X1 \key_reg_reg[65]  ( .D(key_out[65]), .CK(clk), .Q(key_reg[65]) );
-  DFF_X1 \key_reg_reg[66]  ( .D(key_out[66]), .CK(clk), .Q(key_reg[66]) );
-  DFF_X1 \key_reg_reg[67]  ( .D(key_out[67]), .CK(clk), .Q(key_reg[67]) );
-  DFF_X1 \key_reg_reg[68]  ( .D(key_out[68]), .CK(clk), .Q(key_reg[68]) );
-  DFF_X1 \key_reg_reg[69]  ( .D(key_out[69]), .CK(clk), .Q(key_reg[69]) );
-  DFF_X1 \key_reg_reg[70]  ( .D(key_out[70]), .CK(clk), .Q(key_reg[70]) );
-  DFF_X1 \key_reg_reg[71]  ( .D(key_out[71]), .CK(clk), .Q(key_reg[71]) );
-  DFF_X1 \key_reg_reg[72]  ( .D(key_out[72]), .CK(clk), .Q(key_reg[72]) );
-  DFF_X1 \key_reg_reg[73]  ( .D(key_out[73]), .CK(clk), .Q(key_reg[73]) );
-  DFF_X1 \key_reg_reg[74]  ( .D(key_out[74]), .CK(clk), .Q(key_reg[74]) );
-  DFF_X1 \key_reg_reg[75]  ( .D(key_out[75]), .CK(clk), .Q(key_reg[75]) );
-  DFF_X1 \key_reg_reg[76]  ( .D(key_out[76]), .CK(clk), .Q(key_reg[76]) );
-  DFF_X1 \key_reg_reg[77]  ( .D(key_out[77]), .CK(clk), .Q(key_reg[77]) );
-  DFF_X1 \key_reg_reg[78]  ( .D(key_out[78]), .CK(clk), .Q(key_reg[78]) );
-  DFF_X1 \key_reg_reg[79]  ( .D(key_out[79]), .CK(clk), .Q(key_reg[79]) );
-  DFF_X1 \key_reg_reg[80]  ( .D(key_out[80]), .CK(clk), .Q(key_reg[80]) );
-  DFF_X1 \key_reg_reg[81]  ( .D(key_out[81]), .CK(clk), .Q(key_reg[81]) );
-  DFF_X1 \key_reg_reg[82]  ( .D(key_out[82]), .CK(clk), .Q(key_reg[82]) );
-  DFF_X1 \key_reg_reg[83]  ( .D(key_out[83]), .CK(clk), .Q(key_reg[83]) );
-  DFF_X1 \key_reg_reg[84]  ( .D(key_out[84]), .CK(clk), .Q(key_reg[84]) );
-  DFF_X1 \key_reg_reg[85]  ( .D(key_out[85]), .CK(clk), .Q(key_reg[85]) );
-  DFF_X1 \key_reg_reg[86]  ( .D(key_out[86]), .CK(clk), .Q(key_reg[86]) );
-  DFF_X1 \key_reg_reg[87]  ( .D(key_out[87]), .CK(clk), .Q(key_reg[87]) );
-  DFF_X1 \key_reg_reg[88]  ( .D(key_out[88]), .CK(clk), .Q(key_reg[88]) );
-  DFF_X1 \key_reg_reg[89]  ( .D(key_out[89]), .CK(clk), .Q(key_reg[89]) );
-  DFF_X1 \key_reg_reg[90]  ( .D(key_out[90]), .CK(clk), .Q(key_reg[90]) );
-  DFF_X1 \key_reg_reg[91]  ( .D(key_out[91]), .CK(clk), .Q(key_reg[91]) );
-  DFF_X1 \key_reg_reg[92]  ( .D(key_out[92]), .CK(clk), .Q(key_reg[92]) );
-  DFF_X1 \key_reg_reg[93]  ( .D(key_out[93]), .CK(clk), .Q(key_reg[93]) );
-  DFF_X1 \key_reg_reg[94]  ( .D(key_out[94]), .CK(clk), .Q(key_reg[94]) );
-  DFF_X1 \key_reg_reg[95]  ( .D(key_out[95]), .CK(clk), .Q(key_reg[95]) );
-  DFF_X1 \key_reg_reg[32]  ( .D(key_out[32]), .CK(clk), .Q(key_reg[32]) );
-  DFF_X1 \key_reg_reg[33]  ( .D(key_out[33]), .CK(clk), .Q(key_reg[33]) );
-  DFF_X1 \key_reg_reg[34]  ( .D(key_out[34]), .CK(clk), .Q(key_reg[34]) );
-  DFF_X1 \key_reg_reg[35]  ( .D(key_out[35]), .CK(clk), .Q(key_reg[35]) );
-  DFF_X1 \key_reg_reg[36]  ( .D(key_out[36]), .CK(clk), .Q(key_reg[36]) );
-  DFF_X1 \key_reg_reg[37]  ( .D(key_out[37]), .CK(clk), .Q(key_reg[37]) );
-  DFF_X1 \key_reg_reg[38]  ( .D(key_out[38]), .CK(clk), .Q(key_reg[38]) );
-  DFF_X1 \key_reg_reg[39]  ( .D(key_out[39]), .CK(clk), .Q(key_reg[39]) );
-  DFF_X1 \key_reg_reg[40]  ( .D(key_out[40]), .CK(clk), .Q(key_reg[40]) );
-  DFF_X1 \key_reg_reg[41]  ( .D(key_out[41]), .CK(clk), .Q(key_reg[41]) );
-  DFF_X1 \key_reg_reg[42]  ( .D(key_out[42]), .CK(clk), .Q(key_reg[42]) );
-  DFF_X1 \key_reg_reg[43]  ( .D(key_out[43]), .CK(clk), .Q(key_reg[43]) );
-  DFF_X1 \key_reg_reg[44]  ( .D(key_out[44]), .CK(clk), .Q(key_reg[44]) );
-  DFF_X1 \key_reg_reg[45]  ( .D(key_out[45]), .CK(clk), .Q(key_reg[45]) );
-  DFF_X1 \key_reg_reg[46]  ( .D(key_out[46]), .CK(clk), .Q(key_reg[46]) );
-  DFF_X1 \key_reg_reg[47]  ( .D(key_out[47]), .CK(clk), .Q(key_reg[47]) );
-  DFF_X1 \key_reg_reg[48]  ( .D(key_out[48]), .CK(clk), .Q(key_reg[48]) );
-  DFF_X1 \key_reg_reg[49]  ( .D(key_out[49]), .CK(clk), .Q(key_reg[49]) );
-  DFF_X1 \key_reg_reg[50]  ( .D(key_out[50]), .CK(clk), .Q(key_reg[50]) );
-  DFF_X1 \key_reg_reg[51]  ( .D(key_out[51]), .CK(clk), .Q(key_reg[51]) );
-  DFF_X1 \key_reg_reg[52]  ( .D(key_out[52]), .CK(clk), .Q(key_reg[52]) );
-  DFF_X1 \key_reg_reg[53]  ( .D(key_out[53]), .CK(clk), .Q(key_reg[53]) );
-  DFF_X1 \key_reg_reg[54]  ( .D(key_out[54]), .CK(clk), .Q(key_reg[54]) );
-  DFF_X1 \key_reg_reg[55]  ( .D(key_out[55]), .CK(clk), .Q(key_reg[55]) );
-  DFF_X1 \key_reg_reg[56]  ( .D(key_out[56]), .CK(clk), .Q(key_reg[56]) );
-  DFF_X1 \key_reg_reg[57]  ( .D(key_out[57]), .CK(clk), .Q(key_reg[57]) );
-  DFF_X1 \key_reg_reg[58]  ( .D(key_out[58]), .CK(clk), .Q(key_reg[58]) );
-  DFF_X1 \key_reg_reg[59]  ( .D(key_out[59]), .CK(clk), .Q(key_reg[59]) );
-  DFF_X1 \key_reg_reg[60]  ( .D(key_out[60]), .CK(clk), .Q(key_reg[60]) );
-  DFF_X1 \key_reg_reg[61]  ( .D(key_out[61]), .CK(clk), .Q(key_reg[61]) );
-  DFF_X1 \key_reg_reg[62]  ( .D(key_out[62]), .CK(clk), .Q(key_reg[62]) );
-  DFF_X1 \key_reg_reg[63]  ( .D(key_out[63]), .CK(clk), .Q(key_reg[63]) );
-  DFF_X1 \key_reg_reg[1]  ( .D(key_out[1]), .CK(clk), .Q(key_reg[1]) );
-  DFF_X1 \key_reg_reg[2]  ( .D(key_out[2]), .CK(clk), .Q(key_reg[2]) );
-  DFF_X1 \key_reg_reg[3]  ( .D(key_out[3]), .CK(clk), .Q(key_reg[3]) );
-  DFF_X1 \key_reg_reg[4]  ( .D(key_out[4]), .CK(clk), .Q(key_reg[4]) );
-  DFF_X1 \key_reg_reg[5]  ( .D(key_out[5]), .CK(clk), .Q(key_reg[5]) );
-  DFF_X1 \key_reg_reg[6]  ( .D(key_out[6]), .CK(clk), .Q(key_reg[6]) );
-  DFF_X1 \key_reg_reg[7]  ( .D(key_out[7]), .CK(clk), .Q(key_reg[7]) );
-  DFF_X1 \key_reg_reg[8]  ( .D(key_out[8]), .CK(clk), .Q(key_reg[8]) );
-  DFF_X1 \key_reg_reg[9]  ( .D(key_out[9]), .CK(clk), .Q(key_reg[9]) );
-  DFF_X1 \key_reg_reg[10]  ( .D(key_out[10]), .CK(clk), .Q(key_reg[10]) );
-  DFF_X1 \key_reg_reg[11]  ( .D(key_out[11]), .CK(clk), .Q(key_reg[11]) );
-  DFF_X1 \key_reg_reg[12]  ( .D(key_out[12]), .CK(clk), .Q(key_reg[12]) );
-  DFF_X1 \key_reg_reg[13]  ( .D(key_out[13]), .CK(clk), .Q(key_reg[13]) );
-  DFF_X1 \key_reg_reg[14]  ( .D(key_out[14]), .CK(clk), .Q(key_reg[14]) );
-  DFF_X1 \key_reg_reg[15]  ( .D(key_out[15]), .CK(clk), .Q(key_reg[15]) );
-  DFF_X1 \key_reg_reg[16]  ( .D(key_out[16]), .CK(clk), .Q(key_reg[16]) );
-  DFF_X1 \key_reg_reg[17]  ( .D(key_out[17]), .CK(clk), .Q(key_reg[17]) );
-  DFF_X1 \key_reg_reg[18]  ( .D(key_out[18]), .CK(clk), .Q(key_reg[18]) );
-  DFF_X1 \key_reg_reg[19]  ( .D(key_out[19]), .CK(clk), .Q(key_reg[19]) );
-  DFF_X1 \key_reg_reg[20]  ( .D(key_out[20]), .CK(clk), .Q(key_reg[20]) );
-  DFF_X1 \key_reg_reg[21]  ( .D(key_out[21]), .CK(clk), .Q(key_reg[21]) );
-  DFF_X1 \key_reg_reg[22]  ( .D(key_out[22]), .CK(clk), .Q(key_reg[22]) );
-  DFF_X1 \key_reg_reg[23]  ( .D(key_out[23]), .CK(clk), .Q(key_reg[23]) );
-  DFF_X1 \key_reg_reg[24]  ( .D(key_out[24]), .CK(clk), .Q(key_reg[24]) );
-  DFF_X1 \key_reg_reg[25]  ( .D(key_out[25]), .CK(clk), .Q(key_reg[25]) );
-  DFF_X1 \key_reg_reg[26]  ( .D(key_out[26]), .CK(clk), .Q(key_reg[26]) );
-  DFF_X1 \key_reg_reg[27]  ( .D(key_out[27]), .CK(clk), .Q(key_reg[27]) );
-  DFF_X1 \key_reg_reg[28]  ( .D(key_out[28]), .CK(clk), .Q(key_reg[28]) );
-  DFF_X1 \key_reg_reg[29]  ( .D(key_out[29]), .CK(clk), .Q(key_reg[29]) );
-  DFF_X1 \key_reg_reg[30]  ( .D(key_out[30]), .CK(clk), .Q(key_reg[30]) );
-  DFF_X1 \key_reg_reg[31]  ( .D(key_out[31]), .CK(clk), .Q(key_reg[31]) );
+  DFF_X1 key_reg_reg0  ( .D(key_out[0]), .CK(clk), .Q(key_reg[0]) );
+  DFF_X1 key_reg_reg96  ( .D(key_out[96]), .CK(clk), .Q(key_reg[96]) );
+  DFF_X1 key_reg_reg97  ( .D(key_out[97]), .CK(clk), .Q(key_reg[97]) );
+  DFF_X1 key_reg_reg98  ( .D(key_out[98]), .CK(clk), .Q(key_reg[98]) );
+  DFF_X1 key_reg_reg99  ( .D(key_out[99]), .CK(clk), .Q(key_reg[99]) );
+  DFF_X1 key_reg_reg100  ( .D(key_out[100]), .CK(clk), .Q(key_reg[100]) );
+  DFF_X1 key_reg_reg101  ( .D(key_out[101]), .CK(clk), .Q(key_reg[101]) );
+  DFF_X1 key_reg_reg102  ( .D(key_out[102]), .CK(clk), .Q(key_reg[102]) );
+  DFF_X1 key_reg_reg103  ( .D(key_out[103]), .CK(clk), .Q(key_reg[103]) );
+  DFF_X1 key_reg_reg104  ( .D(key_out[104]), .CK(clk), .Q(key_reg[104]) );
+  DFF_X1 key_reg_reg105  ( .D(key_out[105]), .CK(clk), .Q(key_reg[105]) );
+  DFF_X1 key_reg_reg106  ( .D(key_out[106]), .CK(clk), .Q(key_reg[106]) );
+  DFF_X1 key_reg_reg107  ( .D(key_out[107]), .CK(clk), .Q(key_reg[107]) );
+  DFF_X1 key_reg_reg108  ( .D(key_out[108]), .CK(clk), .Q(key_reg[108]) );
+  DFF_X1 key_reg_reg109  ( .D(key_out[109]), .CK(clk), .Q(key_reg[109]) );
+  DFF_X1 key_reg_reg110  ( .D(key_out[110]), .CK(clk), .Q(key_reg[110]) );
+  DFF_X1 key_reg_reg111  ( .D(key_out[111]), .CK(clk), .Q(key_reg[111]) );
+  DFF_X1 key_reg_reg112  ( .D(key_out[112]), .CK(clk), .Q(key_reg[112]) );
+  DFF_X1 key_reg_reg113  ( .D(key_out[113]), .CK(clk), .Q(key_reg[113]) );
+  DFF_X1 key_reg_reg114  ( .D(key_out[114]), .CK(clk), .Q(key_reg[114]) );
+  DFF_X1 key_reg_reg115  ( .D(key_out[115]), .CK(clk), .Q(key_reg[115]) );
+  DFF_X1 key_reg_reg116  ( .D(key_out[116]), .CK(clk), .Q(key_reg[116]) );
+  DFF_X1 key_reg_reg117  ( .D(key_out[117]), .CK(clk), .Q(key_reg[117]) );
+  DFF_X1 key_reg_reg118  ( .D(key_out[118]), .CK(clk), .Q(key_reg[118]) );
+  DFF_X1 key_reg_reg119  ( .D(key_out[119]), .CK(clk), .Q(key_reg[119]) );
+  DFF_X1 key_reg_reg120  ( .D(key_out[120]), .CK(clk), .Q(key_reg[120]) );
+  DFF_X1 key_reg_reg121  ( .D(key_out[121]), .CK(clk), .Q(key_reg[121]) );
+  DFF_X1 key_reg_reg122  ( .D(key_out[122]), .CK(clk), .Q(key_reg[122]) );
+  DFF_X1 key_reg_reg123  ( .D(key_out[123]), .CK(clk), .Q(key_reg[123]) );
+  DFF_X1 key_reg_reg124  ( .D(key_out[124]), .CK(clk), .Q(key_reg[124]) );
+  DFF_X1 key_reg_reg125  ( .D(key_out[125]), .CK(clk), .Q(key_reg[125]) );
+  DFF_X1 key_reg_reg126  ( .D(key_out[126]), .CK(clk), .Q(key_reg[126]) );
+  DFF_X1 key_reg_reg127  ( .D(key_out[127]), .CK(clk), .Q(key_reg[127]) );
+  DFF_X1 key_reg_reg64  ( .D(key_out[64]), .CK(clk), .Q(key_reg[64]) );
+  DFF_X1 key_reg_reg65  ( .D(key_out[65]), .CK(clk), .Q(key_reg[65]) );
+  DFF_X1 key_reg_reg66  ( .D(key_out[66]), .CK(clk), .Q(key_reg[66]) );
+  DFF_X1 key_reg_reg67  ( .D(key_out[67]), .CK(clk), .Q(key_reg[67]) );
+  DFF_X1 key_reg_reg68  ( .D(key_out[68]), .CK(clk), .Q(key_reg[68]) );
+  DFF_X1 key_reg_reg69  ( .D(key_out[69]), .CK(clk), .Q(key_reg[69]) );
+  DFF_X1 key_reg_reg70  ( .D(key_out[70]), .CK(clk), .Q(key_reg[70]) );
+  DFF_X1 key_reg_reg71  ( .D(key_out[71]), .CK(clk), .Q(key_reg[71]) );
+  DFF_X1 key_reg_reg72  ( .D(key_out[72]), .CK(clk), .Q(key_reg[72]) );
+  DFF_X1 key_reg_reg73  ( .D(key_out[73]), .CK(clk), .Q(key_reg[73]) );
+  DFF_X1 key_reg_reg74  ( .D(key_out[74]), .CK(clk), .Q(key_reg[74]) );
+  DFF_X1 key_reg_reg75  ( .D(key_out[75]), .CK(clk), .Q(key_reg[75]) );
+  DFF_X1 key_reg_reg76  ( .D(key_out[76]), .CK(clk), .Q(key_reg[76]) );
+  DFF_X1 key_reg_reg77  ( .D(key_out[77]), .CK(clk), .Q(key_reg[77]) );
+  DFF_X1 key_reg_reg78  ( .D(key_out[78]), .CK(clk), .Q(key_reg[78]) );
+  DFF_X1 key_reg_reg79  ( .D(key_out[79]), .CK(clk), .Q(key_reg[79]) );
+  DFF_X1 key_reg_reg80  ( .D(key_out[80]), .CK(clk), .Q(key_reg[80]) );
+  DFF_X1 key_reg_reg81  ( .D(key_out[81]), .CK(clk), .Q(key_reg[81]) );
+  DFF_X1 key_reg_reg82  ( .D(key_out[82]), .CK(clk), .Q(key_reg[82]) );
+  DFF_X1 key_reg_reg83  ( .D(key_out[83]), .CK(clk), .Q(key_reg[83]) );
+  DFF_X1 key_reg_reg84  ( .D(key_out[84]), .CK(clk), .Q(key_reg[84]) );
+  DFF_X1 key_reg_reg85  ( .D(key_out[85]), .CK(clk), .Q(key_reg[85]) );
+  DFF_X1 key_reg_reg86  ( .D(key_out[86]), .CK(clk), .Q(key_reg[86]) );
+  DFF_X1 key_reg_reg87  ( .D(key_out[87]), .CK(clk), .Q(key_reg[87]) );
+  DFF_X1 key_reg_reg88  ( .D(key_out[88]), .CK(clk), .Q(key_reg[88]) );
+  DFF_X1 key_reg_reg89  ( .D(key_out[89]), .CK(clk), .Q(key_reg[89]) );
+  DFF_X1 key_reg_reg90  ( .D(key_out[90]), .CK(clk), .Q(key_reg[90]) );
+  DFF_X1 key_reg_reg91  ( .D(key_out[91]), .CK(clk), .Q(key_reg[91]) );
+  DFF_X1 key_reg_reg92  ( .D(key_out[92]), .CK(clk), .Q(key_reg[92]) );
+  DFF_X1 key_reg_reg93  ( .D(key_out[93]), .CK(clk), .Q(key_reg[93]) );
+  DFF_X1 key_reg_reg94  ( .D(key_out[94]), .CK(clk), .Q(key_reg[94]) );
+  DFF_X1 key_reg_reg95  ( .D(key_out[95]), .CK(clk), .Q(key_reg[95]) );
+  DFF_X1 key_reg_reg32  ( .D(key_out[32]), .CK(clk), .Q(key_reg[32]) );
+  DFF_X1 key_reg_reg33  ( .D(key_out[33]), .CK(clk), .Q(key_reg[33]) );
+  DFF_X1 key_reg_reg34  ( .D(key_out[34]), .CK(clk), .Q(key_reg[34]) );
+  DFF_X1 key_reg_reg35  ( .D(key_out[35]), .CK(clk), .Q(key_reg[35]) );
+  DFF_X1 key_reg_reg36  ( .D(key_out[36]), .CK(clk), .Q(key_reg[36]) );
+  DFF_X1 key_reg_reg37  ( .D(key_out[37]), .CK(clk), .Q(key_reg[37]) );
+  DFF_X1 key_reg_reg38  ( .D(key_out[38]), .CK(clk), .Q(key_reg[38]) );
+  DFF_X1 key_reg_reg39  ( .D(key_out[39]), .CK(clk), .Q(key_reg[39]) );
+  DFF_X1 key_reg_reg40  ( .D(key_out[40]), .CK(clk), .Q(key_reg[40]) );
+  DFF_X1 key_reg_reg41  ( .D(key_out[41]), .CK(clk), .Q(key_reg[41]) );
+  DFF_X1 key_reg_reg42  ( .D(key_out[42]), .CK(clk), .Q(key_reg[42]) );
+  DFF_X1 key_reg_reg43  ( .D(key_out[43]), .CK(clk), .Q(key_reg[43]) );
+  DFF_X1 key_reg_reg44  ( .D(key_out[44]), .CK(clk), .Q(key_reg[44]) );
+  DFF_X1 key_reg_reg45  ( .D(key_out[45]), .CK(clk), .Q(key_reg[45]) );
+  DFF_X1 key_reg_reg46  ( .D(key_out[46]), .CK(clk), .Q(key_reg[46]) );
+  DFF_X1 key_reg_reg47  ( .D(key_out[47]), .CK(clk), .Q(key_reg[47]) );
+  DFF_X1 key_reg_reg48  ( .D(key_out[48]), .CK(clk), .Q(key_reg[48]) );
+  DFF_X1 key_reg_reg49  ( .D(key_out[49]), .CK(clk), .Q(key_reg[49]) );
+  DFF_X1 key_reg_reg50  ( .D(key_out[50]), .CK(clk), .Q(key_reg[50]) );
+  DFF_X1 key_reg_reg51  ( .D(key_out[51]), .CK(clk), .Q(key_reg[51]) );
+  DFF_X1 key_reg_reg52  ( .D(key_out[52]), .CK(clk), .Q(key_reg[52]) );
+  DFF_X1 key_reg_reg53  ( .D(key_out[53]), .CK(clk), .Q(key_reg[53]) );
+  DFF_X1 key_reg_reg54  ( .D(key_out[54]), .CK(clk), .Q(key_reg[54]) );
+  DFF_X1 key_reg_reg55  ( .D(key_out[55]), .CK(clk), .Q(key_reg[55]) );
+  DFF_X1 key_reg_reg56  ( .D(key_out[56]), .CK(clk), .Q(key_reg[56]) );
+  DFF_X1 key_reg_reg57  ( .D(key_out[57]), .CK(clk), .Q(key_reg[57]) );
+  DFF_X1 key_reg_reg58  ( .D(key_out[58]), .CK(clk), .Q(key_reg[58]) );
+  DFF_X1 key_reg_reg59  ( .D(key_out[59]), .CK(clk), .Q(key_reg[59]) );
+  DFF_X1 key_reg_reg60  ( .D(key_out[60]), .CK(clk), .Q(key_reg[60]) );
+  DFF_X1 key_reg_reg61  ( .D(key_out[61]), .CK(clk), .Q(key_reg[61]) );
+  DFF_X1 key_reg_reg62  ( .D(key_out[62]), .CK(clk), .Q(key_reg[62]) );
+  DFF_X1 key_reg_reg63  ( .D(key_out[63]), .CK(clk), .Q(key_reg[63]) );
+  DFF_X1 key_reg_reg1  ( .D(key_out[1]), .CK(clk), .Q(key_reg[1]) );
+  DFF_X1 key_reg_reg2  ( .D(key_out[2]), .CK(clk), .Q(key_reg[2]) );
+  DFF_X1 key_reg_reg3  ( .D(key_out[3]), .CK(clk), .Q(key_reg[3]) );
+  DFF_X1 key_reg_reg4  ( .D(key_out[4]), .CK(clk), .Q(key_reg[4]) );
+  DFF_X1 key_reg_reg5  ( .D(key_out[5]), .CK(clk), .Q(key_reg[5]) );
+  DFF_X1 key_reg_reg6  ( .D(key_out[6]), .CK(clk), .Q(key_reg[6]) );
+  DFF_X1 key_reg_reg7  ( .D(key_out[7]), .CK(clk), .Q(key_reg[7]) );
+  DFF_X1 key_reg_reg8  ( .D(key_out[8]), .CK(clk), .Q(key_reg[8]) );
+  DFF_X1 key_reg_reg9  ( .D(key_out[9]), .CK(clk), .Q(key_reg[9]) );
+  DFF_X1 key_reg_reg10  ( .D(key_out[10]), .CK(clk), .Q(key_reg[10]) );
+  DFF_X1 key_reg_reg11  ( .D(key_out[11]), .CK(clk), .Q(key_reg[11]) );
+  DFF_X1 key_reg_reg12  ( .D(key_out[12]), .CK(clk), .Q(key_reg[12]) );
+  DFF_X1 key_reg_reg13  ( .D(key_out[13]), .CK(clk), .Q(key_reg[13]) );
+  DFF_X1 key_reg_reg14  ( .D(key_out[14]), .CK(clk), .Q(key_reg[14]) );
+  DFF_X1 key_reg_reg15  ( .D(key_out[15]), .CK(clk), .Q(key_reg[15]) );
+  DFF_X1 key_reg_reg16  ( .D(key_out[16]), .CK(clk), .Q(key_reg[16]) );
+  DFF_X1 key_reg_reg17  ( .D(key_out[17]), .CK(clk), .Q(key_reg[17]) );
+  DFF_X1 key_reg_reg18  ( .D(key_out[18]), .CK(clk), .Q(key_reg[18]) );
+  DFF_X1 key_reg_reg19  ( .D(key_out[19]), .CK(clk), .Q(key_reg[19]) );
+  DFF_X1 key_reg_reg20  ( .D(key_out[20]), .CK(clk), .Q(key_reg[20]) );
+  DFF_X1 key_reg_reg21  ( .D(key_out[21]), .CK(clk), .Q(key_reg[21]) );
+  DFF_X1 key_reg_reg22  ( .D(key_out[22]), .CK(clk), .Q(key_reg[22]) );
+  DFF_X1 key_reg_reg23  ( .D(key_out[23]), .CK(clk), .Q(key_reg[23]) );
+  DFF_X1 key_reg_reg24  ( .D(key_out[24]), .CK(clk), .Q(key_reg[24]) );
+  DFF_X1 key_reg_reg25  ( .D(key_out[25]), .CK(clk), .Q(key_reg[25]) );
+  DFF_X1 key_reg_reg26  ( .D(key_out[26]), .CK(clk), .Q(key_reg[26]) );
+  DFF_X1 key_reg_reg27  ( .D(key_out[27]), .CK(clk), .Q(key_reg[27]) );
+  DFF_X1 key_reg_reg28  ( .D(key_out[28]), .CK(clk), .Q(key_reg[28]) );
+  DFF_X1 key_reg_reg29  ( .D(key_out[29]), .CK(clk), .Q(key_reg[29]) );
+  DFF_X1 key_reg_reg30  ( .D(key_out[30]), .CK(clk), .Q(key_reg[30]) );
+  DFF_X1 key_reg_reg31  ( .D(key_out[31]), .CK(clk), .Q(key_reg[31]) );
 endmodule
 
 
@@ -21172,7 +21191,7 @@ module CD16_16 ( a, b, y );
   input [15:0] b;
   //input_done
 
-  output [15:0] y;
+  output [255:0] y;
   //output_done
 
   //wire_done
@@ -22256,7 +22275,7 @@ module CD16_17 ( a, b, y );
   input [15:0] b;
   //input_done
 
-  output [15:0] y;
+  output [255:0] y;
   //output_done
 
   //wire_done
@@ -23340,7 +23359,7 @@ module CD16_18 ( a, b, y );
   input [15:0] b;
   //input_done
 
-  output [15:0] y;
+  output [255:0] y;
   //output_done
 
   //wire_done
@@ -24424,7 +24443,7 @@ module CD16_19 ( a, b, y );
   input [15:0] b;
   //input_done
 
-  output [15:0] y;
+  output [255:0] y;
   //output_done
 
   //wire_done
@@ -25374,35 +25393,35 @@ module scale2_1 ( in, out );
   output [7:0] out;
   //output_done
 
-  wire   in_0, \in[6] , \in[5] , \in[4] , \in[1] , \in[7] , n11, n12, n13, n14,
+  wire   in_0, in_6 , in_5 , in_4 , in_1 , in_7 , n11, n12, n13, n14,
          n15, n16, n17, n18, n19, n20;
   //wire_done
 
   assign in_0 = in[0];
-  assign out[7] = \in[6] ;
-  assign \in[6]  = in[6];
-  assign out[6] = \in[5] ;
-  assign \in[5]  = in[5];
-  assign out[5] = \in[4] ;
-  assign \in[4]  = in[4];
-  assign out[2] = \in[1] ;
-  assign \in[1]  = in[1];
-  assign out[0] = \in[7] ;
-  assign \in[7]  = in[7];
+  assign out[7] = in_6 ;
+  assign in_6  = in[6];
+  assign out[6] = in_5 ;
+  assign in_5  = in[5];
+  assign out[5] = in_4 ;
+  assign in_4  = in[4];
+  assign out[2] = in_1 ;
+  assign in_1  = in[1];
+  assign out[0] = in_7 ;
+  assign in_7  = in[7];
 
-  INV_X1 U1 ( .A(\in[7]), .ZN(n20) );
+  INV_X1 U1 ( .A(in_7), .ZN(n20) );
   INV_X1 U2 ( .A(in[3]), .ZN(n19) );
   INV_X1 U3 ( .A(in[2]), .ZN(n18) );
   INV_X1 U4 ( .A(in_0), .ZN(n17) );
   OR2_X1 U5 ( .A1(n16), .A2(n15), .ZN(out[4]) );
   AND2_X1 U6 ( .A1(in[3]), .A2(n20), .ZN(n15) );
-  AND2_X1 U7 ( .A1(\in[7]), .A2(n19), .ZN(n16) );
+  AND2_X1 U7 ( .A1(in_7), .A2(n19), .ZN(n16) );
   OR2_X1 U8 ( .A1(n14), .A2(n13), .ZN(out[3]) );
   AND2_X1 U9 ( .A1(in[2]), .A2(n20), .ZN(n13) );
-  AND2_X1 U10 ( .A1(\in[7]), .A2(n18), .ZN(n14) );
+  AND2_X1 U10 ( .A1(in_7), .A2(n18), .ZN(n14) );
   OR2_X1 U11 ( .A1(n12), .A2(n11), .ZN(out[1]) );
   AND2_X1 U12 ( .A1(in_0), .A2(n20), .ZN(n11) );
-  AND2_X1 U13 ( .A1(\in[7]), .A2(n17), .ZN(n12) );
+  AND2_X1 U13 ( .A1(in_7), .A2(n17), .ZN(n12) );
 endmodule
 
 
@@ -25413,35 +25432,35 @@ module scale2_2 ( in, out );
   output [7:0] out;
   //output_done
 
-  wire   in_0, \in[6] , \in[5] , \in[4] , \in[1] , \in[7] , n11, n12, n13, n14,
+  wire   in_0, in_6 , in_5 , in_4 , in_1 , in_7 , n11, n12, n13, n14,
          n15, n16, n17, n18, n19, n20;
   //wire_done
 
   assign in_0 = in[0];
-  assign out[7] = \in[6] ;
-  assign \in[6]  = in[6];
-  assign out[6] = \in[5] ;
-  assign \in[5]  = in[5];
-  assign out[5] = \in[4] ;
-  assign \in[4]  = in[4];
-  assign out[2] = \in[1] ;
-  assign \in[1]  = in[1];
-  assign out[0] = \in[7] ;
-  assign \in[7]  = in[7];
+  assign out[7] = in_6 ;
+  assign in_6  = in[6];
+  assign out[6] = in_5 ;
+  assign in_5  = in[5];
+  assign out[5] = in_4 ;
+  assign in_4  = in[4];
+  assign out[2] = in_1 ;
+  assign in_1  = in[1];
+  assign out[0] = in_7 ;
+  assign in_7  = in[7];
 
-  INV_X1 U1 ( .A(\in[7]), .ZN(n20) );
+  INV_X1 U1 ( .A(in_7), .ZN(n20) );
   INV_X1 U2 ( .A(in[3]), .ZN(n19) );
   INV_X1 U3 ( .A(in[2]), .ZN(n18) );
   INV_X1 U4 ( .A(in_0), .ZN(n17) );
   OR2_X1 U5 ( .A1(n16), .A2(n15), .ZN(out[4]) );
   AND2_X1 U6 ( .A1(in[3]), .A2(n20), .ZN(n15) );
-  AND2_X1 U7 ( .A1(\in[7]), .A2(n19), .ZN(n16) );
+  AND2_X1 U7 ( .A1(in_7), .A2(n19), .ZN(n16) );
   OR2_X1 U8 ( .A1(n14), .A2(n13), .ZN(out[3]) );
   AND2_X1 U9 ( .A1(in[2]), .A2(n20), .ZN(n13) );
-  AND2_X1 U10 ( .A1(\in[7]), .A2(n18), .ZN(n14) );
+  AND2_X1 U10 ( .A1(in_7), .A2(n18), .ZN(n14) );
   OR2_X1 U11 ( .A1(n12), .A2(n11), .ZN(out[1]) );
   AND2_X1 U12 ( .A1(in_0), .A2(n20), .ZN(n11) );
-  AND2_X1 U13 ( .A1(\in[7]), .A2(n17), .ZN(n12) );
+  AND2_X1 U13 ( .A1(in_7), .A2(n17), .ZN(n12) );
 endmodule
 
 
@@ -25452,34 +25471,34 @@ module scale2_3 ( in, out );
   output [7:0] out;
   //output_done
 
-  wire   in_0, \in[6] , \in[5] , \in[4] , \in[1] , \in[7] , n11, n12, n13, n14,
+  wire   in_0, in_6 , in_5 , in_4 , in_1 , in_7 , n11, n12, n13, n14,
          n15, n16, n17, n18, n19, n20;
   //wire_done
   assign in_0 = in[0];
-  assign out[7] = \in[6] ;
-  assign \in[6]  = in[6];
-  assign out[6] = \in[5] ;
-  assign \in[5]  = in[5];
-  assign out[5] = \in[4] ;
-  assign \in[4]  = in[4];
-  assign out[2] = \in[1] ;
-  assign \in[1]  = in[1];
-  assign out[0] = \in[7] ;
-  assign \in[7]  = in[7];
+  assign out[7] = in_6 ;
+  assign in_6  = in[6];
+  assign out[6] = in_5 ;
+  assign in_5  = in[5];
+  assign out[5] = in_4 ;
+  assign in_4  = in[4];
+  assign out[2] = in_1 ;
+  assign in_1  = in[1];
+  assign out[0] = in_7 ;
+  assign in_7  = in[7];
 
-  INV_X1 U1 ( .A(\in[7]), .ZN(n20) );
+  INV_X1 U1 ( .A(in_7), .ZN(n20) );
   INV_X1 U2 ( .A(in[3]), .ZN(n19) );
   INV_X1 U3 ( .A(in[2]), .ZN(n18) );
   INV_X1 U4 ( .A(in_0), .ZN(n17) );
   OR2_X1 U5 ( .A1(n16), .A2(n15), .ZN(out[4]) );
   AND2_X1 U6 ( .A1(in[3]), .A2(n20), .ZN(n15) );
-  AND2_X1 U7 ( .A1(\in[7]), .A2(n19), .ZN(n16) );
+  AND2_X1 U7 ( .A1(in_7), .A2(n19), .ZN(n16) );
   OR2_X1 U8 ( .A1(n14), .A2(n13), .ZN(out[3]) );
   AND2_X1 U9 ( .A1(in[2]), .A2(n20), .ZN(n13) );
-  AND2_X1 U10 ( .A1(\in[7]), .A2(n18), .ZN(n14) );
+  AND2_X1 U10 ( .A1(in_7), .A2(n18), .ZN(n14) );
   OR2_X1 U11 ( .A1(n12), .A2(n11), .ZN(out[1]) );
   AND2_X1 U12 ( .A1(in_0), .A2(n20), .ZN(n11) );
-  AND2_X1 U13 ( .A1(\in[7]), .A2(n17), .ZN(n12) );
+  AND2_X1 U13 ( .A1(in_7), .A2(n17), .ZN(n12) );
 endmodule
 
 
@@ -25490,34 +25509,34 @@ module scale2_4 ( in, out );
   output [7:0] out;
   //output_done
 
-  wire   in_0, \in[6] , \in[5] , \in[4] , \in[1] , \in[7] , n11, n12, n13, n14,
+  wire   in_0, in_6 , in_5 , in_4 , in_1 , in_7 , n11, n12, n13, n14,
          n15, n16, n17, n18, n19, n20;
   //wire_done
   assign in_0 = in[0];
-  assign out[7] = \in[6] ;
-  assign \in[6]  = in[6];
-  assign out[6] = \in[5] ;
-  assign \in[5]  = in[5];
-  assign out[5] = \in[4] ;
-  assign \in[4]  = in[4];
-  assign out[2] = \in[1] ;
-  assign \in[1]  = in[1];
-  assign out[0] = \in[7] ;
-  assign \in[7]  = in[7];
+  assign out[7] = in_6 ;
+  assign in_6  = in[6];
+  assign out[6] = in_5 ;
+  assign in_5  = in[5];
+  assign out[5] = in_4 ;
+  assign in_4  = in[4];
+  assign out[2] = in_1 ;
+  assign in_1  = in[1];
+  assign out[0] = in_7 ;
+  assign in_7  = in[7];
 
-  INV_X1 U1 ( .A(\in[7]), .ZN(n20) );
+  INV_X1 U1 ( .A(in_7), .ZN(n20) );
   INV_X1 U2 ( .A(in[3]), .ZN(n19) );
   INV_X1 U3 ( .A(in[2]), .ZN(n18) );
   INV_X1 U4 ( .A(in_0), .ZN(n17) );
   OR2_X1 U5 ( .A1(n16), .A2(n15), .ZN(out[4]) );
   AND2_X1 U6 ( .A1(in[3]), .A2(n20), .ZN(n15) );
-  AND2_X1 U7 ( .A1(\in[7]), .A2(n19), .ZN(n16) );
+  AND2_X1 U7 ( .A1(in_7), .A2(n19), .ZN(n16) );
   OR2_X1 U8 ( .A1(n14), .A2(n13), .ZN(out[3]) );
   AND2_X1 U9 ( .A1(in[2]), .A2(n20), .ZN(n13) );
-  AND2_X1 U10 ( .A1(\in[7]), .A2(n18), .ZN(n14) );
+  AND2_X1 U10 ( .A1(in_7), .A2(n18), .ZN(n14) );
   OR2_X1 U11 ( .A1(n12), .A2(n11), .ZN(out[1]) );
   AND2_X1 U12 ( .A1(in_0), .A2(n20), .ZN(n11) );
-  AND2_X1 U13 ( .A1(\in[7]), .A2(n17), .ZN(n12) );
+  AND2_X1 U13 ( .A1(in_7), .A2(n17), .ZN(n12) );
 endmodule
 
 
@@ -26372,35 +26391,35 @@ module scale2_5 ( in, out );
   output [7:0] out;
   //output_done
 
-  wire   in_0, \in[6] , \in[5] , \in[4] , \in[1] , \in[7] , n11, n12, n13, n14,
+  wire   in_0, in_6 , in_5 , in_4 , in_1 , in_7 , n11, n12, n13, n14,
          n15, n16, n17, n18, n19, n20;
   //wire_done
 
   assign in_0 = in[0];
-  assign out[7] = \in[6] ;
-  assign \in[6]  = in[6];
-  assign out[6] = \in[5] ;
-  assign \in[5]  = in[5];
-  assign out[5] = \in[4] ;
-  assign \in[4]  = in[4];
-  assign out[2] = \in[1] ;
-  assign \in[1]  = in[1];
-  assign out[0] = \in[7] ;
-  assign \in[7]  = in[7];
+  assign out[7] = in_6 ;
+  assign in_6  = in[6];
+  assign out[6] = in_5 ;
+  assign in_5  = in[5];
+  assign out[5] = in_4 ;
+  assign in_4  = in[4];
+  assign out[2] = in_1 ;
+  assign in_1  = in[1];
+  assign out[0] = in_7 ;
+  assign in_7  = in[7];
 
-  INV_X1 U1 ( .A(\in[7]), .ZN(n20) );
+  INV_X1 U1 ( .A(in_7), .ZN(n20) );
   INV_X1 U2 ( .A(in[3]), .ZN(n19) );
   INV_X1 U3 ( .A(in[2]), .ZN(n18) );
   INV_X1 U4 ( .A(in_0), .ZN(n17) );
   OR2_X1 U5 ( .A1(n16), .A2(n15), .ZN(out[4]) );
   AND2_X1 U6 ( .A1(in[3]), .A2(n20), .ZN(n15) );
-  AND2_X1 U7 ( .A1(\in[7]), .A2(n19), .ZN(n16) );
+  AND2_X1 U7 ( .A1(in_7), .A2(n19), .ZN(n16) );
   OR2_X1 U8 ( .A1(n14), .A2(n13), .ZN(out[3]) );
   AND2_X1 U9 ( .A1(in[2]), .A2(n20), .ZN(n13) );
-  AND2_X1 U10 ( .A1(\in[7]), .A2(n18), .ZN(n14) );
+  AND2_X1 U10 ( .A1(in_7), .A2(n18), .ZN(n14) );
   OR2_X1 U11 ( .A1(n12), .A2(n11), .ZN(out[1]) );
   AND2_X1 U12 ( .A1(in_0), .A2(n20), .ZN(n11) );
-  AND2_X1 U13 ( .A1(\in[7]), .A2(n17), .ZN(n12) );
+  AND2_X1 U13 ( .A1(in_7), .A2(n17), .ZN(n12) );
 endmodule
 
 
@@ -26411,35 +26430,35 @@ module scale2_6 ( in, out );
   output [7:0] out;
   //output_done
 
-  wire   in_0, \in[6] , \in[5] , \in[4] , \in[1] , \in[7] , n11, n12, n13, n14,
+  wire   in_0, in_6 , in_5 , in_4 , in_1 , in_7 , n11, n12, n13, n14,
          n15, n16, n17, n18, n19, n20;
   //wire_done
 
   assign in_0 = in[0];
-  assign out[7] = \in[6] ;
-  assign \in[6]  = in[6];
-  assign out[6] = \in[5] ;
-  assign \in[5]  = in[5];
-  assign out[5] = \in[4] ;
-  assign \in[4]  = in[4];
-  assign out[2] = \in[1] ;
-  assign \in[1]  = in[1];
-  assign out[0] = \in[7] ;
-  assign \in[7]  = in[7];
+  assign out[7] = in_6 ;
+  assign in_6  = in[6];
+  assign out[6] = in_5 ;
+  assign in_5  = in[5];
+  assign out[5] = in_4 ;
+  assign in_4  = in[4];
+  assign out[2] = in_1 ;
+  assign in_1  = in[1];
+  assign out[0] = in_7 ;
+  assign in_7  = in[7];
 
-  INV_X1 U1 ( .A(\in[7]), .ZN(n20) );
+  INV_X1 U1 ( .A(in_7), .ZN(n20) );
   INV_X1 U2 ( .A(in[3]), .ZN(n19) );
   INV_X1 U3 ( .A(in[2]), .ZN(n18) );
   INV_X1 U4 ( .A(in_0), .ZN(n17) );
   OR2_X1 U5 ( .A1(n16), .A2(n15), .ZN(out[4]) );
   AND2_X1 U6 ( .A1(in[3]), .A2(n20), .ZN(n15) );
-  AND2_X1 U7 ( .A1(\in[7]), .A2(n19), .ZN(n16) );
+  AND2_X1 U7 ( .A1(in_7), .A2(n19), .ZN(n16) );
   OR2_X1 U8 ( .A1(n14), .A2(n13), .ZN(out[3]) );
   AND2_X1 U9 ( .A1(in[2]), .A2(n20), .ZN(n13) );
-  AND2_X1 U10 ( .A1(\in[7]), .A2(n18), .ZN(n14) );
+  AND2_X1 U10 ( .A1(in_7), .A2(n18), .ZN(n14) );
   OR2_X1 U11 ( .A1(n12), .A2(n11), .ZN(out[1]) );
   AND2_X1 U12 ( .A1(in_0), .A2(n20), .ZN(n11) );
-  AND2_X1 U13 ( .A1(\in[7]), .A2(n17), .ZN(n12) );
+  AND2_X1 U13 ( .A1(in_7), .A2(n17), .ZN(n12) );
 endmodule
 
 
@@ -26450,35 +26469,35 @@ module scale2_7 ( in, out );
   output [7:0] out;
   //output_done
 
-  wire   in_0, \in[6] , \in[5] , \in[4] , \in[1] , \in[7] , n11, n12, n13, n14,
+  wire   in_0, in_6 , in_5 , in_4 , in_1 , in_7 , n11, n12, n13, n14,
          n15, n16, n17, n18, n19, n20;
   //wire_done
 
   assign in_0 = in[0];
-  assign out[7] = \in[6] ;
-  assign \in[6]  = in[6];
-  assign out[6] = \in[5] ;
-  assign \in[5]  = in[5];
-  assign out[5] = \in[4] ;
-  assign \in[4]  = in[4];
-  assign out[2] = \in[1] ;
-  assign \in[1]  = in[1];
-  assign out[0] = \in[7] ;
-  assign \in[7]  = in[7];
+  assign out[7] = in_6 ;
+  assign in_6  = in[6];
+  assign out[6] = in_5 ;
+  assign in_5  = in[5];
+  assign out[5] = in_4 ;
+  assign in_4  = in[4];
+  assign out[2] = in_1 ;
+  assign in_1  = in[1];
+  assign out[0] = in_7 ;
+  assign in_7  = in[7];
 
-  INV_X1 U1 ( .A(\in[7]), .ZN(n20) );
+  INV_X1 U1 ( .A(in_7), .ZN(n20) );
   INV_X1 U2 ( .A(in[3]), .ZN(n19) );
   INV_X1 U3 ( .A(in[2]), .ZN(n18) );
   INV_X1 U4 ( .A(in_0), .ZN(n17) );
   OR2_X1 U5 ( .A1(n16), .A2(n15), .ZN(out[4]) );
   AND2_X1 U6 ( .A1(in[3]), .A2(n20), .ZN(n15) );
-  AND2_X1 U7 ( .A1(\in[7]), .A2(n19), .ZN(n16) );
+  AND2_X1 U7 ( .A1(in_7), .A2(n19), .ZN(n16) );
   OR2_X1 U8 ( .A1(n14), .A2(n13), .ZN(out[3]) );
   AND2_X1 U9 ( .A1(in[2]), .A2(n20), .ZN(n13) );
-  AND2_X1 U10 ( .A1(\in[7]), .A2(n18), .ZN(n14) );
+  AND2_X1 U10 ( .A1(in_7), .A2(n18), .ZN(n14) );
   OR2_X1 U11 ( .A1(n12), .A2(n11), .ZN(out[1]) );
   AND2_X1 U12 ( .A1(in_0), .A2(n20), .ZN(n11) );
-  AND2_X1 U13 ( .A1(\in[7]), .A2(n17), .ZN(n12) );
+  AND2_X1 U13 ( .A1(in_7), .A2(n17), .ZN(n12) );
 endmodule
 
 
@@ -26489,35 +26508,35 @@ module scale2_8 ( in, out );
   output [7:0] out;
   //output_done
 
-  wire   in_0, \in[6] , \in[5] , \in[4] , \in[1] , \in[7] , n11, n12, n13, n14,
+  wire   in_0, in_6 , in_5 , in_4 , in_1 , in_7 , n11, n12, n13, n14,
          n15, n16, n17, n18, n19, n20;
   //wire_done
 
   assign in_0 = in[0];
-  assign out[7] = \in[6] ;
-  assign \in[6]  = in[6];
-  assign out[6] = \in[5] ;
-  assign \in[5]  = in[5];
-  assign out[5] = \in[4] ;
-  assign \in[4]  = in[4];
-  assign out[2] = \in[1] ;
-  assign \in[1]  = in[1];
-  assign out[0] = \in[7] ;
-  assign \in[7]  = in[7];
+  assign out[7] = in_6 ;
+  assign in_6  = in[6];
+  assign out[6] = in_5 ;
+  assign in_5  = in[5];
+  assign out[5] = in_4 ;
+  assign in_4  = in[4];
+  assign out[2] = in_1 ;
+  assign in_1  = in[1];
+  assign out[0] = in_7 ;
+  assign in_7  = in[7];
 
-  INV_X1 U1 ( .A(\in[7]), .ZN(n20) );
+  INV_X1 U1 ( .A(in_7), .ZN(n20) );
   INV_X1 U2 ( .A(in[3]), .ZN(n19) );
   INV_X1 U3 ( .A(in[2]), .ZN(n18) );
   INV_X1 U4 ( .A(in_0), .ZN(n17) );
   OR2_X1 U5 ( .A1(n16), .A2(n15), .ZN(out[4]) );
   AND2_X1 U6 ( .A1(in[3]), .A2(n20), .ZN(n15) );
-  AND2_X1 U7 ( .A1(\in[7]), .A2(n19), .ZN(n16) );
+  AND2_X1 U7 ( .A1(in_7), .A2(n19), .ZN(n16) );
   OR2_X1 U8 ( .A1(n14), .A2(n13), .ZN(out[3]) );
   AND2_X1 U9 ( .A1(in[2]), .A2(n20), .ZN(n13) );
-  AND2_X1 U10 ( .A1(\in[7]), .A2(n18), .ZN(n14) );
+  AND2_X1 U10 ( .A1(in_7), .A2(n18), .ZN(n14) );
   OR2_X1 U11 ( .A1(n12), .A2(n11), .ZN(out[1]) );
   AND2_X1 U12 ( .A1(in_0), .A2(n20), .ZN(n11) );
-  AND2_X1 U13 ( .A1(\in[7]), .A2(n17), .ZN(n12) );
+  AND2_X1 U13 ( .A1(in_7), .A2(n17), .ZN(n12) );
 endmodule
 
 
@@ -27372,35 +27391,35 @@ module scale2_9 ( in, out );
   output [7:0] out;
   //output_done
 
-  wire   in_0, \in[6] , \in[5] , \in[4] , \in[1] , \in[7] , n11, n12, n13, n14,
+  wire   in_0, in_6 , in_5 , in_4 , in_1 , in_7 , n11, n12, n13, n14,
          n15, n16, n17, n18, n19, n20;
   //wire_done
 
   assign in_0 = in[0];
-  assign out[7] = \in[6] ;
-  assign \in[6]  = in[6];
-  assign out[6] = \in[5] ;
-  assign \in[5]  = in[5];
-  assign out[5] = \in[4] ;
-  assign \in[4]  = in[4];
-  assign out[2] = \in[1] ;
-  assign \in[1]  = in[1];
-  assign out[0] = \in[7] ;
-  assign \in[7]  = in[7];
+  assign out[7] = in_6 ;
+  assign in_6  = in[6];
+  assign out[6] = in_5 ;
+  assign in_5  = in[5];
+  assign out[5] = in_4 ;
+  assign in_4  = in[4];
+  assign out[2] = in_1 ;
+  assign in_1  = in[1];
+  assign out[0] = in_7 ;
+  assign in_7  = in[7];
 
-  INV_X1 U1 ( .A(\in[7]), .ZN(n20) );
+  INV_X1 U1 ( .A(in_7), .ZN(n20) );
   INV_X1 U2 ( .A(in[3]), .ZN(n19) );
   INV_X1 U3 ( .A(in[2]), .ZN(n18) );
   INV_X1 U4 ( .A(in_0), .ZN(n17) );
   OR2_X1 U5 ( .A1(n16), .A2(n15), .ZN(out[4]) );
   AND2_X1 U6 ( .A1(in[3]), .A2(n20), .ZN(n15) );
-  AND2_X1 U7 ( .A1(\in[7]), .A2(n19), .ZN(n16) );
+  AND2_X1 U7 ( .A1(in_7), .A2(n19), .ZN(n16) );
   OR2_X1 U8 ( .A1(n14), .A2(n13), .ZN(out[3]) );
   AND2_X1 U9 ( .A1(in[2]), .A2(n20), .ZN(n13) );
-  AND2_X1 U10 ( .A1(\in[7]), .A2(n18), .ZN(n14) );
+  AND2_X1 U10 ( .A1(in_7), .A2(n18), .ZN(n14) );
   OR2_X1 U11 ( .A1(n12), .A2(n11), .ZN(out[1]) );
   AND2_X1 U12 ( .A1(in_0), .A2(n20), .ZN(n11) );
-  AND2_X1 U13 ( .A1(\in[7]), .A2(n17), .ZN(n12) );
+  AND2_X1 U13 ( .A1(in_7), .A2(n17), .ZN(n12) );
 endmodule
 
 
@@ -27411,35 +27430,35 @@ module scale2_10 ( in, out );
   output [7:0] out;
   //output_done
 
-  wire   in_0, \in[6] , \in[5] , \in[4] , \in[1] , \in[7] , n11, n12, n13, n14,
+  wire   in_0, in_6 , in_5 , in_4 , in_1 , in_7 , n11, n12, n13, n14,
          n15, n16, n17, n18, n19, n20;
   //wire_done
 
   assign in_0 = in[0];
-  assign out[7] = \in[6] ;
-  assign \in[6]  = in[6];
-  assign out[6] = \in[5] ;
-  assign \in[5]  = in[5];
-  assign out[5] = \in[4] ;
-  assign \in[4]  = in[4];
-  assign out[2] = \in[1] ;
-  assign \in[1]  = in[1];
-  assign out[0] = \in[7] ;
-  assign \in[7]  = in[7];
+  assign out[7] = in_6 ;
+  assign in_6  = in[6];
+  assign out[6] = in_5 ;
+  assign in_5  = in[5];
+  assign out[5] = in_4 ;
+  assign in_4  = in[4];
+  assign out[2] = in_1 ;
+  assign in_1  = in[1];
+  assign out[0] = in_7 ;
+  assign in_7  = in[7];
 
-  INV_X1 U1 ( .A(\in[7]), .ZN(n20) );
+  INV_X1 U1 ( .A(in_7), .ZN(n20) );
   INV_X1 U2 ( .A(in[3]), .ZN(n19) );
   INV_X1 U3 ( .A(in[2]), .ZN(n18) );
   INV_X1 U4 ( .A(in_0), .ZN(n17) );
   OR2_X1 U5 ( .A1(n16), .A2(n15), .ZN(out[4]) );
   AND2_X1 U6 ( .A1(in[3]), .A2(n20), .ZN(n15) );
-  AND2_X1 U7 ( .A1(\in[7]), .A2(n19), .ZN(n16) );
+  AND2_X1 U7 ( .A1(in_7), .A2(n19), .ZN(n16) );
   OR2_X1 U8 ( .A1(n14), .A2(n13), .ZN(out[3]) );
   AND2_X1 U9 ( .A1(in[2]), .A2(n20), .ZN(n13) );
-  AND2_X1 U10 ( .A1(\in[7]), .A2(n18), .ZN(n14) );
+  AND2_X1 U10 ( .A1(in_7), .A2(n18), .ZN(n14) );
   OR2_X1 U11 ( .A1(n12), .A2(n11), .ZN(out[1]) );
   AND2_X1 U12 ( .A1(in_0), .A2(n20), .ZN(n11) );
-  AND2_X1 U13 ( .A1(\in[7]), .A2(n17), .ZN(n12) );
+  AND2_X1 U13 ( .A1(in_7), .A2(n17), .ZN(n12) );
 endmodule
 
 
@@ -27450,35 +27469,35 @@ module scale2_11 ( in, out );
   output [7:0] out;
   //output_done
 
-  wire   in_0, \in[6] , \in[5] , \in[4] , \in[1] , \in[7] , n11, n12, n13, n14,
+  wire   in_0, in_6 , in_5 , in_4 , in_1 , in_7 , n11, n12, n13, n14,
          n15, n16, n17, n18, n19, n20;
   //wire_done
 
   assign in_0 = in[0];
-  assign out[7] = \in[6] ;
-  assign \in[6]  = in[6];
-  assign out[6] = \in[5] ;
-  assign \in[5]  = in[5];
-  assign out[5] = \in[4] ;
-  assign \in[4]  = in[4];
-  assign out[2] = \in[1] ;
-  assign \in[1]  = in[1];
-  assign out[0] = \in[7] ;
-  assign \in[7]  = in[7];
+  assign out[7] = in_6 ;
+  assign in_6  = in[6];
+  assign out[6] = in_5 ;
+  assign in_5  = in[5];
+  assign out[5] = in_4 ;
+  assign in_4  = in[4];
+  assign out[2] = in_1 ;
+  assign in_1  = in[1];
+  assign out[0] = in_7 ;
+  assign in_7  = in[7];
 
-  INV_X1 U1 ( .A(\in[7]), .ZN(n20) );
+  INV_X1 U1 ( .A(in_7), .ZN(n20) );
   INV_X1 U2 ( .A(in[3]), .ZN(n19) );
   INV_X1 U3 ( .A(in[2]), .ZN(n18) );
   INV_X1 U4 ( .A(in_0), .ZN(n17) );
   OR2_X1 U5 ( .A1(n16), .A2(n15), .ZN(out[4]) );
   AND2_X1 U6 ( .A1(in[3]), .A2(n20), .ZN(n15) );
-  AND2_X1 U7 ( .A1(\in[7]), .A2(n19), .ZN(n16) );
+  AND2_X1 U7 ( .A1(in_7), .A2(n19), .ZN(n16) );
   OR2_X1 U8 ( .A1(n14), .A2(n13), .ZN(out[3]) );
   AND2_X1 U9 ( .A1(in[2]), .A2(n20), .ZN(n13) );
-  AND2_X1 U10 ( .A1(\in[7]), .A2(n18), .ZN(n14) );
+  AND2_X1 U10 ( .A1(in_7), .A2(n18), .ZN(n14) );
   OR2_X1 U11 ( .A1(n12), .A2(n11), .ZN(out[1]) );
   AND2_X1 U12 ( .A1(in_0), .A2(n20), .ZN(n11) );
-  AND2_X1 U13 ( .A1(\in[7]), .A2(n17), .ZN(n12) );
+  AND2_X1 U13 ( .A1(in_7), .A2(n17), .ZN(n12) );
 endmodule
 
 
@@ -27489,35 +27508,35 @@ module scale2_12 ( in, out );
   output [7:0] out;
   //output_done
 
-  wire   in_0, \in[6] , \in[5] , \in[4] , \in[1] , \in[7] , n11, n12, n13, n14,
+  wire   in_0, in_6 , in_5 , in_4 , in_1 , in_7 , n11, n12, n13, n14,
          n15, n16, n17, n18, n19, n20;
   //wire_done
 
   assign in_0 = in[0];
-  assign out[7] = \in[6] ;
-  assign \in[6]  = in[6];
-  assign out[6] = \in[5] ;
-  assign \in[5]  = in[5];
-  assign out[5] = \in[4] ;
-  assign \in[4]  = in[4];
-  assign out[2] = \in[1] ;
-  assign \in[1]  = in[1];
-  assign out[0] = \in[7] ;
-  assign \in[7]  = in[7];
+  assign out[7] = in_6 ;
+  assign in_6  = in[6];
+  assign out[6] = in_5 ;
+  assign in_5  = in[5];
+  assign out[5] = in_4 ;
+  assign in_4  = in[4];
+  assign out[2] = in_1 ;
+  assign in_1  = in[1];
+  assign out[0] = in_7 ;
+  assign in_7  = in[7];
 
-  INV_X1 U1 ( .A(\in[7]), .ZN(n20) );
+  INV_X1 U1 ( .A(in_7), .ZN(n20) );
   INV_X1 U2 ( .A(in[3]), .ZN(n19) );
   INV_X1 U3 ( .A(in[2]), .ZN(n18) );
   INV_X1 U4 ( .A(in_0), .ZN(n17) );
   OR2_X1 U5 ( .A1(n16), .A2(n15), .ZN(out[4]) );
   AND2_X1 U6 ( .A1(in[3]), .A2(n20), .ZN(n15) );
-  AND2_X1 U7 ( .A1(\in[7]), .A2(n19), .ZN(n16) );
+  AND2_X1 U7 ( .A1(in_7), .A2(n19), .ZN(n16) );
   OR2_X1 U8 ( .A1(n14), .A2(n13), .ZN(out[3]) );
   AND2_X1 U9 ( .A1(in[2]), .A2(n20), .ZN(n13) );
-  AND2_X1 U10 ( .A1(\in[7]), .A2(n18), .ZN(n14) );
+  AND2_X1 U10 ( .A1(in_7), .A2(n18), .ZN(n14) );
   OR2_X1 U11 ( .A1(n12), .A2(n11), .ZN(out[1]) );
   AND2_X1 U12 ( .A1(in_0), .A2(n20), .ZN(n11) );
-  AND2_X1 U13 ( .A1(\in[7]), .A2(n17), .ZN(n12) );
+  AND2_X1 U13 ( .A1(in_7), .A2(n17), .ZN(n12) );
 endmodule
 
 
@@ -28365,23 +28384,6 @@ module mixCol_3 ( in, out );
 endmodule
 
 
-module DFF_X1( D, CK, Q );
-  input D;
-  input CK;
-  //input_done
-
-  output Q;
-  //output_done
-
-  //wire_done
-
-  always @ ( posedge CK )
-  begin
-    Q <= D;
-  end
-endmodule
-
-
 module aes_128 ( clk, data, key, firstRound, final_round, round_const, out );
   input [127:0] data;
   input [127:0] key;
@@ -28469,6 +28471,7 @@ module aes_128 ( clk, data, key, firstRound, final_round, round_const, out );
   wire   [127:0] mixCol_out_temp;
   wire   [127:0] mixCol_out;
   wire   [127:0] key_out;
+
   //wire_done
 
   mux128_0 dataMux ( .a(out), .b(state), .sel(firstRound), .y(data_in) );

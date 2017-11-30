@@ -3,18 +3,19 @@
 module testbench_core();
 
 	reg clk, rst, firstRound, finalRound;
-	reg [7:0] roundConstant;
+	wire [7:0] roundConstant;
 	reg [127:0] data_in;
 	reg [127:0] key;
 	reg [3:0] rndCnt;
+	reg [127:0] ciphertext;
 	wire [127:0] data_out;
 
 
-	/*round_const rnd(
+	round_const rnd(
 		.clk(clk),
 		.rst(rst),
 		.rc(roundConstant)
-	);*/
+	);
 
 
 	aes_128 aes(
@@ -30,10 +31,9 @@ module testbench_core();
 	initial
 	begin
 		clk = 0;
-		rst = 0;
+		rst = 1;
 		firstRound = 1;
 		finalRound = 0;
-		roundConstant = 0;
 		key = 0;
 		data_in = 128'hFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF;
 		rndCnt = 0;
@@ -44,6 +44,7 @@ module testbench_core();
 
 	always @( posedge clk )
 	begin
+		rst = 0;
 		if( rndCnt == 0 )
 		begin
 			firstRound = 0;
@@ -61,6 +62,7 @@ module testbench_core();
 			firstRound = 1;
 			finalRound = 0;
 			rndCnt = 0;
+			ciphertext = data_out;
 		end
 		else begin
 			firstRound = 0;

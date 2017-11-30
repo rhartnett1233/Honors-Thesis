@@ -1,15 +1,14 @@
 module sample_circuit ( a, b, c, y );
 
-  input a;
-  input b;
-  input c;
-  assign abar = ~a;
-  assign bbar = ~b;
-  assign cbar = ~c;
+  input [2:0] a;
+  wire [2:0] a;
+  assign abar[0] = ~a[0];
+  assign abar[1] = ~a[1];
+  assign abar[2] = ~a[2];
 //input_done
 
-  output y;
-  reg ybar;
+  output [2:0] y;
+  reg [2:0] ybar;
 //output_done
 
   wire n1;

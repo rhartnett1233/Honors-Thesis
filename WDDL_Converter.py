@@ -1,13 +1,13 @@
 
 import Parser
-import Module
+import Module_new
 
 
-file_old = open( "/Users/Richie/Desktop/Honors-Thesis/sample_circuit.v", "r" )
-#file_old = open( "/Users/Richie/Desktop/Honors-Thesis/cw305_verilog/cryptosrc/aes_128.v", "r" )
+#file_old = open( "/Users/Richie/Desktop/Honors-Thesis/sample_circuit.v", "r" )
+file_old = open( "/Users/Richie/Desktop/Honors-Thesis/cw305_verilog/cryptosrc/aes_128.v", "r" )
 
 module_list = [ " " ]
-'''modify_module_list = ["CD2_0","CD4_0","CD16_0","CD2_77","CD2_78","CD2_79","CD4_39","encode_0",
+modify_module_list = ["CD2_0","CD4_0","CD16_0","CD2_77","CD2_78","CD2_79","CD4_39","encode_0",
 						"CD2_1","CD2_2","CD2_3","CD2_4","CD4_1","CD4_2","CD16_1","encode_1",
 						"CD2_5","CD2_6","CD2_7","CD2_8","CD4_3","CD4_4","CD16_2","encode_2",
 						"CD2_9","CD2_10","CD2_11","CD2_12","CD4_5","CD4_6","CD16_3","encode_3",
@@ -26,9 +26,9 @@ module_list = [ " " ]
 						"CD2_61","CD2_62","CD2_63","CD2_64","CD4_31","CD4_32","CD16_16","encode_16",
 						"CD2_65","CD2_66","CD2_67","CD2_68","CD4_33","CD4_34","CD16_17","encode_17",
 						"CD2_69","CD2_70","CD2_71","CD2_72","CD4_35","CD4_36","CD16_18","encode_18",
-						"CD2_73","CD2_74","CD2_75","CD2_76","CD4_37","CD4_38","CD16_19","encode_19"]'''
+						"CD2_73","CD2_74","CD2_75","CD2_76","CD4_37","CD4_38","CD16_19","encode_19"]
 
-modify_module_list = [ "sample_circuit" ]
+#modify_module_list = [ "sample_circuit" ]
 
 while( True ):
 	module_line = " "
@@ -53,7 +53,7 @@ while( True ):
 			cur_line = file_old.readline()
 			line_list = cur_line.split()
 			if( len(line_list) > 0 and line_list[0] == "endmodule" ):
-				cur_module = Module.Module( module_line, name, input_list, output_list, wire_list, gate_list )
+				cur_module = Module_new.Module_new( module_line, name, input_list, output_list, wire_list, gate_list )
 				if( module_list[0] == " " ):
 					module_list[0] = cur_module
 				else:
@@ -183,15 +183,39 @@ while( True ):
 				while( wire_reading_done == False ):
 					while( True ):
 						temp_wire = list(line_list[index])
-						if( temp_wire[len(temp_wire)-1] == ";"):
+						if( temp_wire[len(temp_wire)-1] == ";" ):
 							xx = line_list[index].split( ";" )
 							cur_wire = xx[0]
+							temp_xx = list( xx[0] )
 							if( wire_list[0] == " " ):
 								wire_list[0] = cur_wire
 							else:
 								wire_list.append( cur_wire )
 							wire_reading_done = True
+							index = index + 1
 							break
+
+						elif( temp_wire[0] == "[" ):
+							cur_wire = line_list[index]
+							temp_wire_name = line_list[ index+1 ].split( ";" )
+							wire_name = temp_wire_name[0]
+							yy = cur_wire.split( ":" )
+							temp_max_out = yy[0].split( "[" )
+							max_out = temp_max_out[1]
+							temp_min_out = yy[1].split( "]" )
+							min_out = temp_min_out[0]
+							max_iter = int(max_out) - int(min_out) + 1
+							iter_index = int(min_out)
+							while( iter_index <= int(max_out) ):
+								if( wire_list[0] == " " ):
+									wire_list[0] = wire_name + "[" + str(iter_index) + "]"
+								else:
+									wire_list.append( wire_name + "[" + str(iter_index) + "]" )
+								iter_index = iter_index + 1
+							wire_reading_done = True
+							index = index + 2
+							break
+
 						else:
 							xx = line_list[index].split( "," )
 							cur_wire = xx[0]
@@ -201,11 +225,17 @@ while( True ):
 								wire_list.append( cur_wire )
 							if( index == len(line_list)-1 ):
 								break
-						index = index + 1
+							index = index + 1
 					if( wire_reading_done == False ):
 						cur_line = file_old.readline()
 						line_list = cur_line.split()
 						index = 0
+					else:
+						cur_line = file_old.readline()
+						line_list = cur_line.split()
+						if( len(line_list) > 0 and line_list[0] == "wire" ):
+							wire_reading_done = False
+							index = 1
 
 			elif( len(line_list) > 0 and line_list[0] != "//input_done" and line_list[0] != "//output_done" and line_list[0] != "//wire_done" ):
 				if( gate_list[0] == " " ):
@@ -216,8 +246,8 @@ while( True ):
 
 
 
-file_new = open( "/Users/Richie/Desktop/Honors-Thesis/sample_circuit_new.v", "wb" )
-#file_new = open( "/Users/Richie/Desktop/Honors-Thesis/Converted_Sections/sBox_modules_modified.v", "wb" )
+#file_new = open( "/Users/Richie/Desktop/Honors-Thesis/sample_circuit_new.v", "wb" )
+file_new = open( "/Users/Richie/Desktop/Honors-Thesis/cw305_verilog/cryptosrc/non_LUT_aes.v", "wb" )
 
 module_cnt = 0
 modify_module_cnt = 0
@@ -231,10 +261,16 @@ while( module_cnt < len(module_list) ):
 		#inputs
 		input_list_display = cur_module.get_input_list_display()
 		input_list = cur_module.get_input_list()
-		comp_input_list = cur_module.get_comp_input_list()
+		comp_input_list = cur_module.get_comp_input_list();
+		comp_input_list_display = cur_module.get_comp_input_list_display()
 		for item in input_list_display:
 			line = "  input " + item + ";\n"
 			file_new.write( line )
+		index = 0
+		while( index < len(comp_input_list_display) ):
+			line = "  wire " + comp_input_list_display[index] + ";\n"
+			file_new.write( line )
+			index = index + 1
 		index = 0
 		while( index < len(input_list) ):
 			line = "  assign " + comp_input_list[index] + " = ~" + input_list[index] + ";\n"
@@ -251,18 +287,20 @@ while( module_cnt < len(module_list) ):
 			line = "  output " + item + ";\n"
 			file_new.write( line )
 		for item in comp_output_list_display:
-			line = "  reg " + item + ";\n"
+			line = "  wire " + item + ";\n"
 			file_new.write( line )
 		file_new.write( "//output_done\n\n")
 
 		#wires
 		wire_list = cur_module.get_wire_list()
 		comp_wire_list = cur_module.get_comp_wire_list()
+		wire_list_display = cur_module.get_wire_list_display()
+		comp_wire_list_display = cur_module.get_comp_wire_list_display()
 		if( wire_list[0] != " " ):
-			for item in wire_list:
+			for item in wire_list_display:
 				line = "  wire " + item + ";\n"
 				file_new.write( line )
-			for item in comp_wire_list:
+			for item in comp_wire_list_display:
 				line = "  wire " + item + ";\n"
 				file_new.write( line )
 		file_new.write( "//wire_done\n\n")
@@ -291,9 +329,9 @@ while( module_cnt < len(module_list) ):
 			file_new.write( line )
 		file_new.write( "//output_done\n\n")
 
-		wire_list = cur_module.get_wire_list()
-		if( wire_list[0] != " " ):
-			for item in wire_list:
+		wire_list_display = cur_module.get_wire_list_display()
+		if( wire_list_display[0] != " " ):
+			for item in wire_list_display:
 				line = "  wire " + item + ";\n"
 				file_new.write( line )
 		file_new.write( "//wire_done\n\n")

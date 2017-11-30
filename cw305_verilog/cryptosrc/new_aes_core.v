@@ -11,39 +11,75 @@ module new_aes_core(
 );
 
 wire [7:0] roundConstant;
-wire firstRound;
-wire finalRound;
-reg rnd_ctr_rst;
-reg rnd_cnt_rst;
-wire [127:0] out_data;
+reg rst, firstRound, finalRound;
+reg [3:0] rndCnt;
+reg [127:0] ciphertext_new_aes;
+wire [127:0] data_out;
+reg [127:0] data_in;
+reg [127:0] key;
 
-
-round_const rnd_cnt( .clk(clk), .rst(rnd_cnt_rst), .rc(roundConstant) );
-round_ctr rnd_ctr( .clk(clk), .rst(rnd_ctr_rst), .firstRnd(firstRound), .finalRnd(finalRound) );
-
-aes_128 aes_128 (
+round_const rnd(
 	.clk(clk),
-	.data(data_i),
-	.key(key_i),
+	.rst(rst),
+	.rc(roundConstant)
+);
+
+
+aes_128 aes(
+	.clk(clk),
+	.data(data_in),
+	.key(key),
 	.firstRound(firstRound),
 	.final_round(finalRound),
 	.round_const(roundConstant),
-	.out(out_data)
+	.out(data_out)
 );
 
 always @( posedge clk )
 begin
-	if (finalRound)
-		busy_o <= 1;
-	else
-		busy_o <= 0;
+	data_o = data_out;
+	if( load_i == 1 )
+	begin
+		data_in = data_i;
+		key = key_i;
+		rst = 1;
+		rndCnt = 0;
+		firstRound = 1;
+		finalRound = 0;
+		busy_o = 0;
+	end
 
-	if (load_i)
-		rnd_ctr_rst <= 1;
-	else
-		rnd_ctr_rst <= 0;
-
-	assign data_o = out_data;
+	else begin
+		rst = 0;
+		if( rndCnt == 0 )
+		begin
+			firstRound = 0;
+			finalRound = 0;
+			rndCnt = 1;
+			busy_o = 0;
+		end
+		else if( rndCnt == 9 )
+		begin
+			firstRound = 0;
+			finalRound = 1;
+			rndCnt = 10;
+			busy_o = 0;
+		end
+		else if( rndCnt == 10 )
+		begin
+			firstRound = 1;
+			finalRound = 0;
+			rndCnt = 0;
+			busy_o = 1;
+			ciphertext_new_aes = data_out;
+		end
+		else begin
+			firstRound = 0;
+			finalRound = 0;
+			rndCnt = rndCnt + 1;
+			busy_o = 0;
+		end
+	end
 end
 
 endmodule

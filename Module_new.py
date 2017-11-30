@@ -1,6 +1,6 @@
 import Parser
 
-class Module():
+class Module_new():
 
 	def __init__( self, module_line, name, input_list, output_list, wire_list, gate_list ):
 		self.module_line = module_line
@@ -66,10 +66,11 @@ class Module():
 					else:
 						comp_input_list.append( comp_name )
 				else:
+					comp_name = self.input_list[index] + "bar"
 					if( comp_input_list[0] == " " ):
-						comp_input_list[0] = self.input_list[0] + "bar"
+						comp_input_list[0] = comp_name
 					else:
-						comp_input_list.append( self.input_list[index] + "bar" )
+						comp_input_list.append( comp_name )
 			else:
 				break
 			index = index + 1
@@ -106,10 +107,20 @@ class Module():
 		index = 0
 		while( index < len(self.wire_list) ):
 			if( self.wire_list[0] != " " ):
-				if( comp_wire_list[0] == " " ):
-					comp_wire_list[0] = self.wire_list[0] + "bar"
+				temp_wire = list(self.wire_list[index])
+				if( temp_wire[len(temp_wire)-1] == "]" ):
+					temp_name = self.wire_list[index].split( "[" )
+					name = temp_name[0]
+					comp_name = name + "bar[" + temp_name[1]
+					if( comp_wire_list[0] == " " ):
+						comp_wire_list[0] = comp_name
+					else:
+						comp_wire_list.append( comp_name )
 				else:
-					comp_wire_list.append( self.wire_list[index] + "bar" )
+					if( comp_wire_list[0] == " " ):
+						comp_wire_list[0] = self.wire_list[0] + "bar"
+					else:
+						comp_wire_list.append( self.wire_list[index] + "bar" )
 			else:
 				break
 			index = index + 1
@@ -195,6 +206,84 @@ class Module():
 		return temp_output_list
 
 
+	def get_wire_list_display( self ):
+		temp_wire_list = [ " " ]
+		index = 0
+		while( index < len(self.wire_list) ):
+			max_in = 0
+			min_in = 0
+			temp_list = list( self.wire_list[index] )
+			if( temp_list[ len(temp_list)-1 ] == "]" ):
+				xx = self.wire_list[index].split( "[" )
+				name = xx[0]
+				index = index + 1
+				last = False
+				while( index <= len(self.wire_list) ):
+					if( index < len(self.wire_list) ):
+						xx = self.wire_list[index].split( "[" )
+					next_name = xx[0]
+					if( next_name == name and last == False ):
+						yy = xx[1].split( "]" )
+						max_in = int(yy[0])
+						if( index == len(self.wire_list)-1 ):
+							last = True
+						else:
+							index = index + 1
+					else:
+						wire_line = "[" + str(max_in) + ":" + str(min_in) + "] " + name
+						if( temp_wire_list[0] == " " ):
+							temp_wire_list[0] = wire_line
+						else:
+							temp_wire_list.append( wire_line )
+						break
+			else:
+				if( temp_wire_list[0] == " " ):
+					temp_wire_list[0] = self.wire_list[index]
+				else:
+					temp_wire_list.append( self.wire_list[index] )
+				index = index + 1
+		return temp_wire_list
+
+
+	def get_comp_input_list_display( self ):
+		temp_input_list = [ " " ]
+		index = 0
+		while( index < len(self.comp_input_list) ):
+			max_in = 0
+			min_in = 0
+			temp_list = list( self.comp_input_list[index] )
+			if( temp_list[ len(temp_list)-1 ] == "]" ):
+				xx = self.comp_input_list[index].split( "[" )
+				name = xx[0]
+				index = index + 1
+				last = False
+				while( index <= len(self.comp_input_list) ):
+					if( index < len(self.comp_input_list) ):
+						xx = self.comp_input_list[index].split( "[" )
+					next_name = xx[0]
+					if( next_name == name and last == False ):
+						yy = xx[1].split( "]" )
+						max_in = int(yy[0])
+						if( index == len(self.comp_input_list)-1 ):
+							last = True
+						else:
+							index = index + 1
+					else:
+						input_line = "[" + str(max_in) + ":" + str(min_in) + "] " + name
+						if( temp_input_list[0] == " " ):
+							temp_input_list[0] = input_line
+						else:
+							temp_input_list.append( input_line )
+						break
+			else:
+				if( temp_input_list[0] == " " ):
+					temp_input_list[0] = self.comp_input_list[index]
+				else:
+					temp_input_list.append( self.comp_input_list[index] )
+				index = index + 1
+		return temp_input_list
+
+
 	def get_comp_output_list_display( self ):
 		temp_output_list = [ " " ]
 		index = 0
@@ -232,6 +321,45 @@ class Module():
 					temp_output_list.append( self.comp_output_list[index] )
 				index = index + 1
 		return temp_output_list
+
+
+	def get_comp_wire_list_display( self ):
+		temp_wire_list = [ " " ]
+		index = 0
+		while( index < len(self.comp_wire_list) ):
+			max_in = 0
+			min_in = 0
+			temp_list = list( self.comp_wire_list[index] )
+			if( temp_list[ len(temp_list)-1 ] == "]" ):
+				xx = self.comp_wire_list[index].split( "[" )
+				name = xx[0]
+				index = index + 1
+				last = False
+				while( index <= len(self.comp_wire_list) ):
+					if( index < len(self.comp_wire_list) ):
+						xx = self.comp_wire_list[index].split( "[" )
+					next_name = xx[0]
+					if( next_name == name and last == False ):
+						yy = xx[1].split( "]" )
+						max_in = int(yy[0])
+						if( index == len(self.comp_wire_list)-1 ):
+							last = True
+						else:
+							index = index + 1
+					else:
+						wire_line = "[" + str(max_in) + ":" + str(min_in) + "] " + name
+						if( temp_wire_list[0] == " " ):
+							temp_wire_list[0] = wire_line
+						else:
+							temp_wire_list.append( wire_line )
+						break
+			else:
+				if( temp_wire_list[0] == " " ):
+					temp_wire_list[0] = self.comp_wire_list[index]
+				else:
+					temp_wire_list.append( self.comp_wire_list[index] )
+				index = index + 1
+		return temp_wire_list
 
 
 	def get_converted_gate_list( self ):
@@ -328,4 +456,3 @@ class Module():
 
 			index = index + 1
 		return self.converted_gate_list
-
