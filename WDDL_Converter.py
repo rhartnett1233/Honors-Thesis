@@ -6,7 +6,10 @@ import Module_new
 #file_old = open( "/Users/Richie/Desktop/Honors-Thesis/sample_circuit.v", "r" )
 file_old = open( "/Users/Richie/Desktop/Honors-Thesis/cw305_verilog/cryptosrc/aes_128.v", "r" )
 
+#list to store module objects
 module_list = [ " " ]
+
+#list containing names of modules to be converted to WDDL
 modify_module_list = ["CD2_0","CD4_0","CD16_0","CD2_77","CD2_78","CD2_79","CD4_39","encode_0",
 						"CD2_1","CD2_2","CD2_3","CD2_4","CD4_1","CD4_2","CD16_1","encode_1",
 						"CD2_5","CD2_6","CD2_7","CD2_8","CD4_3","CD4_4","CD16_2","encode_2",
@@ -30,6 +33,7 @@ modify_module_list = ["CD2_0","CD4_0","CD16_0","CD2_77","CD2_78","CD2_79","CD4_3
 
 #modify_module_list = [ "sample_circuit" ]
 
+#while loop runs until entire Verilog file is parsed
 while( True ):
 	module_line = " "
 	name = " "
@@ -43,15 +47,21 @@ while( True ):
 
 	cur_line = file_old.readline()
 	line_list = cur_line.split()
+
+	#indicates there are no more lines to be read in
 	if( len(line_list) > 0 and line_list[0] == "//done" ):
 		break
 
+	#enters conditional if the line begins with "module"
 	elif( len(line_list) > 0 and line_list[0] == "module" ):
 		module_line = cur_line
 		name = line_list[1]
+		#iterates through rest of lines in module
 		while( True ):
 			cur_line = file_old.readline()
 			line_list = cur_line.split()
+
+			#indicates end of module, uses information obtained to create Module object and adds it to module_list
 			if( len(line_list) > 0 and line_list[0] == "endmodule" ):
 				cur_module = Module_new.Module_new( module_line, name, input_list, output_list, wire_list, gate_list )
 				if( module_list[0] == " " ):
@@ -60,6 +70,7 @@ while( True ):
 					module_list.append( cur_module )
 				break
 
+			#records the inputs of the module
 			elif( len(line_list) > 0 and line_list[0] == "input" ):
 				index = 1
 				while( input_reading_done == False ):
@@ -77,6 +88,7 @@ while( True ):
 							index = index + 1
 							break
 
+						#enters if input has multiple signals with it, i.e. [2:0]
 						elif( temp_input[0] == "[" ):
 							cur_input = line_list[index]
 							temp_input_name = line_list[ index+1 ].split( ";" )
@@ -119,6 +131,7 @@ while( True ):
 							input_reading_done = False
 							index = 1
 
+			#records the outputs of the module
 			elif( len(line_list) > 0 and line_list[0] == "output" ):
 				index = 1
 				while( output_reading_done == False ):
@@ -136,6 +149,7 @@ while( True ):
 							index = index + 1
 							break
 
+						#enters if output has multiple signals with it, i.e. [2:0]
 						elif( temp_output[0] == "[" ):
 							cur_output = line_list[index]
 							temp_output_name = line_list[ index+1 ].split( ";" )
@@ -178,6 +192,7 @@ while( True ):
 							output_reading_done = False
 							index = 1
 
+			#records the wires of the module
 			elif( len(line_list) > 0 and line_list[0] == "wire" ):
 				index = 1
 				while( wire_reading_done == False ):
@@ -195,6 +210,7 @@ while( True ):
 							index = index + 1
 							break
 
+						#enters if wire has multiple signals with it, i.e. [2:0]
 						elif( temp_wire[0] == "[" ):
 							cur_wire = line_list[index]
 							temp_wire_name = line_list[ index+1 ].split( ";" )
@@ -237,6 +253,7 @@ while( True ):
 							wire_reading_done = False
 							index = 1
 
+			#adds rest of lines to gate_list
 			elif( len(line_list) > 0 and line_list[0] != "//input_done" and line_list[0] != "//output_done" and line_list[0] != "//wire_done" ):
 				if( gate_list[0] == " " ):
 					gate_list[0] = cur_line
@@ -245,15 +262,18 @@ while( True ):
 
 
 
-
+#file to write to
 #file_new = open( "/Users/Richie/Desktop/Honors-Thesis/sample_circuit_new.v", "wb" )
 file_new = open( "/Users/Richie/Desktop/Honors-Thesis/cw305_verilog/cryptosrc/non_LUT_aes.v", "wb" )
 
 module_cnt = 0
 modify_module_cnt = 0
 
+#runs through modules in module_list and writes them all back
 while( module_cnt < len(module_list) ):
 	cur_module = module_list[ module_cnt ]
+
+	#checks to see if module name is in modify_module_list, if yes then it converts it to WDDL
 	if( cur_module.get_name() in modify_module_list ):
 		file_new.write( cur_module.get_module_line() )
 		file_new.write( "\n" )
@@ -263,6 +283,7 @@ while( module_cnt < len(module_list) ):
 		input_list = cur_module.get_input_list()
 		comp_input_list = cur_module.get_comp_input_list();
 		comp_input_list_display = cur_module.get_comp_input_list_display()
+		print comp_input_list_display
 		for item in input_list_display:
 			line = "  input " + item + ";\n"
 			file_new.write( line )
@@ -311,7 +332,7 @@ while( module_cnt < len(module_list) ):
 			file_new.write( item )
 		file_new.write( "endmodule\n\n" )
 
-
+	#if module is not to be modified, simple write it back the way it was recorded
 	else:
 		file_new.write( cur_module.get_module_line() )
 		file_new.write( "\n" )
@@ -323,12 +344,14 @@ while( module_cnt < len(module_list) ):
 			file_new.write( line )
 		file_new.write( "//input_done\n\n")
 
+		#outputs
 		output_list_display = cur_module.get_output_list_display()
 		for item in output_list_display:
 			line = "  output " + item + ";\n"
 			file_new.write( line )
 		file_new.write( "//output_done\n\n")
 
+		#wires
 		wire_list_display = cur_module.get_wire_list_display()
 		if( wire_list_display[0] != " " ):
 			for item in wire_list_display:
@@ -336,6 +359,7 @@ while( module_cnt < len(module_list) ):
 				file_new.write( line )
 		file_new.write( "//wire_done\n\n")
 
+		#gates
 		gate_list = cur_module.get_gate_list()
 		for item in gate_list:
 			file_new.write( item )

@@ -10,17 +10,20 @@ file_old = open( "/Users/Richie/Desktop/Honors-Thesis/sample_circuit_new.v", "r"
 
 parse = Parser.Parser()
 
+#loops through entire Verilog file
 while( True ):
 	cur_line = file_old.readline()
 	line_list = cur_line.split()
 
+	#breaks loop when reached end of file
 	if( cur_line == "" ):
 		break
 
-	#print line_list
+	#if line is an AND gate instantiate it to its own LUT
 	if( len(line_list) > 0 and line_list[0] == "AND2_X1" ):
 		name = line_list[1]
 		vals = parse.parse_AND( cur_line )
+		#lines to format the AND gate
 		line0 = "  //AND " + name + "\n"
 		line1 = "  LUT2 " + name + "(\n"
 		line2 = "    .INIT(4'h8)\n"
@@ -38,9 +41,11 @@ while( True ):
 		file_new.write( line6 )
 		file_new.write( line7 )
 
+	#if line is an OR gate instantiate it to its own LUT
 	elif( len(line_list) > 0 and line_list[0] == "OR2_X1" ):
 		name = line_list[1]
 		vals = parse.parse_OR( cur_line )
+		#lines to format the OR gate
 		line0 = "  //OR " + name + "\n"
 		line1 = "  LUT2 " + name + "(\n"
 		line2 = "    .INIT(4'he)\n"
@@ -58,6 +63,7 @@ while( True ):
 		file_new.write( line6 )
 		file_new.write( line7 )
 
+	#if not an AND or OR gate, right the line to new file
 	else:
 		file_new.write( cur_line )
 

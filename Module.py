@@ -51,6 +51,7 @@ class Module():
 	def set_gate_list( self, gate_list ):
 		self.gate_list = gate_list
 
+	#uses the input_list to create a list of complement inputs
 	def get_comp_input_list( self ):
 		comp_input_list = [ " " ]
 		index = 0
@@ -76,6 +77,7 @@ class Module():
 		self.comp_input_list = comp_input_list
 		return comp_input_list
 
+	#uses the output_list to create a list of complement outputs
 	def get_comp_output_list( self ):
 		comp_output_list = [ " " ]
 		index = 0
@@ -101,6 +103,7 @@ class Module():
 		self.comp_output_list = comp_output_list
 		return comp_output_list
 
+	#uses the wire_list to create a list of complement wires
 	def get_comp_wire_list( self ):
 		comp_wire_list = [ " " ]
 		index = 0
@@ -117,6 +120,7 @@ class Module():
 		return comp_wire_list
 
 
+	#uses the input_list and returns a list containing inputs in format to be written to file
 	def get_input_list_display( self ):
 		temp_input_list = [ " " ]
 		index = 0
@@ -156,6 +160,7 @@ class Module():
 		return temp_input_list
 
 
+	#uses the output_list and returns a list containing outputs in format to be written to file
 	def get_output_list_display( self ):
 		temp_output_list = [ " " ]
 		index = 0
@@ -195,6 +200,7 @@ class Module():
 		return temp_output_list
 
 
+	#uses the comp_output_list and returns a list containing comp_outputs in format to be written to file
 	def get_comp_output_list_display( self ):
 		temp_output_list = [ " " ]
 		index = 0
@@ -234,6 +240,7 @@ class Module():
 		return temp_output_list
 
 
+	#uses gate_list and finds gates inputs and outputs, then uses them to make a complement gate
 	def get_converted_gate_list( self ):
 		parse = Parser.Parser()
 		index = 0
@@ -241,6 +248,7 @@ class Module():
 			cur_line = self.gate_list[index]
 			line_list = cur_line.split()
 
+			#AND gate
 			if( len(line_list) > 0 and line_list[0] == "AND2_X1" ):
 				name = line_list[1] + "bar"
 				vals = parse.parse_AND( cur_line )
@@ -269,6 +277,7 @@ class Module():
 					self.converted_gate_list.append( cur_line )
 				self.converted_gate_list.append( comp_line )
 
+			#OR gate
 			elif( len(line_list) > 0 and line_list[0] == "OR2_X1" ):
 				name = line_list[1] + "bar"
 				vals = parse.parse_OR( cur_line )
@@ -297,6 +306,7 @@ class Module():
 					self.converted_gate_list.append( cur_line )
 				self.converted_gate_list.append( comp_line )
 
+			#INV gate
 			elif( len(line_list) > 0 and line_list[0] == "INV_X1" ):
 				name = line_list[1] + "bar"
 				vals = parse.parse_INV( cur_line )
@@ -320,6 +330,7 @@ class Module():
 					self.converted_gate_list.append( line1 )
 				self.converted_gate_list.append( line2 )
 
+			#if not an AND, OR, or INV gate, does not do anything to it
 			else:
 				if( self.converted_gate_list[0] == " " ):
 					self.converted_gate_list[0] = cur_line

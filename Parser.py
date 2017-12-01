@@ -5,6 +5,8 @@ class Parser():
 	def __init__( self ):
 		temp = True
 
+
+	#Takes in AND gate and outputs list containing inputs and outputs
 	def parse_AND( self, line ):
 		cur_line = line.split()
 		temp_in1 = cur_line[3]
@@ -26,18 +28,12 @@ class Parser():
 		out_1 = out_0[1].split(")")
 		out = out_1[0]
 
-		'''print "AND"
-		print "in1: " + in1
-		print "in2: " + in2
-		print "out: " + out
-		print "**************************"'''
-
-		#correct variable stored in: in1, in2, out
-
 		vals = [ in1, in2, out ]
 
 		return vals
 
+
+	#Takes in OR gate and outputs list containing inputs and outputs
 	def parse_OR( self, line ):
 		cur_line = line.split()
 		temp_in1 = cur_line[3]
@@ -59,19 +55,12 @@ class Parser():
 		out_1 = out_0[1].split(")")
 		out = out_1[0]
 
-		'''print "OR"
-		print "in1: " + in1
-		print "in2: " + in2
-		print "out: " + out
-		print "**************************"'''
-
-		#correct variable stored in: in1, in2, out
-
 		vals = [ in1, in2, out ]
 
 		return vals
 
 
+	#Takes in INV gate and outputs list containing inputs and outputs
 	def parse_INV( self, line ):
 		cur_line = line.split()
 		temp_in1 = cur_line[3]
@@ -86,13 +75,6 @@ class Parser():
 		out_0 = temp_out.split("(")
 		out_1 = out_0[1].split(")")
 		out = out_1[0]
-
-		'''print "INV"
-		print "in1: " + in1
-		print "out: " + out
-		print "**************************"'''
-
-		#correct variable stored in: in1, in2, out
 
 		vals = [ in1, out ]
 
