@@ -27,7 +27,6 @@ key --> encryption key
 wire [7:0] roundConstant;
 reg rst, firstRound, finalRound;
 reg [3:0] rndCnt;
-reg [127:0] ciphertext_new_aes;
 wire [127:0] data_out;
 reg [127:0] data_in;
 reg [127:0] key;
@@ -53,11 +52,10 @@ aes_128 aes(
 
 always @( posedge clk )
 begin
-	data_o = data_out;
 
 	// if load_i is high, new data 
 	// is to be encrypted
-	if( load_i == 1 )
+	if( load_i )
 	begin
 		data_in = data_i;
 		key = key_i;
@@ -65,7 +63,8 @@ begin
 		rndCnt = 0;
 		firstRound = 1;
 		finalRound = 0;
-		busy_o = 0;
+		busy_o = 1;
+		data_o = 0;
 	end
 
 	// if not, encrypt current data
@@ -78,7 +77,6 @@ begin
 			firstRound = 0;
 			finalRound = 0;
 			rndCnt = 1;
-			busy_o = 0;
 		end
 
 		//tenth round of encryption
@@ -87,17 +85,25 @@ begin
 			firstRound = 0;
 			finalRound = 1;
 			rndCnt = 10;
-			busy_o = 0;
 		end
 
 		//final round of encryption
 		else if( rndCnt == 10 )
 		begin
-			firstRound = 1;
+			firstRound = 0;
 			finalRound = 0;
-			rndCnt = 0;
-			busy_o = 1;
-			ciphertext_new_aes = data_out;
+			rndCnt = 11;
+			busy_o = 0;
+			data_o = data_out;
+		end
+
+		//done encrypting
+		else if( rndCnt == 11 )
+		begin
+			firstRound = 0;
+			finalRound = 0;
+			rndCnt = 11;
+			busy_o = 0;
 		end
 
 		//rounds 1-9
@@ -105,7 +111,6 @@ begin
 			firstRound = 0;
 			finalRound = 0;
 			rndCnt = rndCnt + 1;
-			busy_o = 0;
 		end
 	end
 end

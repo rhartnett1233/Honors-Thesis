@@ -7,7 +7,6 @@ module testbench();
 	reg [127:0] key;
 	wire [127:0] data_out;
 	wire busy;
-	reg [127:0] ciphertext;
 
 
 	new_aes_core new(
@@ -21,7 +20,7 @@ module testbench();
 
 	initial
 	begin
-		#1
+		#10
 		clk = 0;
 		load = 1;
 		key = 0;
@@ -29,21 +28,21 @@ module testbench();
 		#2
 		load = 0;
 
-		#30
+		#28
 		load = 1;
 		key = 0;
 		data_in = 0;
 		#2
 		load = 0;
 
-		#30
+		#28
 		load = 1;
 		key = 0;
 		data_in = 128'hF0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0;
 		#2
 		load = 0;
 
-		#30
+		#28
 		load = 1;
 		key = 0;
 		data_in = 128'hFFFFFFFFFFFFFFFF0000000000000000;
@@ -53,19 +52,5 @@ module testbench();
 
 	always
 		#1 clk = !clk;
-
-	always @(posedge clk)
-	begin
-		if( busy == 1 )
-		begin
-			ciphertext = data_out;
-		end
-		else if( load == 1 )
-		begin
-			ciphertext = 0;
-		end
-	end
-
-	
 		
 endmodule
