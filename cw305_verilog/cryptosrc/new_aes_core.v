@@ -1,5 +1,7 @@
 `timescale 1ns / 1ps
 
+//tutorial on some tricks in CW software
+//https://www.youtube.com/watch?v=We1t8kCCuzE
 
 module new_aes_core( 
 	input wire clk,
