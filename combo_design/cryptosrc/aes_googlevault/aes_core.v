@@ -59,6 +59,7 @@ reg [3:0] round, round_new, round_max;
 wire [3:0] round_inc = round + 1;
 wire [3:0] round_dec = round - 1;
 reg [127:0] state, state_new;
+wire [127:0] temp_state;
 reg [127:0] sbb_i;
 wire [127:0] sbb_o;
 
@@ -89,7 +90,7 @@ begin
 end
 
 //subBytes
-s_box boxes( .in(sbb_i), .out(sbb_o) );
+
 
 always @*
 begin : subbytes_pre
@@ -108,6 +109,8 @@ begin : subbytes_pre
 		sbb_i = state;
 	end
 end
+
+s_box boxes( .in(sbb_i), .out(sbb_o) );
 
 function [7:0] xtime;
 	input [7:0] b; xtime={b[6:0],1'b0} ^ (8'h1b & {8{b[7]}});
@@ -168,8 +171,12 @@ begin
 		ark_i = shr_o;
 	else
 		ark_i = mxc_o;
-			
-	state_new = ark_i ^ ks_val;
+	//state_new = ark_i ^ ks_val;
+end
+addRoundKey_WDDL addKey( .data(ark_i), .key(ks_val), .out(temp_state) );
+always @*
+begin
+	state_new = temp_state;
 end
 
 

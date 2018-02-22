@@ -3,13 +3,13 @@ import Parser
 import Module_new
 
 
-file_old = open( "/Users/Richie/Desktop/Honors-Thesis/sample_circuit.v", "r" )
-#file_old = open( "/Users/Richie/Desktop/Honors-Thesis/cw305_verilog/cryptosrc/aes_128.v", "r" )
+#file_old = open( "/Users/Richie/Desktop/Honors-Thesis/sample_circuit.v", "r" )
+file_old = open( "/Users/Richie/Desktop/Honors-Thesis/combo_design/cryptosrc/aes_googlevault/addRoundKey.v", "r" )
 
 #list to store module objects
 module_list = [ " " ]
 
-#list containing names of modules to be converted to WDDL
+#S_BOX modules
 '''modify_module_list = ["CD2_0","CD4_0","CD16_0","CD2_77","CD2_78","CD2_79","CD4_39","encode_0",
 						"CD2_1","CD2_2","CD2_3","CD2_4","CD4_1","CD4_2","CD16_1","encode_1",
 						"CD2_5","CD2_6","CD2_7","CD2_8","CD4_3","CD4_4","CD16_2","encode_2",
@@ -31,7 +31,19 @@ module_list = [ " " ]
 						"CD2_69","CD2_70","CD2_71","CD2_72","CD4_35","CD4_36","CD16_18","encode_18",
 						"CD2_73","CD2_74","CD2_75","CD2_76","CD4_37","CD4_38","CD16_19","encode_19"]'''
 
-modify_module_list = [ "sample_circuit" ]
+#MixCol modules
+'''modify_module_list = ["scale2_0", "byteXor_0", "byteXor4_0", "scale2_13", "scale2_14", "scale2_15", "byteXor_14", 
+						"byteXor_15", "byteXor_16", "byteXor4_13", "byteXor4_14", "byteXor4_15", "scale2_1", "scale2_2", "scale2_3", 
+						"scale2_4", "byteXor_2", "byteXor_3", "byteXor_4", "byteXor_5", "byteXor4_1", "byteXor4_2", "byteXor4_3", 
+						"byteXor4_4", "scale2_5", "scale2_6", "scale2_7", "scale2_8", "byteXor_6", "byteXor_7", "byteXor_8", 
+						"byteXor_9", "byteXor4_5", "byteXor4_6", "byteXor4_7", "byteXor4_8", "scale2_9", "scale2_10", "scale2_11", 
+						"scale2_12", "byteXor_10", "byteXor_11", "byteXor_12", "byteXor_13", "byteXor4_9", "byteXor4_10", "byteXor4_11", 
+						"byteXor4_12", "scale2_0", "scale2_0", "scale2_0", "scale2_0", "scale2_0"]'''
+
+#AddRoundKey modules
+modify_module_list = [ "addRoundKey" ]
+
+#modify_module_list = [ "sample_circuit" ]
 
 #while loop runs until entire Verilog file is parsed
 while( True ):
@@ -40,6 +52,7 @@ while( True ):
 	input_list = [ " " ]
 	output_list = [ " " ]
 	wire_list = [ " " ]
+	assign_list = [ " " ]
 	gate_list = [ " " ]
 	input_reading_done = False
 	output_reading_done = False
@@ -63,7 +76,7 @@ while( True ):
 
 			#indicates end of module, uses information obtained to create Module object and adds it to module_list
 			if( len(line_list) > 0 and line_list[0] == "endmodule" ):
-				cur_module = Module_new.Module_new( module_line, name, input_list, output_list, wire_list, gate_list )
+				cur_module = Module_new.Module_new( module_line, name, input_list, output_list, assign_list, wire_list, gate_list )
 				if( module_list[0] == " " ):
 					module_list[0] = cur_module
 				else:
@@ -113,10 +126,11 @@ while( True ):
 						else:
 							xx = line_list[index].split( "," )
 							cur_input = xx[0]
-							if( input_list[0] == " " ):
-								input_list[0] = cur_input
-							else:
-								input_list.append( cur_input )
+							if( cur_input != "wire" ):
+								if( input_list[0] == " " ):
+									input_list[0] = cur_input
+								else:
+									input_list.append( cur_input )
 							if( index == len(line_list)-1 ):
 								break
 							index = index + 1
@@ -174,10 +188,11 @@ while( True ):
 						else:
 							xx = line_list[index].split( "," )
 							cur_output = xx[0]
-							if( output_list[0] == " " ):
-								output_list[0] = cur_output
-							else:
-								output_list.append( cur_output )
+							if( cur_output != "wire" ):
+								if( output_list[0] == " " ):
+									output_list[0] = cur_output
+								else:
+									output_list.append( cur_output )
 							if( index == len(line_list)-1 ):
 								break
 							index = index + 1
@@ -253,6 +268,12 @@ while( True ):
 							wire_reading_done = False
 							index = 1
 
+			elif( len(line_list) > 0 and line_list[0] == "assign" ):
+				if( assign_list[0] == " " ):
+					assign_list[0] = cur_line
+				else:
+					assign_list.append(cur_line)
+
 			#adds rest of lines to gate_list
 			elif( len(line_list) > 0 and line_list[0] != "//input_done" and line_list[0] != "//output_done" and line_list[0] != "//wire_done" ):
 				if( gate_list[0] == " " ):
@@ -261,10 +282,11 @@ while( True ):
 					gate_list.append( cur_line )
 
 
-
+cur_mod = module_list[0]
+cur_mod.get_comp_assign_list()
 #file to write to
-file_new = open( "/Users/Richie/Desktop/Honors-Thesis/sample_circuit_new.v", "wb" )
-#file_new = open( "/Users/Richie/Desktop/Honors-Thesis/cw305_verilog/cryptosrc/non_LUT_aes.v", "wb" )
+#file_new = open( "/Users/Richie/Desktop/Honors-Thesis/sample_circuit_new.v", "wb" )
+file_new = open( "/Users/Richie/Desktop/Honors-Thesis/combo_design/cryptosrc/aes_googlevault/WDDL/addRoundKey_WDDL.v", "wb" )
 
 module_cnt = 0
 modify_module_cnt = 0
@@ -284,7 +306,7 @@ while( module_cnt < len(module_list) ):
 		comp_input_list = cur_module.get_comp_input_list();
 		comp_input_list_display = cur_module.get_comp_input_list_display()
 		for item in input_list_display:
-			line = "  input " + item + ";\n"
+			line = "  input wire " + item + ";\n"
 			file_new.write( line )
 		index = 0
 		while( index < len(comp_input_list_display) ):
@@ -304,7 +326,7 @@ while( module_cnt < len(module_list) ):
 		output_list_display = cur_module.get_output_list_display()
 		comp_output_list_display = cur_module.get_comp_output_list_display()
 		for item in output_list_display:
-			line = "  output " + item + ";\n"
+			line = "  output wire " + item + ";\n"
 			file_new.write( line )
 		for item in comp_output_list_display:
 			line = "  wire " + item + ";\n"
@@ -325,6 +347,16 @@ while( module_cnt < len(module_list) ):
 				file_new.write( line )
 		file_new.write( "//wire_done\n\n")
 
+		#assigns
+		assign_list = cur_module.get_assign_list()
+		comp_assign_list = cur_module.get_comp_assign_list()
+		if( len(assign_list) > 0 ):
+			for item in assign_list:
+				file_new.write( item )
+			for item in comp_assign_list:
+				file_new.write( item )
+		file_new.write( "//assign_done\n\n")
+
 		#gates
 		converted_gate_list = cur_module.get_converted_gate_list()
 		for item in converted_gate_list:
@@ -339,14 +371,14 @@ while( module_cnt < len(module_list) ):
 		#inputs
 		input_list_display = cur_module.get_input_list_display()
 		for item in input_list_display:
-			line = "  input " + item + ";\n"
+			line = "  input wire " + item + ";\n"
 			file_new.write( line )
 		file_new.write( "//input_done\n\n")
 
 		#outputs
 		output_list_display = cur_module.get_output_list_display()
 		for item in output_list_display:
-			line = "  output " + item + ";\n"
+			line = "  output wire " + item + ";\n"
 			file_new.write( line )
 		file_new.write( "//output_done\n\n")
 
@@ -357,6 +389,13 @@ while( module_cnt < len(module_list) ):
 				line = "  wire " + item + ";\n"
 				file_new.write( line )
 		file_new.write( "//wire_done\n\n")
+
+		#assign
+		assign_list = cur_module.get_assign_list()
+		if( len(assign_list) > 0 ):
+			for item in assign_list:
+				file_new.write( item )
+		file_new.write( "//assign_done\n\n")
 
 		#gates
 		gate_list = cur_module.get_gate_list()

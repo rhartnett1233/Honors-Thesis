@@ -2,11 +2,12 @@ import Parser
 
 class Module_new():
 
-	def __init__( self, module_line, name, input_list, output_list, wire_list, gate_list ):
+	def __init__( self, module_line, name, input_list, output_list, assign_list, wire_list, gate_list ):
 		self.module_line = module_line
 		self.name = name
 		self.input_list = input_list
 		self.output_list = output_list
+		self.assign_list = assign_list
 		self.wire_list = wire_list
 		self.gate_list = gate_list
 
@@ -38,6 +39,12 @@ class Module_new():
 
 	def set_output_list( self, output_list ):
 		self.output_list = output_list
+
+	def get_assign_list( self ):
+		return self.assign_list
+
+	def set_assign_list( self, assign_list ):
+		self.assign_list = assign_list
 
 	def get_wire_list( self ):
 		return self.wire_list
@@ -456,3 +463,42 @@ class Module_new():
 
 			index = index + 1
 		return self.converted_gate_list
+
+
+	def get_comp_assign_list( self ):
+		index = 0
+		temp_assign_list = []
+		while( index < len(self.assign_list) ):
+			cur_line = self.assign_list[index]
+			line_list = cur_line.split()
+			if( len(line_list) > 0 ):
+				left_var = line_list[1]
+				temp = line_list[3].split(";")
+				right_var = temp[0]
+
+				left_var_list = list(left_var)
+				if( left_var_list[len(left_var_list)-1] == "]" ):
+					xx = left_var.split( "]" )
+					yy = xx[0].split("[")
+					num = yy[1]
+					name = yy[0]
+					new_left_var = name + "bar[" + num + "]"
+				else:
+					new_left_var = left_var + "bar"
+
+				right_var_list = list(right_var)
+				if( right_var_list[len(right_var_list)-1] == "]" ):
+					xx = right_var.split( "]" )
+					yy = xx[0].split("[")
+					num = yy[1]
+					name = yy[0]
+					new_right_var = name + "bar[" + num + "]"
+				else:
+					new_right_var = right_var + "bar"
+
+				line = "  assign " + new_left_var + " = " + new_right_var + ";\n"
+				#print line
+				temp_assign_list.append(line)
+			index = index + 1
+
+		return temp_assign_list
