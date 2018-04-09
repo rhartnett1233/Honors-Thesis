@@ -3,8 +3,8 @@ import Parser
 import Module_new
 
 
-#file_old = open( "/Users/Richie/Desktop/Honors-Thesis/sample_circuit.v", "r" )
-file_old = open( "/Users/Richie/Desktop/Honors-Thesis/combo_design/cryptosrc/aes_googlevault/addRoundKey.v", "r" )
+file_old = open( "/Users/Richie/Desktop/Honors-Thesis/sample_circuit.v", "r" )
+#file_old = open( "/Users/Richie/Desktop/Honors-Thesis/combo_design/cryptosrc/aes_googlevault/addRoundKey.v", "r" )
 
 #list to store module objects
 module_list = [ " " ]
@@ -41,9 +41,9 @@ module_list = [ " " ]
 						"byteXor4_12", "scale2_0", "scale2_0", "scale2_0", "scale2_0", "scale2_0"]'''
 
 #AddRoundKey modules
-modify_module_list = [ "addRoundKey" ]
+#modify_module_list = [ "addRoundKey" ]
 
-#modify_module_list = [ "sample_circuit" ]
+modify_module_list = [ "sample_circuit" ]
 
 #while loop runs until entire Verilog file is parsed
 while( True ):
@@ -285,8 +285,8 @@ while( True ):
 cur_mod = module_list[0]
 cur_mod.get_comp_assign_list()
 #file to write to
-#file_new = open( "/Users/Richie/Desktop/Honors-Thesis/sample_circuit_new.v", "wb" )
-file_new = open( "/Users/Richie/Desktop/Honors-Thesis/combo_design/cryptosrc/aes_googlevault/WDDL/addRoundKey_WDDL.v", "wb" )
+file_new = open( "/Users/Richie/Desktop/Honors-Thesis/sample_circuit_new.v", "wb" )
+#file_new = open( "/Users/Richie/Desktop/Honors-Thesis/combo_design/cryptosrc/aes_googlevault/WDDL/addRoundKey_WDDL.v", "wb" )
 
 module_cnt = 0
 modify_module_cnt = 0

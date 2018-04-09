@@ -2,10 +2,10 @@ import Parser
 
 #file_new = open( "/Users/Richie/Desktop/Honors-Thesis/cw305_verilog/cryptosrc/converted_aes_final.v", "wb" )
 #file_new = open( "/Users/Richie/Desktop/Honors-Thesis/Converted_Sections/sBox_modules_modified.v", "wb" )
-file_new = open( "/Users/Richie/Desktop/Honors-Thesis/sample_circuit_LUT.v", "wb" )
+file_new = open( "/Users/Richie/Desktop/Honors-Thesis/combo_design_precharge/cryptosrc/aes_googlevault/Precharge/Precharge_LUT/s_box_Precharge_LUT.v", "wb" )
 
 #file_old = open( "/Users/Richie/Desktop/Honors-Thesis/Converted_Sections/sBox_modules_modified.v", "r" )
-file_old = open( "/Users/Richie/Desktop/Honors-Thesis/sample_circuit_new.v", "r" )
+file_old = open( "/Users/Richie/Desktop/Honors-Thesis/combo_design_precharge/cryptosrc/aes_googlevault/Precharge/Precharge_Files/s_box_Precharge.v", "r" )
 
 
 parse = Parser.Parser()
@@ -25,11 +25,11 @@ while( True ):
 		vals = parse.parse_AND( cur_line )
 		#lines to format the AND gate
 		line0 = "  //AND " + name + "\n"
-		line1 = "  LUT2 " + name + "(\n"
+		line1 = "  LUT2 #(\n"
 		line2 = "    .INIT(4'h8)\n"
-		line3 = "  ) LUT2_inst (\n"
-		line4 = "    .O(" + vals[2] + ")\n"
-		line5 = "    .I0(" + vals[0] + ")\n"
+		line3 = "  ) LUT2_" + name + " (\n"
+		line4 = "    .O(" + vals[2] + "),\n"
+		line5 = "    .I0(" + vals[0] + "),\n"
 		line6 = "    .I1(" + vals[1] + ")\n"
 		line7 = "  );\n"
 		file_new.write( line0 )
@@ -47,11 +47,11 @@ while( True ):
 		vals = parse.parse_OR( cur_line )
 		#lines to format the OR gate
 		line0 = "  //OR " + name + "\n"
-		line1 = "  LUT2 " + name + "(\n"
+		line1 = "  LUT2 #(\n"
 		line2 = "    .INIT(4'he)\n"
-		line3 = "  ) LUT2_inst (\n"
-		line4 = "    .O(" + vals[2] + ")\n"
-		line5 = "    .I0(" + vals[0] + ")\n"
+		line3 = "  ) LUT2_" + name + " (\n"
+		line4 = "    .O(" + vals[2] + "),\n"
+		line5 = "    .I0(" + vals[0] + "),\n"
 		line6 = "    .I1(" + vals[1] + ")\n"
 		line7 = "  );\n"
 		file_new.write( line0 )
