@@ -665,7 +665,7 @@ begin : subbytes_pre
 	end
 end
 
-s_box_Precharge boxes( .in(sbb_i), .inbar(sbb_ibar), .out(sbb_o), .outbar(sbb_obar) );
+s_box_Precharge_LUT boxes( .in(sbb_i), .inbar(sbb_ibar), .out(sbb_o), .outbar(sbb_obar) );
 
 //shiftrows
 always @*
@@ -707,7 +707,7 @@ begin
 	end
 end
 
-addRoundKey_Precharge addKey( .data(ark_i), .databar(ark_ibar), .key(ks_val), .out(temp_state), .outbar(temp_statebar) );
+addRoundKey_Precharge_LUT addKey( .data(ark_i), .databar(ark_ibar), .key(ks_val), .out(temp_state), .outbar(temp_statebar) );
 
 always @*
 begin
