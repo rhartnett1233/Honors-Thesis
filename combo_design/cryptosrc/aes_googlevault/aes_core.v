@@ -110,7 +110,7 @@ begin : subbytes_pre
 	end
 end
 
-s_box_WDDL boxes( .in(sbb_i), .out(sbb_o) );
+s_box boxes( .in(sbb_i), .out(sbb_o) );
 
 function [7:0] xtime;
 	input [7:0] b; xtime={b[6:0],1'b0} ^ (8'h1b & {8{b[7]}});
@@ -160,7 +160,7 @@ begin
 end
 
 //mixcolumns
-mixCol_WDDL mix_Col( .in(shr_o), .out(mxc_o) );
+mixCol mix_Col( .in(shr_o), .out(mxc_o) );
 
 // AddRoundKey(state, &ctx->ks[round * Nb]);
 always @*
@@ -173,7 +173,7 @@ begin
 		ark_i = mxc_o;
 	//state_new = ark_i ^ ks_val;
 end
-addRoundKey_WDDL addKey( .data(ark_i), .key(ks_val), .out(temp_state) );
+addRoundKey addKey( .data(ark_i), .key(ks_val), .out(temp_state) );
 always @*
 begin
 	state_new = temp_state;
